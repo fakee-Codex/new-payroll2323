@@ -1,6 +1,5 @@
 <?php
 
-
 // Fetch the data passed via POST
 $employeeName = $_POST['employeeName'];
 $regularHours = $_POST['regularHours'];
@@ -33,6 +32,9 @@ $fs15thPay = floatval($fs15thPay);
 $netPay = floatval(str_replace(',', '', $netPay)); // Removing commas before conversion
 $dailyRate = floatval($dailyRate);
 
+// Generate a control number based on employee name and other data
+$controlData = $employeeName . $startDate . $endDate;
+$controlNumber = substr(abs(crc32($controlData)), 0, 6);  // Generate an 8-digit control number from the hash
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +85,8 @@ $dailyRate = floatval($dailyRate);
         <tr>
             <td>Name: <strong><?php echo htmlspecialchars($employeeName); ?></strong></td>
             
-            <td class="right-align">Ctrl no: <strong><?php echo htmlspecialchars('148'); ?></strong></td> <!-- Change Ctrl no accordingly -->
+            <!-- Use the generated control number -->
+            <td class="right-align">Ctrl no: <strong><?php echo htmlspecialchars($controlNumber); ?></strong></td>
         </tr>
         <tr>
             <td>Period: <?php echo date('F j, Y', strtotime($startDate)) . " - " . date('F j, Y', strtotime($endDate)); ?>
@@ -105,10 +108,6 @@ $dailyRate = floatval($dailyRate);
             <td>Daily Rate</td>
             <td class="right-align">₱ <?php echo number_format($dailyRate, 2); ?></td>
         </tr>
-        <!-- <tr>
-            <td>Initial Pay (Regular + Overtime)</td>
-            <td class="right-align">₱ <?php echo number_format($totalPay, 2); ?></td>
-        </tr> -->
         <tr>
             <td>Overload Pay</td>
             <td class="right-align">₱ <?php echo number_format($overloadPay, 2); ?></td>
@@ -176,11 +175,4 @@ $dailyRate = floatval($dailyRate);
 </body>
 </html>
 
-<?php
-
-// Debug to see if data is being passed
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
-
-?>
+ 
