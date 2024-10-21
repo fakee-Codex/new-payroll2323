@@ -34,7 +34,7 @@ $dailyRate = floatval($dailyRate);
 
 // Generate a control number based on employee name and other data
 $controlData = $employeeName . $startDate . $endDate;
-$controlNumber = substr(abs(crc32($controlData)), 0, 6);  // Generate an 8-digit control number from the hash
+$controlNumber = substr(abs(crc32($controlData)), 0, 7);  // Generate an 8-digit control number from the hash
 ?>
 
 <!DOCTYPE html>
