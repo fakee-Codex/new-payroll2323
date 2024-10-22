@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2024 at 09:33 PM
+-- Generation Time: Oct 22, 2024 at 05:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -148,12 +148,13 @@ CREATE TABLE `daily_rate` (
 INSERT INTO `daily_rate` (`rate_id`, `employee_id`, `daily_rate`, `start_date`, `end_date`, `hourly_rate`) VALUES
 (16, 34, 8.00, '2024-10-04', '2024-10-04', 1.00),
 (17, 34, 976.00, '2024-10-05', '2024-10-04', 122.00),
-(18, 34, 560.00, '2024-10-05', NULL, 70.00),
+(18, 34, 560.00, '2024-10-05', '2024-10-21', 70.00),
 (19, 41, 720.00, '2024-10-06', NULL, 90.00),
 (20, 42, 960.00, '2024-10-09', NULL, 120.00),
 (22, 39, 712.00, '2024-10-15', NULL, 89.00),
 (23, 35, 720.00, '2024-10-16', NULL, 90.00),
-(24, 38, 2400.00, '2024-10-16', NULL, 300.00);
+(24, 38, 2400.00, '2024-10-16', NULL, 300.00),
+(25, 34, 7200.00, '2024-10-22', NULL, 900.00);
 
 -- --------------------------------------------------------
 
@@ -193,23 +194,25 @@ CREATE TABLE `employees` (
   `job_title_id` int(11) NOT NULL,
   `department_id` int(11) NOT NULL,
   `date_of_joining` date NOT NULL,
-  `status` enum('active','inactive') DEFAULT 'active'
+  `status` enum('active','inactive') DEFAULT 'active',
+  `employment_status` varchar(50) NOT NULL DEFAULT 'full-time'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `employees` (`employee_id`, `first_name`, `last_name`, `job_title_id`, `department_id`, `date_of_joining`, `status`) VALUES
-(34, 'John Laurent', 'Salazar', 18, 54, '2024-10-03', 'active'),
-(35, 'Michael', 'Jackson', 19, 54, '2024-10-03', 'active'),
-(36, 'Christian', 'Seguel', 20, 56, '2024-10-03', 'active'),
-(37, 'JOSHUA', 'EMPAL', 21, 58, '2024-10-03', 'active'),
-(38, 'Gelato', 'doggo', 22, 55, '2024-10-04', 'active'),
-(39, 'Fifi', 'Lou', 20, 56, '2024-10-04', 'active'),
-(40, 'Mark Andree', 'Siasat', 23, 60, '2024-10-04', 'active'),
-(41, 'Carlo', 'Lapura', 24, 61, '2024-10-04', 'active'),
-(42, 'CATHERINE', 'EMPAL', 25, 55, '2024-10-09', 'active');
+INSERT INTO `employees` (`employee_id`, `first_name`, `last_name`, `job_title_id`, `department_id`, `date_of_joining`, `status`, `employment_status`) VALUES
+(34, 'John Laurent', 'Salazar', 18, 54, '2024-10-03', 'active', 'part-time'),
+(35, 'Michael', 'Jackson', 19, 54, '2024-10-03', 'active', 'full-time'),
+(36, 'Christian', 'Seguel', 20, 56, '2024-10-03', 'active', 'full-time'),
+(37, 'JOSHUA', 'EMPAL', 21, 58, '2024-10-03', 'active', 'full-time'),
+(38, 'Gelato', 'doggo', 22, 55, '2024-10-04', 'active', 'full-time'),
+(39, 'Fifi', 'Lou', 20, 56, '2024-10-04', 'active', 'full-time'),
+(40, 'Mark Andree', 'Siasat', 23, 60, '2024-10-04', 'active', 'full-time'),
+(41, 'Carlo', 'Lapura', 24, 61, '2024-10-04', 'active', 'full-time'),
+(42, 'CATHERINE', 'EMPAL', 25, 55, '2024-10-09', 'active', 'full-time'),
+(43, 'James', 'okay', 18, 54, '2024-10-22', 'active', 'part-time');
 
 -- --------------------------------------------------------
 
@@ -331,13 +334,33 @@ CREATE TABLE `overload_pay` (
 --
 
 INSERT INTO `overload_pay` (`overload_id`, `employee_id`, `amount`, `date`, `start_date`, `end_date`) VALUES
-(44, 34, 9.00, '0000-00-00', '2024-10-25', '2024-10-30'),
-(45, 35, 900.00, '0000-00-00', '2024-10-01', '2024-10-31'),
-(46, 36, 900.00, '0000-00-00', '2024-10-01', '2024-10-31'),
-(48, 37, 600.00, '0000-00-00', '2024-10-01', '2024-10-31'),
-(49, 38, 600.00, '0000-00-00', '2024-10-01', '2024-10-31'),
-(51, 41, 600.00, '0000-00-00', '2024-10-01', '2024-10-31'),
-(52, 42, 600.00, '0000-00-00', '2024-10-01', '2024-10-31');
+(44, 34, 20.00, '0000-00-00', '2024-10-24', '2024-10-03'),
+(45, 35, 20.00, '0000-00-00', '2024-10-24', '2024-10-03'),
+(46, 36, 20.00, '0000-00-00', '2024-10-24', '2024-10-03'),
+(48, 37, 20.00, '0000-00-00', '2024-10-24', '2024-10-03'),
+(49, 38, 20.00, '0000-00-00', '2024-10-24', '2024-10-03'),
+(51, 41, 20.00, '0000-00-00', '2024-10-24', '2024-10-03'),
+(52, 42, 20.00, '0000-00-00', '2024-10-24', '2024-10-03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payroll_history`
+--
+
+CREATE TABLE `payroll_history` (
+  `id` int(11) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `date_generated` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payroll_history`
+--
+
+INSERT INTO `payroll_history` (`id`, `start_date`, `end_date`, `date_generated`) VALUES
+(11, '2024-10-16', '2024-10-31', '2024-10-22 23:40:30');
 
 -- --------------------------------------------------------
 
@@ -459,6 +482,12 @@ ALTER TABLE `overload_pay`
   ADD KEY `employee_id` (`employee_id`);
 
 --
+-- Indexes for table `payroll_history`
+--
+ALTER TABLE `payroll_history`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -497,7 +526,7 @@ ALTER TABLE `contributions`
 -- AUTO_INCREMENT for table `daily_rate`
 --
 ALTER TABLE `daily_rate`
-  MODIFY `rate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `rate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -509,7 +538,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `fs_15th_pay`
@@ -540,6 +569,12 @@ ALTER TABLE `other_deductions`
 --
 ALTER TABLE `overload_pay`
   MODIFY `overload_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `payroll_history`
+--
+ALTER TABLE `payroll_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `roles`
