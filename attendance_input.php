@@ -51,8 +51,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Fetch attendance records
-$attendance_records = $conn->query("SELECT a.*, e.first_name, e.last_name FROM attendance a JOIN employees e ON a.employee_id = e.employee_id");
+// Fetch unique employees with attendance records
+$employees_with_attendance = $conn->query("
+    SELECT e.employee_id, e.first_name, e.last_name 
+    FROM attendance a 
+    JOIN employees e ON a.employee_id = e.employee_id 
+    GROUP BY e.employee_id
+");
+
 ?>
 
 <?php
@@ -66,10 +72,10 @@ include 'header.php';
             Attendance saved successfully!
         </div>
     <?php endif; ?>
-    
+
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Daily Time Records</h1>
-    
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -88,23 +94,23 @@ include 'header.php';
                         <tr>
                             <th>ID</th>
                             <th>Employee Name</th>
-                            <th>Date</th>
-                            <th>Total Hours Worked</th>
-                            <th>Regular Hours</th>
-                            <th>Overtime Hours</th>
-                            <th>Status</th>
+                            <th>Show Logs</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($row = $attendance_records->fetch_assoc()): ?>
+                        <?php while ($row = $employees_with_attendance->fetch_assoc()): ?>
                             <tr>
-                                <td><?php echo htmlspecialchars($row['attendance_id']); ?></td>
+                                <td><?php echo htmlspecialchars($row['employee_id']); ?></td>
                                 <td><?php echo htmlspecialchars($row['first_name']) . ' ' . htmlspecialchars($row['last_name']); ?></td>
-                                <td><?php echo date("F j, Y", strtotime($row['date'])); ?></td>
-                                <td><?php echo htmlspecialchars($row['total_hours']); ?></td>
-                                <td><?php echo htmlspecialchars($row['regular_hours']); ?></td>
-                                <td><?php echo htmlspecialchars($row['overtime_hours']); ?></td>
-                                <td><?php echo htmlspecialchars($row['status']); ?></td>
+                                <td>
+                                <button class="btn btn-primary show-logs-btn" 
+                                        data-employee-id="<?php echo $row['employee_id']; ?>" 
+                                        data-employee-name="<?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?>" 
+                                        data-toggle="modal" data-target="#logsModal">
+                                    Show Logs
+                                </button>
+
+                                </td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -148,7 +154,7 @@ include 'header.php';
                             <option value="Absent">Absent</option>
                         </select>
                     </div>
-                    
+
                     <!-- Attendance Date -->
                     <div class="form-group">
                         <label for="attendance_date">Date</label>
@@ -170,34 +176,103 @@ include 'header.php';
     </div>
 </div>
 
-<!-- JavaScript to set today's date -->
-<script>
-    // Get today's date in the local timezone and format it as YYYY-MM-DD
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-    const day = String(today.getDate()).padStart(2, '0');
+<!-- Logs Modal -->
+<div class="modal fade" id="logsModal" tabindex="-1" role="dialog" aria-labelledby="logsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="logsModalLabel">{Employee Name} Attendance Logs</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Date Filter -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <input type="date" id="startDate" class="form-control" placeholder="Start Date">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="date" id="endDate" class="form-control" placeholder="End Date">
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-primary" id="filterBtn">Filter</button>
+                    </div>
+                </div>
 
-    // Set the value of the date input to the local date
-    document.getElementById('attendance_date').value = `${year}-${month}-${day}`;
+                <!-- Logs Table -->
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="logsTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Total Hours Worked</th>
+                                <th>Regular Hours</th>
+                                <th>Overtime Hours</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="log-table-body">
+                            <!-- Logs will be dynamically loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript to handle logs display -->
+<script>
+    document.querySelectorAll('.show-logs-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const employeeId = this.dataset.employeeId;
+            const employeeName = this.dataset.employeeName;
+            document.getElementById('logsModalLabel').textContent = `${employeeName} Attendance Logs`;
+
+            loadLogs(employeeId); // Initial load without filters
+
+            // Set up filter button
+            document.getElementById('filterBtn').addEventListener('click', function() {
+                const startDate = document.getElementById('startDate').value;
+                const endDate = document.getElementById('endDate').value;
+                loadLogs(employeeId, startDate, endDate); // Load with date filters
+            });
+        });
+    });
+
+    function loadLogs(employeeId, startDate = '', endDate = '') {
+        // Load logs via AJAX with optional date filters
+        let query = `fetch_attendance_logs.php?employee_id=${employeeId}`;
+        if (startDate && endDate) {
+            query += `&start_date=${startDate}&end_date=${endDate}`;
+        }
+
+        fetch(query)
+            .then(response => response.json())
+            .then(data => {
+                const logTableBody = document.querySelector('.log-table-body');
+                logTableBody.innerHTML = ''; // Clear previous logs
+
+                // Append logs as table rows
+                data.logs.forEach(log => {
+                    const logRow = document.createElement('tr');
+                    logRow.innerHTML = `
+                        <td>${log.date}</td>
+                        <td>${log.total_hours}</td>
+                        <td>${log.regular_hours}</td>
+                        <td>${log.overtime_hours}</td>
+                        <td>${log.status}</td>
+                    `;
+                    logTableBody.appendChild(logRow);
+                });
+            });
+    }
 </script>
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="js/demo/datatables-demo.js"></script>
 
 <!-- Alert Notification -->
 <script>
@@ -208,6 +283,15 @@ include 'header.php';
         }
     }, 4000);
 </script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="js/sb-admin-2.min.js"></script>
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="js/demo/datatables-demo.js"></script>
 
 </body>
 </html>

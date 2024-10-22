@@ -10,33 +10,45 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     exit;
 }
 
-// Fetch employees, attendance, and active daily rate from the database
+// Initialize variables for the payroll period label
+$payroll_cutoff_label = '';
+
 $start_date = isset($_GET['start_date']) ? $_GET['start_date'] : '';
 $end_date = isset($_GET['end_date']) ? $_GET['end_date'] : '';
 
-if (!empty($start_date) && !empty($end_date)) {
-    $query = "
-        SELECT e.employee_id, CONCAT(e.first_name, ' ', e.last_name) AS name, 
-               SUM(a.regular_hours) AS total_regular_hours, SUM(a.overtime_hours) AS total_overtime_hours, 
-               dr.daily_rate 
-        FROM employees e 
-        LEFT JOIN attendance a ON e.employee_id = a.employee_id 
-        LEFT JOIN daily_rate dr ON e.employee_id = dr.employee_id AND dr.end_date IS NULL
-        WHERE a.date BETWEEN '$start_date' AND '$end_date'
-        GROUP BY e.employee_id
-    ";
-} else {
-    // Default query if no date range is selected
-    $query = "
-        SELECT e.employee_id, CONCAT(e.first_name, ' ', e.last_name) AS name, 
-               SUM(a.regular_hours) AS total_regular_hours, SUM(a.overtime_hours) AS total_overtime_hours, 
-               dr.daily_rate 
-        FROM employees e 
-        LEFT JOIN attendance a ON e.employee_id = a.employee_id 
-        LEFT JOIN daily_rate dr ON e.employee_id = dr.employee_id AND dr.end_date IS NULL
-        GROUP BY e.employee_id
-    ";
+// Automatically set the start_date and end_date if not provided
+if (empty($start_date) || empty($end_date)) {
+    $current_date = date('Y-m-d');
+    $day_of_month = date('j', strtotime($current_date)); // Day of the month
+
+    // Determine the payroll cutoff period
+    if ($day_of_month <= 15) {
+        $start_date = date('Y-m-01'); // First day of the current month
+        $end_date = date('Y-m-15'); // 15th day of the current month
+    } else {
+        $start_date = date('Y-m-16'); // 16th day of the current month
+        $end_date = date('Y-m-t'); // Last day of the current month
+    }
+
+    // Redirect to update the URL parameters with start_date and end_date
+    header("Location: ?start_date=$start_date&end_date=$end_date");
+    exit();
 }
+
+// Use the user-provided date range or the default payroll cutoff label
+$payroll_cutoff_label = "Payroll Cutoff: " . date("F j, Y", strtotime($start_date)) . " - " . date("F j, Y", strtotime($end_date));
+
+// Query to fetch payroll data based on the date range
+$query = "
+    SELECT e.employee_id, CONCAT(e.first_name, ' ', e.last_name) AS name, 
+           SUM(a.regular_hours) AS total_regular_hours, SUM(a.overtime_hours) AS total_overtime_hours, 
+           dr.daily_rate 
+    FROM employees e 
+    LEFT JOIN attendance a ON e.employee_id = a.employee_id 
+    LEFT JOIN daily_rate dr ON e.employee_id = dr.employee_id AND dr.end_date IS NULL
+    WHERE a.date BETWEEN '$start_date' AND '$end_date'
+    GROUP BY e.employee_id
+";
 
 $result = mysqli_query($conn, $query);
 
@@ -53,6 +65,7 @@ $contributions_json = json_encode($contributions, JSON_HEX_APOS | JSON_HEX_QUOT)
 
 ?>
 
+
 <?php
 include 'header.php';
 ?>
@@ -63,6 +76,10 @@ include 'header.php';
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Payroll Calculation</h1>
 
+    <!-- Display the payroll cutoff label -->
+    <div class="alert alert-info">
+        <?php echo $payroll_cutoff_label; ?>
+    </div>
     <!-- Date Range Form -->
     <form method="GET" action="">
         <div class="form-group row">
@@ -78,7 +95,7 @@ include 'header.php';
                 <button type="submit" class="btn btn-primary">Filter</button>
             </div>
             <div class="col-sm-2">
-                <a href="print_payroll.php?start_date=<?php echo isset($_GET['start_date']) ? $_GET['start_date'] : ''; ?>&end_date=<?php echo isset($_GET['end_date']) ? $_GET['end_date'] : ''; ?>" class="btn btn-info" target="_blank">Print Payroll</a>
+                <a href="print_payroll.php?start_date=<?php echo isset($_GET['start_date']) ? $_GET['start_date'] : ''; ?>&end_date=<?php echo isset($_GET['end_date']) ? $_GET['end_date'] : ''; ?>" class="btn btn-info" target="_blank" id="print-payroll">Print Payroll</a>
             </div>
         </div>
     </form>
@@ -334,6 +351,40 @@ $(document).ready(function(){
         "searching": true,
         "ordering": true
     });
+
+    $(document).ready(function() {
+    // Handle the "Print Payroll" button click
+    $('#print-payroll').click(function() {
+        // Ensure startDate and endDate are defined properly
+        var startDate = "<?php echo $start_date; ?>";
+        var endDate = "<?php echo $end_date; ?>";
+
+        if (!startDate || !endDate) {
+            alert("Start date or End date is missing!");
+            return;
+        }
+
+        // Add record to payroll history via AJAX
+        $.post('add_to_payroll_history.php', {
+            start_date: startDate,
+            end_date: endDate
+        }, function(response) {
+            console.log(response); // Log success or error message
+        });
+
+        // Open the payroll report in a new tab with the correct start and end date
+        var form = $('<form action="print_payroll.php" method="GET" target="_blank"></form>');
+        form.append('<input type="hidden" name="start_date" value="' + startDate + '">');
+        form.append('<input type="hidden" name="end_date" value="' + endDate + '">');
+        
+        // Append and submit the form
+        $('body').append(form);
+        form.submit();
+    });
+});
+
+
+
 
     // Handle modal data population
     $('.view-payroll-btn').click(function(){

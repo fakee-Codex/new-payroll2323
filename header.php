@@ -131,8 +131,13 @@
                     <i class="fas fa-fw fa-calculator"></i>
                     <span>Payroll Calculation</span></a>
             </li>
-            
 
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="payroll_history.php">
+                    <i class="fas fa-fw fa-calculator"></i>
+                    <span>Payroll History</span></a>
+            </li>
             
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

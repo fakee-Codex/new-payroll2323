@@ -9,20 +9,22 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 }
 
 // Handle form submission
+// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $employee_id = isset($_POST['employee_id']) ? intval($_POST['employee_id']) : 0;
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $job_title_id = intval($_POST['job_title_id']);
     $department_id = intval($_POST['department_id']);
-    $status = $_POST['status']; // New status field
+    $status = $_POST['status']; // Employee status (Active/Inactive)
+    $employment_status = $_POST['employment_status']; // Full-time/Part-time
 
     if ($employee_id > 0) {
         // Update existing employee
-        $sql = "UPDATE employees SET first_name = ?, last_name = ?, job_title_id = ?, department_id = ?, status = ? 
+        $sql = "UPDATE employees SET first_name = ?, last_name = ?, job_title_id = ?, department_id = ?, status = ?, employment_status = ?
                 WHERE employee_id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ssiisi', $first_name, $last_name, $job_title_id, $department_id, $status, $employee_id);
+        $stmt->bind_param('ssiissi', $first_name, $last_name, $job_title_id, $department_id, $status, $employment_status, $employee_id);
 
         if ($stmt->execute()) {
             header("Location: " . $_SERVER['PHP_SELF'] . "?success=1");
@@ -32,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     } else {
         // Add new employee
-        $sql = "INSERT INTO employees (first_name, last_name, job_title_id, department_id, status, date_of_joining) 
-                VALUES (?, ?, ?, ?, ?, NOW())";
+        $sql = "INSERT INTO employees (first_name, last_name, job_title_id, department_id, status, employment_status, date_of_joining) 
+                VALUES (?, ?, ?, ?, ?, ?, NOW())";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ssiss', $first_name, $last_name, $job_title_id, $department_id, $status);
+        $stmt->bind_param('ssisss', $first_name, $last_name, $job_title_id, $department_id, $status, $employment_status);
 
         if ($stmt->execute()) {
             // Redirect to the same page with success message
@@ -46,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
+
 
 // Fetch all job titles into an array
 $job_titles_array = [];
@@ -84,7 +87,7 @@ if (isset($_GET['delete'])) {
 
 // Fetch all employees
 // Fetch all employees with date of joining
-$sql = "SELECT e.employee_id, e.first_name, e.last_name, jt.job_title, d.department_name, e.status, e.date_of_joining 
+$sql = "SELECT e.employee_id, e.first_name, e.last_name, jt.job_title, d.department_name, e.status, e.employment_status, e.date_of_joining 
         FROM employees e
         JOIN job_titles jt ON e.job_title_id = jt.job_title_id
         JOIN departments d ON e.department_id = d.department_id";
@@ -124,8 +127,7 @@ include 'header.php';
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Manage Employees</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Import Employee</a>
+                        
                     </div>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -136,57 +138,58 @@ include 'header.php';
                                         </span>
                                         <span class="text">Add Employee</span>
                                     </a>
+                                    <!-- Filter buttons -->
+                        
+
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Job Title</th>
-                                            <th>Department</th>
-                                            <th>Date Of Joining</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Job Title</th>
-                                            <th>Department</th>
-                                            <th>Date Of Joining</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php while ($row = $result->fetch_assoc()): ?>
-                                        <tr>
-                                            <td><?php echo htmlspecialchars($row['employee_id']); ?></td>
-                                            <td><?php echo htmlspecialchars($row['first_name']); ?></td>
-                                            <td><?php echo htmlspecialchars($row['last_name']); ?></td>
-                                            <td><?php echo htmlspecialchars($row['job_title']); ?></td>
-                                            <td><?php echo htmlspecialchars($row['department_name']); ?></td>
-                                            <td><?php echo date("F j, Y", strtotime($row['date_of_joining'])); ?></td>
+                        <!-- DataTable to display employees -->
+                            <div class="card-body">
+                                <!-- Filter buttons -->
+                                <div class="btn-group" role="group" aria-label="Employee Filters">
+                                    <button type="button" class="btn btn-primary" onclick="filterEmployees('all')">All Employees</button>
+                                    <button type="button" class="btn btn-success" onclick="filterEmployees('full-time')">Full-Time</button>
+                                    <button type="button" class="btn btn-warning" onclick="filterEmployees('part-time')">Part-Time</button>
+                                    
+                                </div>
+                                
 
-
-                                            <td><?php echo htmlspecialchars($row['status']); ?></td> <!-- Display employee status -->
-                                            <td>
-                                                <a href="javascript:void(0);" onclick="openModalForEdit(<?php echo $row['employee_id']; ?>)">Edit</a>
-
-                                                <!-- <a href="manage_employees.php?delete=<?php echo $row['employee_id']; ?>" style="float: right;" onclick="return confirm('Are you sure you want to delete this employee?');">Delete</a> -->
-                                            </td>
-                                        </tr>
-                                        <?php endwhile; ?>
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Job Title</th>
+                                                <th>Department</th>
+                                                <th>Date Of Joining</th>
+                                                <th>Status</th>
+                                                <th>Employment Status</th> <!-- Employment status column -->
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="employeeTableBody">
+                                            <!-- This section will be updated dynamically using JavaScript -->
+                                            <?php while ($row = $result->fetch_assoc()): ?>
+                                            <tr>
+                                                <td><?php echo htmlspecialchars($row['employee_id']); ?></td>
+                                                <td><?php echo htmlspecialchars($row['first_name']); ?></td>
+                                                <td><?php echo htmlspecialchars($row['last_name']); ?></td>
+                                                <td><?php echo htmlspecialchars($row['job_title']); ?></td>
+                                                <td><?php echo htmlspecialchars($row['department_name']); ?></td>
+                                                <td><?php echo date("F j, Y", strtotime($row['date_of_joining'])); ?></td>
+                                                <td><?php echo htmlspecialchars($row['status']); ?></td>
+                                                <td><?php echo htmlspecialchars($row['employment_status']); ?></td> <!-- Display employment status -->
+                                                <td>
+                                                    <a href="javascript:void(0);" onclick="openModalForEdit(<?php echo $row['employee_id']; ?>)">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <?php endwhile; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
+
 
                     </div>
 
@@ -238,128 +241,150 @@ include 'header.php';
     </div>
 
     <!-- Add Employee Modal-->
-    <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="user" action="manage_employees.php" method="POST">
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="text" class="form-control" id="first_name" name="first_name"
-                                    placeholder="First Name" required>
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" id="last_name" name="last_name"
-                                    placeholder="Last Name" required>
-                            </div>
+  
+<div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="user" action="manage_employees.php" method="POST">
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" id="first_name" name="first_name"
+                                placeholder="First Name" required>
                         </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="last_name" name="last_name"
+                                placeholder="Last Name" required>
+                        </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <select class="form-control" id="department_id" name="department_id" required>
-                                    <option value="" disabled selected>Select Department</option>
-                                    <?php foreach ($departments_array as $department): ?>
-                                        <option value="<?php echo $department['department_id']; ?>">
-                                            <?php echo $department['department_name']; ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="col-sm-6">
-                                <select class="form-control" id="job_title_id" name="job_title_id" required>
-                                    <option value="" disabled selected>Select Job Title</option>
-                                    <!-- Job titles will be populated dynamically via JavaScript -->
-                                </select>
-                            </div>
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <select class="form-control" id="department_id" name="department_id" required>
+                                <option value="" disabled selected>Select Department</option>
+                                <!-- Options will be populated dynamically with PHP -->
+                                <?php foreach ($departments_array as $department): ?>
+                                    <option value="<?php echo $department['department_id']; ?>">
+                                        <?php echo $department['department_name']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="job_title_id" name="job_title_id" required>
+                                <option value="" disabled selected>Select Job Title</option>
+                                <!-- Job titles will be populated dynamically via JavaScript -->
+                            </select>
+                        </div>
+                    </div>
 
-                        <div class="form-group row">
-                            <div class="col-sm-12 mb-3 mb-sm-0">
-                                <select class="form-control" id="status" name="status" required>
-                                    <option value="active" selected>Active</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                            </div>
+                    <!-- Employment Status Field -->
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <select class="form-control" id="employment_status" name="employment_status" required>
+                                <option value="" disabled selected>Select Employment Status</option>
+                                <option value="full-time">Full-time</option>
+                                <option value="part-time">Part-time</option>
+                            </select>
                         </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12 mb-3 mb-sm-0">
+                            <select class="form-control" id="status" name="status" required>
+                                <option value="active" selected>Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <input class="btn btn-primary" type="submit" value="Add Employee">
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
+
 
 
 
 
 
   <!-- Update Employee Modal -->
-    <div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="updateEmployeeModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="updateEmployeeModalLabel">Update Employee</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="updateEmployeeForm" method="POST" action="manage_employees.php">
-                        <input type="hidden" id="employee_id_update" name="employee_id">
+    <!-- Update Employee Modal -->
+        <div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="updateEmployeeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateEmployeeModalLabel">Update Employee</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="updateEmployeeForm" method="POST" action="manage_employees.php">
+                            <input type="hidden" id="employee_id_update" name="employee_id">
 
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="text" class="form-control" id="first_name_update" name="first_name" placeholder="First Name" required>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" id="first_name_update" name="first_name" placeholder="First Name" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="last_name_update" name="last_name" placeholder="Last Name" required>
+                                </div>
                             </div>
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" id="last_name_update" name="last_name" placeholder="Last Name" required>
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <select class="form-control" id="department_id_update" name="department_id" required>
-                                    <option value="">Select Department</option>
-                                    <?php foreach ($departments_array as $department): ?>
-                                        <option value="<?php echo $department['department_id']; ?>">
-                                            <?php echo $department['department_name']; ?>
-                                        </option>
-                                    <?php endforeach; ?>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <select class="form-control" id="department_id_update" name="department_id" required>
+                                        <option value="">Select Department</option>
+                                        <?php foreach ($departments_array as $department): ?>
+                                            <option value="<?php echo $department['department_id']; ?>">
+                                                <?php echo $department['department_name']; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select class="form-control" id="job_title_id_update" name="job_title_id" required>
+                                        <option value="">Select Job Title</option>
+                                        <!-- Job titles will be populated dynamically via JavaScript -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form-control" id="employment_status_update" name="employment_status" required>
+                                    <option value="full-time">Full-time</option>
+                                    <option value="part-time">Part-time</option>
                                 </select>
                             </div>
-                            <div class="col-sm-6">
-                                <select class="form-control" id="job_title_id_update" name="job_title_id" required>
-                                    <option value="">Select Job Title</option>
-                                    <!-- Job titles will be populated dynamically via JavaScript -->
+
+                            <div class="form-group">
+                                <select class="form-control" id="status_update" name="status" required>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
                                 </select>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <select class="form-control" id="status_update" name="status" required>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                            </select>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Update Employee</button>
-                        </div>
-                    </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Update Employee</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
 
 
 
@@ -584,6 +609,26 @@ include 'header.php';
             }
         }
 
+        function filterEmployees(filter) {
+            // Create an AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'filter_employees.php', true); // Send the request to a new PHP file 'filter_employees.php'
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Update the table with the response
+                    document.getElementById('employeeTableBody').innerHTML = xhr.responseText;
+                } else {
+                    console.error('Error fetching employee data:', xhr.status);
+                }
+            };
+
+            // Send the selected filter to the server
+            xhr.send('filter=' + filter);
+        }
+
+
     </script>
 
 
@@ -612,6 +657,8 @@ include 'header.php';
             alertElement.style.display = 'none';
         }
     }, 3000);
+
+    
     </script>
 
 </body>
