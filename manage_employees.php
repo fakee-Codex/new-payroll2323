@@ -9,45 +9,47 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 }
 
 // Handle form submission
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $employee_id = isset($_POST['employee_id']) ? intval($_POST['employee_id']) : 0;
+    $employee_id_number = $_POST['employee_id_number']; // Employee ID Number
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $job_title_id = intval($_POST['job_title_id']);
     $department_id = intval($_POST['department_id']);
     $status = $_POST['status']; // Employee status (Active/Inactive)
     $employment_status = $_POST['employment_status']; // Full-time/Part-time
+    $reason = isset($_POST['reason']) ? $_POST['reason'] : null; // Reason for inactive status
 
     if ($employee_id > 0) {
-        // Update existing employee
-        $sql = "UPDATE employees SET first_name = ?, last_name = ?, job_title_id = ?, department_id = ?, status = ?, employment_status = ?
-                WHERE employee_id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ssiissi', $first_name, $last_name, $job_title_id, $department_id, $status, $employment_status, $employee_id);
-
-        if ($stmt->execute()) {
-            header("Location: " . $_SERVER['PHP_SELF'] . "?success=1");
-            exit(); // Stop script execution after redirect
+        // Update employee logic
+        if ($status == 'inactive') {
+            $date_inactive = date('Y-m-d'); // Current date for when employee becomes inactive
+            $sql = "UPDATE employees SET first_name = ?, last_name = ?, job_title_id = ?, department_id = ?, status = ?, employment_status = ?, reason = ?, date_inactive = ?, employee_id_number = ? WHERE employee_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('ssiisssssi', $first_name, $last_name, $job_title_id, $department_id, $status, $employment_status, $reason, $date_inactive, $employee_id_number, $employee_id);
         } else {
-            echo "Error updating employee.";
+            // When active, reset the `date_inactive` and `reason` fields to NULL
+            $sql = "UPDATE employees SET first_name = ?, last_name = ?, job_title_id = ?, department_id = ?, status = ?, employment_status = ?, reason = NULL, date_inactive = NULL, employee_id_number = ? WHERE employee_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('ssiisssi', $first_name, $last_name, $job_title_id, $department_id, $status, $employment_status, $employee_id_number, $employee_id);
         }
     } else {
-        // Add new employee
-        $sql = "INSERT INTO employees (first_name, last_name, job_title_id, department_id, status, employment_status, date_of_joining) 
-                VALUES (?, ?, ?, ?, ?, ?, NOW())";
+        // Add new employee logic (INSERT INTO employees)
+        $sql = "INSERT INTO employees (employee_id_number, first_name, last_name, job_title_id, department_id, status, employment_status, date_of_joining) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ssisss', $first_name, $last_name, $job_title_id, $department_id, $status, $employment_status);
+        $stmt->bind_param('sssisss', $employee_id_number, $first_name, $last_name, $job_title_id, $department_id, $status, $employment_status);
+    }
 
-        if ($stmt->execute()) {
-            // Redirect to the same page with success message
-            header("Location: " . $_SERVER['PHP_SELF'] . "?success=1");
-            exit(); // Stop script execution after redirect
-        } else {
-            echo "Error adding employee.";
-        }
+    if ($stmt->execute()) {
+        header("Location: " . $_SERVER['PHP_SELF'] . "?success=1");
+        exit(); // Stop script execution after redirect
+    } else {
+        echo "Error updating or adding employee.";
     }
 }
+
+
+
 
 
 // Fetch all job titles into an array
@@ -85,13 +87,14 @@ if (isset($_GET['delete'])) {
     }
 }
 
-// Fetch all employees
-// Fetch all employees with date of joining
-$sql = "SELECT e.employee_id, e.first_name, e.last_name, jt.job_title, d.department_name, e.status, e.employment_status, e.date_of_joining 
+// Fetch only active employees
+$sql = "SELECT e.employee_id, e.employee_id_number, e.first_name, e.last_name, jt.job_title, d.department_name, e.status, e.employment_status, e.date_of_joining 
         FROM employees e
         JOIN job_titles jt ON e.job_title_id = jt.job_title_id
-        JOIN departments d ON e.department_id = d.department_id";
+        JOIN departments d ON e.department_id = d.department_id
+        WHERE e.status = 'active'"; // Fetch only active employees
 $result = $conn->query($sql);
+
 
 ?>
 
@@ -149,6 +152,7 @@ include 'header.php';
                                     <button type="button" class="btn btn-primary" onclick="filterEmployees('all')">All Employees</button>
                                     <button type="button" class="btn btn-success" onclick="filterEmployees('full-time')">Full-Time</button>
                                     <button type="button" class="btn btn-warning" onclick="filterEmployees('part-time')">Part-Time</button>
+                                    <a href="inactive_employees.php"><button type="button" class="btn btn-danger">Inactive Employees</button></a>
                                     
                                 </div>
                                 
@@ -157,12 +161,13 @@ include 'header.php';
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                <th style="display:none;"></th>
+                                                <th>ID Number</th>
                                                 <th>First Name</th>
                                                 <th>Last Name</th>
                                                 <th>Job Title</th>
                                                 <th>Department</th>
-                                                <th>Date Of Joining</th>
+                                                <th>Date Hired</th>
                                                 <th>Status</th>
                                                 <th>Employment Status</th> <!-- Employment status column -->
                                                 <th>Actions</th>
@@ -172,7 +177,8 @@ include 'header.php';
                                             <!-- This section will be updated dynamically using JavaScript -->
                                             <?php while ($row = $result->fetch_assoc()): ?>
                                             <tr>
-                                                <td><?php echo htmlspecialchars($row['employee_id']); ?></td>
+                                                <td style="display:none;"><?php echo htmlspecialchars($row['employee_id']); ?></td>
+                                                <td><?php echo htmlspecialchars($row['employee_id_number']); ?></td>
                                                 <td><?php echo htmlspecialchars($row['first_name']); ?></td>
                                                 <td><?php echo htmlspecialchars($row['last_name']); ?></td>
                                                 <td><?php echo htmlspecialchars($row['job_title']); ?></td>
@@ -255,6 +261,13 @@ include 'header.php';
                 <form class="user" action="manage_employees.php" method="POST">
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" id="employee_id_number" name="employee_id_number"
+                                placeholder="Employee ID Number" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
                             <input type="text" class="form-control" id="first_name" name="first_name"
                                 placeholder="First Name" required>
                         </div>
@@ -318,72 +331,87 @@ include 'header.php';
 
 
 
-  <!-- Update Employee Modal -->
-    <!-- Update Employee Modal -->
-        <div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="updateEmployeeModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="updateEmployeeModalLabel">Update Employee</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="updateEmployeeForm" method="POST" action="manage_employees.php">
-                            <input type="hidden" id="employee_id_update" name="employee_id">
-
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control" id="first_name_update" name="first_name" placeholder="First Name" required>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="last_name_update" name="last_name" placeholder="Last Name" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <select class="form-control" id="department_id_update" name="department_id" required>
-                                        <option value="">Select Department</option>
-                                        <?php foreach ($departments_array as $department): ?>
-                                            <option value="<?php echo $department['department_id']; ?>">
-                                                <?php echo $department['department_name']; ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="job_title_id_update" name="job_title_id" required>
-                                        <option value="">Select Job Title</option>
-                                        <!-- Job titles will be populated dynamically via JavaScript -->
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <select class="form-control" id="employment_status_update" name="employment_status" required>
-                                    <option value="full-time">Full-time</option>
-                                    <option value="part-time">Part-time</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <select class="form-control" id="status_update" name="status" required>
-                                    <option value="active">Active</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary">Update Employee</button>
-                            </div>
-                        </form>
+ <!-- Update Employee Modal -->
+<div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="updateEmployeeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateEmployeeModalLabel">Update Employee</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="updateEmployeeForm" method="POST" action="manage_employees.php">
+                    <input type="hidden" id="employee_id_update" name="employee_id">
+                    <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <input type="text" class="form-control" id="employee_id_number_update" name="employee_id_number"
+                            placeholder="Employee ID Number" required>
                     </div>
                 </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <input type="text" class="form-control" id="first_name_update" name="first_name" placeholder="First Name" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="last_name_update" name="last_name" placeholder="Last Name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                            <select class="form-control" id="department_id_update" name="department_id" required>
+                                <option value="">Select Department</option>
+                                <?php foreach ($departments_array as $department): ?>
+                                    <option value="<?php echo $department['department_id']; ?>">
+                                        <?php echo $department['department_name']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <select class="form-control" id="job_title_id_update" name="job_title_id" required>
+                                <option value="">Select Job Title</option>
+                                <!-- Job titles will be populated dynamically via JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Employment Status Field -->
+                    <div class="form-group">
+                        <select class="form-control" id="employment_status_update" name="employment_status" required>
+                            <option value="full-time">Full-time</option>
+                            <option value="part-time">Part-time</option>
+                        </select>
+                    </div>
+
+                    <!-- Status Field (Active/Inactive) -->
+                    <div class="form-group">
+                        <select class="form-control" id="status_update" name="status" required>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+
+                    <!-- Reason Field (Disabled by default) -->
+                    <div class="form-group">
+                        <label for="reason">Reason for Inactive (if applicable)</label>
+                        <input type="text" class="form-control" id="reason_update" name="reason" placeholder="Reason" disabled>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update Employee</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
+</div>
+
 
 
 
@@ -402,27 +430,47 @@ include 'header.php';
                     } else {
                         // Populate the modal with employee data
                         document.getElementById('employee_id_update').value = data.employee_id;
+                        document.getElementById('employee_id_number_update').value = employee.employee_id_number;
                         document.getElementById('first_name_update').value = data.first_name;
                         document.getElementById('last_name_update').value = data.last_name;
-                        document.getElementById('salary_update').value = data.salary;
 
-                        // Set the selected option in the job title dropdown
-                        let jobTitleDropdown = document.getElementById('job_title_id_update');
-                        for (let i = 0; i < jobTitleDropdown.options.length; i++) {
-                            if (jobTitleDropdown.options[i].value == data.job_title_id) {
-                                jobTitleDropdown.selectedIndex = i;
-                                break;
-                            }
-                        }
-
-                        // Set the selected option in the department dropdown
-                        let departmentDropdown = document.getElementById('department_id_update');
-                        for (let i = 0; i < departmentDropdown.options.length; i++) {
+                        // Preselect department
+                        var departmentDropdown = document.getElementById('department_id_update');
+                        for (var i = 0; i < departmentDropdown.options.length; i++) {
                             if (departmentDropdown.options[i].value == data.department_id) {
                                 departmentDropdown.selectedIndex = i;
                                 break;
                             }
                         }
+
+                        // Preselect job title
+                        populateJobTitles(data.department_id, data.job_title_id);
+
+                        // Preselect employment status
+                        document.getElementById('employment_status_update').value = data.employment_status;
+
+                        // Preselect status and handle reason field
+                        var statusDropdown = document.getElementById('status_update');
+                        statusDropdown.value = data.status;
+                        var reasonField = document.getElementById('reason_update');
+
+                        if (data.status === 'inactive') {
+                            reasonField.disabled = false;
+                            reasonField.value = data.reason || ''; // Populate reason if it's already stored in the database
+                        } else {
+                            reasonField.disabled = true;
+                            reasonField.value = ''; // Clear the reason field if active
+                        }
+
+                        // Add an event listener to dynamically enable/disable the reason field based on status change
+                        statusDropdown.addEventListener('change', function() {
+                            if (this.value === 'inactive') {
+                                reasonField.disabled = false;
+                            } else {
+                                reasonField.disabled = true;
+                                reasonField.value = ''; // Clear the reason field if status is set to active
+                            }
+                        });
 
                         // Show the modal
                         $('#updateEmployeeModal').modal('show');
@@ -434,6 +482,56 @@ include 'header.php';
         }
 
 
+
+
+        document.getElementById('status_update').addEventListener('change', function() {
+    var status = this.value;
+    var reasonField = document.getElementById('reason_update');
+
+    // Enable or disable the reason field based on the selected status
+    if (status === 'inactive') {
+        reasonField.disabled = false; // Enable the field if the status is inactive
+        reasonField.setAttribute('required', 'required'); // Make it required
+    } else {
+        reasonField.disabled = true;  // Disable the field if the status is active
+        reasonField.removeAttribute('required'); // Remove required attribute
+        reasonField.value = ''; // Clear the field
+    }
+});
+
+// Populate modal data when editing an employee
+function openModalForEdit(employeeId) {
+    fetch('get_employee_data.php?id=' + employeeId)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error(data.error);
+            } else {
+                // Populate the modal with employee data
+                document.getElementById('employee_id_update').value = data.employee_id;
+                document.getElementById('employee_id_number_update').value = data.employee_id_number;
+                document.getElementById('first_name_update').value = data.first_name;
+                document.getElementById('last_name_update').value = data.last_name;
+                document.getElementById('status_update').value = data.status;
+                document.getElementById('employment_status_update').value = data.employment_status;
+
+                // Check if the employee is inactive, if so, enable the reason field and fill in the reason
+                var reasonField = document.getElementById('reason_update');
+                if (data.status === 'inactive') {
+                    reasonField.disabled = false; // Enable the reason field
+                    reasonField.value = data.reason || ''; // Set the reason if it exists
+                } else {
+                    reasonField.disabled = true; // Disable the reason field for active status
+                    reasonField.value = ''; // Clear the reason field
+                }
+
+                $('#updateEmployeeModal').modal('show');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching employee data:', error);
+        });
+}
 
 
 
@@ -546,6 +644,7 @@ include 'header.php';
 
                 // Populate the modal fields with employee data
                 document.getElementById('employee_id_update').value = employee.employee_id;
+                document.getElementById('employee_id_number_update').value = employee.employee_id_number;
                 document.getElementById('first_name_update').value = employee.first_name;
                 document.getElementById('last_name_update').value = employee.last_name;
                 document.getElementById('department_id_update').value = employee.department_id;
@@ -610,23 +709,34 @@ include 'header.php';
         }
 
         function filterEmployees(filter) {
-            // Create an AJAX request
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'filter_employees.php', true); // Send the request to a new PHP file 'filter_employees.php'
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    // Update the table with the response
-                    document.getElementById('employeeTableBody').innerHTML = xhr.responseText;
-                } else {
-                    console.error('Error fetching employee data:', xhr.status);
-                }
-            };
+        // Create an AJAX request
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'filter_employees.php', true); // Send the request to 'filter_employees.php'
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // Destroy the existing DataTable instance before updating the table content
+                $('#dataTable').DataTable().destroy();
 
-            // Send the selected filter to the server
-            xhr.send('filter=' + filter);
-        }
+                // Update the table content
+                document.getElementById('employeeTableBody').innerHTML = xhr.responseText;
+
+                // Re-initialize DataTable to apply sorting, search, and pagination to the new data
+                $('#dataTable').DataTable({
+                    "paging": true,
+                    "searching": true,
+                    "ordering": true
+                });
+            } else {
+                console.error('Error fetching employee data:', xhr.status);
+            }
+        };
+
+        // Send the selected filter to the server
+        xhr.send('filter=' + filter);
+    }
+
 
 
     </script>

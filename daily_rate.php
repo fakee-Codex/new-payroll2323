@@ -106,7 +106,6 @@ include 'header.php';
                             <th>Daily Rate</th>
                             <th>Start Date</th>
                             <th>End Date</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -135,9 +134,6 @@ include 'header.php';
                                 ?>
                             </td>
 
-                            <td>
-                                <!-- You can add more actions like editing or deleting the rate -->
-                            </td>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>

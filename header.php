@@ -94,6 +94,13 @@
                     <i class="fas fa-fw fa-user"></i>
                     <span>Manage Employees</span></a>
             </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="inactive_employees.php">
+                    <i class="fas fa-fw fa-ban"></i>
+                    <span>Inactive Employees</span></a>
+            </li>
             
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

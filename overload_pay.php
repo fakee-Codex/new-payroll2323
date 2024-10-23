@@ -17,7 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_bulk'])) {
 
     // Fetch all employees except the excluded ones
     $placeholders = implode(',', array_fill(0, count($excluded_employees), '?'));
-    $query = "SELECT employee_id FROM employees";
+    $query = "SELECT employee_id FROM employees WHERE employment_status = 'full-time'";
+
     if (!empty($excluded_employees)) {
         $query .= " WHERE employee_id NOT IN ($placeholders)";
     }
@@ -85,8 +86,11 @@ $result = $conn->query("
     SELECT op.overload_id, op.employee_id, op.amount, op.start_date, op.end_date, e.first_name, e.last_name 
     FROM overload_pay op 
     LEFT JOIN employees e ON op.employee_id = e.employee_id
-    WHERE op.start_date <= '$filter_end_date' AND op.end_date >= '$filter_start_date'
+    WHERE e.employment_status = 'full-time'
+    AND op.start_date <= '$filter_end_date' 
+    AND op.end_date >= '$filter_start_date'
 ");
+
 
 ?>
 
@@ -164,7 +168,7 @@ include 'header.php';
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addBulkOverloadPayLabel">Add Bulk Overload Pay</h5>
+                <h5 class="modal-title" id="addBulkOverloadPayLabel">Add Bulk Overload Pay<br/> * ONLY FOR FULL-TIME EMPLOYEE</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -189,7 +193,8 @@ include 'header.php';
                         <select class="form-control" id="excluded_employees" name="excluded_employees[]" multiple>
                             <?php
                             // Fetch all employees
-                            $employees = $conn->query("SELECT employee_id, first_name, last_name FROM employees");
+                            $employees = $conn->query("SELECT employee_id, first_name, last_name FROM employees WHERE employment_status = 'full-time'");
+
                             while ($emp = $employees->fetch_assoc()) {
                                 echo "<option value='{$emp['employee_id']}'>{$emp['first_name']} {$emp['last_name']}</option>";
                             }
