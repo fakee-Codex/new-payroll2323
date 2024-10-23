@@ -310,11 +310,13 @@ include 'header.php';
 
                     <div class="form-group row">
                         <div class="col-sm-12 mb-3 mb-sm-0">
-                            <select class="form-control" id="status" name="status" required>
+                            <select class="form-control" id="status" name="status" disabled>
                                 <option value="active" selected>Active</option>
                                 <option value="inactive">Inactive</option>
                             </select>
+                            <span> *Active as Default</span>
                         </div>
+                        
                     </div>
                 </div>
                 <div class="modal-footer">
