@@ -10250,19 +10250,19 @@
 		 * Note that the `pageLength` property will be automatically set to the
 		 * first value given in this array, unless `pageLength` is also provided.
 		 *  @type array
-		 *  @default [ 10, 25, 50, 100 ]
+		 *  @default [ 100, 10, 25, 50 ]
 		 *
 		 *  @dtopt Option
 		 *  @name DataTable.defaults.lengthMenu
 		 *
 		 *  @example
 		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+		 *      $('#dataTable').DataTable({
+		 *        "lengthMenu": [ [100, 10, 25, 50], [100, 10, 25, 50] ],
 		 *      } );
 		 *    } );
 		 */
-		"aLengthMenu": [ 10, 25, 50, 100 ],
+		"aLengthMenu": [ 100, 10, 25, 50 ],
 	
 	
 		/**
@@ -11263,12 +11263,12 @@
 		 *
 		 *  @example
 		 *    $(document).ready( function() {
-		 *      $('#example').dataTable( {
-		 *        "pageLength": 50
+		 *      $('#dataTable').DataTable({
+		 *        "pageLength": 100
 		 *      } );
 		 *    } )
 		 */
-		"iDisplayLength": 10,
+		"iDisplayLength": 100,
 	
 	
 		/**
@@ -13715,7 +13715,7 @@
 		 *  @type int
 		 *  @default 10
 		 */
-		"_iDisplayLength": 10,
+		"_iDisplayLength": 100,
 	
 		/**
 		 * Paging start point - aiDisplay index
