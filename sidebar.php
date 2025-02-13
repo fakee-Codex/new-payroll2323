@@ -4,7 +4,7 @@ require 'database_connection.php';
 $sql = "
     SELECT 
         e.employee_id,
-        CONCAT(e.first_name, ' ', e.last_name) AS full_name, 
+        CONCAT(e.last_name, ' ', e.first_name) AS full_name, 
         e.basic_salary, 
         e.honorarium, 
         
@@ -169,7 +169,7 @@ $result = $conn->query($sql);
                     <thead>
                         <tr>
                             <th rowspan="2" class="p-2 bg-gray-200 sticky gg">NAME</th> <!-- Name with Sticky -->
-                            <th colspan="2" class="p-2 bg-gray-200">Full-Time</th>
+                            <th colspan="2" class="p-2 bg-gray-200">FULL-TIME</th>
                             <th colspan="2" class="p-2 bg-gray-200">OVERLOADS</th>
                             <th rowspan="2" class="p-2 bg-gray-200">TOTAL</th>
                             <th colspan="2" class="p-2 bg-gray-200">CLUB</th>
@@ -222,7 +222,7 @@ $result = $conn->query($sql);
                                 echo "<td data-employee='{$row['employee_id']}' class='p-2 sticky'>{$row['full_name']}</td>"; // Sticky Name
                                 echo "<td class='p-2'>{$row['basic_salary']}</td>"; // Basic Salary
                                 echo "<td class='p-2'>{$row['honorarium']}</td>"; // Honorarium
-                                echo "<td class='p-2'>{$row['overload_hr']}</td>"; // Overload HR
+                                echo "<td class='p-2'>{$row['overload_hr']}</td>"; 
                                 echo "<td class='p-2'>{$row['overload_rate']}</td>";
                                 echo "<td name='overload_total' class='p-2'>{$row['overload_total']}</td>"; // Overload Total
                                 echo "<td><input type='number' name='wr_hr' class='editable-cell' value='{$row['wr_hr']}'></td>"; // WR HR
