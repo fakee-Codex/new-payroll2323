@@ -33,7 +33,7 @@ $result = $conn->query($sql);
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  
     <style>
 
     </style>
@@ -140,7 +140,7 @@ $result = $conn->query($sql);
             }
         </script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
     </main>
 
 </body>

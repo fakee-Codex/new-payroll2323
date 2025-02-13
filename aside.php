@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="styles.css">
 <script src="script.js" defer></script>
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<script src="https://cdn.tailwindcss.com"></script>
 <aside class="sidebar">
     <div class="logo-details">
         <div class="logo_name">constGenius</div>
