@@ -36,15 +36,6 @@ try {
 ?>
 
 
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,13 +43,43 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-        /* Custom Tailwind style for table and button */
+        /* Adjust width of select elements inside table cells */
+        table td select.form-select {
+            width: 200px;
+            /* Adjust this width as needed */
+        }
+
+
+        /* Add custom width for input elements */
+        table td input.form-control {
+            width: 90px;
+            /* Adjust width as needed */
+        }
+
+        button:hover {
+            background-color: darkgreen;
+            /* Or any color you prefer */
+            color: white;
+            /* Ensure text remains white when hovered */
+            border: none;
+            /* Removes any default borders if they appear */
+        }
+
+        button.bg-green-500:hover {
+            background-color: #32a852;
+            /* Custom dark green for green button */
+        }
+
+        button.bg-blue-500:hover {
+            background-color: #1e3a8a;
+            /* Custom dark blue for blue button */
+        }
+
+
         .table-wrapper {
             max-width: 100%;
             overflow-x: auto;
@@ -83,7 +104,7 @@ try {
         }
 
         td input {
-            width: 90px;
+            width: 100%;
             padding: 0.25rem;
             border: 1px solid #ddd;
             border-radius: 0.375rem;
@@ -109,24 +130,9 @@ try {
             background-color: #45a049;
         }
 
-        .editable-cell {
-            text-align: center;
-            width: 80px;
-        }
-
-        /* Styling for error input fields */
-        .error-input {
-            border-color: #ff0000;
-        }
-
         .content {
             padding: 2rem;
             background-color: #f9fafb;
-        }
-
-        h1 {
-            font-size: 1.75rem;
-            color: #333;
         }
     </style>
 </head>
@@ -134,29 +140,11 @@ try {
 <body>
 
     <?php include 'aside.php'; ?> <!-- This will import the sidebar -->
-    <style>
-        /* Sticky for the first column horizontally */
-        #crudTable td:first-child {
-            position: sticky;
-            left: 0;
-            background-color: #fff;
-            /* Optional: Set background color to avoid overlap with other columns */
-            z-index: 2;
-            /* Ensures the first column is above other content */
-        }
-
-        .gg {
-            position: sticky;
-            left: 0;
-            z-index: 2;
-            /* Ensures the first column is above other content */
-
-        }
-    </style>
+ 
     <main>
 
         <div class="content">
-            <h1 class="text-center mb-4">Edit Overload for <?= htmlspecialchars($row['employee_name']) ?></h1>
+            <h1 class="text-center mb-5">Employee Name:  <?= htmlspecialchars($row['employee_name']) ?></h1>
 
             <form id="editForm">
                 <input type="hidden" name="row_id" value="<?= htmlspecialchars($row['overload_id']) ?>">
@@ -165,9 +153,18 @@ try {
                     <table class="table table-bordered text-center">
                         <thead class="table-light">
                             <tr>
+
+                            <th colspan="3" class="table-warning">MWF</th>
+                            <th colspan="3" class="table-warning">TTH</th>
+                            <th colspan="3" class="table-warning">SS</th>
+                            <th colspan="3">MONDAY</th>
+                                <th colspan="3">MONDAY</th>
+                                <th colspan="3">TUESDAY</th>
                                 <th colspan="3">Wednesday</th>
                                 <th colspan="3">Thursday</th>
                                 <th colspan="3">Friday</th>
+                                <th colspan="3">SATURDAY</th>
+                                <th colspan="3">SUNDAY</th>
                                 <th colspan="3">MTTH</th>
                                 <th colspan="3">MTWF</th>
                                 <th colspan="3">TWTHF</th>
@@ -199,31 +196,96 @@ try {
                                 <th>DAYS</th>
                                 <th>HRS</th>
                                 <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+
+                                <td><input type="number" step="0.01" class="form-control" name="mwf_days" value="<?= htmlspecialchars($row['mwf_days'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="mwf_hrs" value="<?= htmlspecialchars($row['mwf_hrs'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control readonly-input" name="mwf_total" value="<?= htmlspecialchars($row['mwf_total'] ?? 0) ?>" readonly></td>
+
+                                <td><input type="number" step="0.01" class="form-control" name="tth_days" value="<?= htmlspecialchars($row['tth_days'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="tth_hrs" value="<?= htmlspecialchars($row['tth_hrs'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control readonly-input" name="tth_total" value="<?= htmlspecialchars($row['tth_total'] ?? 0) ?>" readonly></td>
+
+                                <td><input type="number" step="0.01" class="form-control" name="ss_days" value="<?= htmlspecialchars($row['ss_days'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="ss_hrs" value="<?= htmlspecialchars($row['ss_hrs'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control readonly-input" name="ss_total" value="<?= htmlspecialchars($row['ss_total'] ?? 0) ?>" readonly></td>
+
+                                <td><input type="number" step="0.01" class="form-control" name="monday_days" value="<?= htmlspecialchars($row['monday_days'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="monday_hrs" value="<?= htmlspecialchars($row['monday_hrs'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control readonly-input" name="monday_total" value="<?= htmlspecialchars($row['monday_total'] ?? 0) ?>" readonly></td>
+
+                                <td><input type="number" step="0.01" class="form-control" name="tuesday_days" value="<?= htmlspecialchars($row['tuesday_days'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="tuesday_hrs" value="<?= htmlspecialchars($row['tuesday_hrs'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control readonly-input" name="tuesday_total" value="<?= htmlspecialchars($row['tuesday_total'] ?? 0) ?>" readonly></td>
+
                                 <td><input type="number" step="0.01" class="form-control" name="wednesday_days" value="<?= htmlspecialchars($row['wednesday_days'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control" name="wednesday_hrs" value="<?= htmlspecialchars($row['wednesday_hrs'] ?? 0) ?>"></td>
-                                <td><input type="number" step="0.01" class="form-control readonly-input" name="wednesday_total" value="0" readonly></td>
+                                <td><input type="number" step="0.01" class="form-control readonly-input" name="wednesday_total" value="<?= htmlspecialchars($row['wednesday_total'] ?? 0) ?>" readonly></td>
+
+
                                 <td><input type="number" step="0.01" class="form-control" name="thursday_days" value="<?= htmlspecialchars($row['thursday_days'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control" name="thursday_hrs" value="<?= htmlspecialchars($row['thursday_hrs'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control readonly-input" name="thursday_total" value="<?= htmlspecialchars($row['thursday_total'] ?? 0) ?>" readonly></td>
+
                                 <td><input type="number" step="0.01" class="form-control" name="friday_days" value="<?= htmlspecialchars($row['friday_days'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control" name="friday_hrs" value="<?= htmlspecialchars($row['friday_hrs'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control readonly-input" name="friday_total" value="<?= htmlspecialchars($row['friday_total'] ?? 0) ?>" readonly></td>
+
+
+                                <td><input type="number" step="0.01" class="form-control" name="saturday_days" value="<?= htmlspecialchars($row['saturday_days'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="saturday_hrs" value="<?= htmlspecialchars($row['saturday_hrs'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control readonly-input" name="saturday_total" value="<?= htmlspecialchars($row['saturday_total'] ?? 0) ?>" readonly></td>
+
+
+                                <td><input type="number" step="0.01" class="form-control" name="sunday_days" value="<?= htmlspecialchars($row['sunday_days'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control" name="sunday_hrs" value="<?= htmlspecialchars($row['sunday_hrs'] ?? 0) ?>"></td>
+                                <td><input type="number" step="0.01" class="form-control readonly-input" name="sunday_total" value="<?= htmlspecialchars($row['sunday_total'] ?? 0) ?>" readonly></td>
+
+
                                 <td><input type="number" step="0.01" class="form-control" name="mtth_days" value="<?= htmlspecialchars($row['mtth_days'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control" name="mtth_hrs" value="<?= htmlspecialchars($row['mtth_hrs'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control readonly-input" name="mtth_total" value="<?= htmlspecialchars($row['mtth_total'] ?? 0) ?>" readonly></td>
+
                                 <td><input type="number" step="0.01" class="form-control" name="mtwf_days" value="<?= htmlspecialchars($row['mtwf_days'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control" name="mtwf_hrs" value="<?= htmlspecialchars($row['mtwf_hrs'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control readonly-input" name="mtwf_total" value="<?= htmlspecialchars($row['mtwf_total'] ?? 0) ?>" readonly></td>
+
                                 <td><input type="number" step="0.01" class="form-control" name="twthf_days" value="<?= htmlspecialchars($row['twthf_days'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control" name="twthf_hrs" value="<?= htmlspecialchars($row['twthf_hrs'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control readonly-input" name="twthf_total" value="<?= htmlspecialchars($row['twthf_total'] ?? 0) ?>" readonly></td>
+
                                 <td><input type="number" step="0.01" class="form-control" name="mw_days" value="<?= htmlspecialchars($row['mw_days'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control" name="mw_hrs" value="<?= htmlspecialchars($row['mw_hrs'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control readonly-input" name="mw_total" value="<?= htmlspecialchars($row['mw_total'] ?? 0) ?>" readonly></td>
+
+
                                 <td><input type="number" step="0.01" class="form-control" name="less_lateOL" value="<?= htmlspecialchars($row['less_lateOL'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control" name="additional" value="<?= htmlspecialchars($row['additional'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control" name="adjustment_less" value="<?= htmlspecialchars($row['adjustment_less'] ?? 0) ?>"></td>
@@ -270,9 +332,16 @@ try {
 
             // Sum all the daily totals
             const totals = [
+                "mwf_total",
+                "tth_total",
+                "ss_total",
+                "monday_total",
+                "tuesday_total",
                 "wednesday_total",
                 "thursday_total",
                 "friday_total",
+                "saturday_total",
+                "sunday_total",
                 "mtth_total",
                 "mtwf_total",
                 "twthf_total",

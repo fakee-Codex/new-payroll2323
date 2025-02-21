@@ -18,7 +18,8 @@ $result = $conn->query($sql_fetch);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Management</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    
     <script>
         // Function to toggle between views (Employee List and Edit Form)
         function toggleEditForm(employeeId) {

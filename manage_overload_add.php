@@ -35,77 +35,39 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-        /* Custom Tailwind style for table and button */
+        /* Adjust width of select elements inside table cells */
+        table td select.form-select {
+            width: 200px;
+            /* Adjust this width as needed */
+        }
+
+
+        /* Add custom width for input elements */
+        table td input.form-control {
+            width: 90px;
+            /* Adjust width as needed */
+        }
+
+
         .table-wrapper {
             max-width: 100%;
             overflow-x: auto;
             margin-top: 20px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+    
+    
 
-        th,
-        td {
-            padding: 0.5rem;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
+        
 
-        th {
-            background-color: #f3f4f6;
-            font-weight: bold;
-        }
 
-        td input {
-            width: 100%;
-            padding: 0.25rem;
-            border: 1px solid #ddd;
-            border-radius: 0.375rem;
-            text-align: center;
-        }
-
-        td input:focus {
-            outline: none;
-            border-color: #4CAF50;
-        }
-
-        .save-btn {
-            padding: 0.5rem 1rem;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 0.375rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .save-btn:hover {
-            background-color: #45a049;
-        }
-
-        .editable-cell {
-            text-align: center;
-            width: 80px;
-        }
-
-        /* Styling for error input fields */
-        .error-input {
-            border-color: #ff0000;
-        }
-
+   
         .content {
             padding: 2rem;
             background-color: #f9fafb;
-        }
-
-        h1 {
-            font-size: 1.75rem;
-            color: #333;
         }
     </style>
 </head>
@@ -133,73 +95,99 @@ try {
         }
     </style>
     <main>
-    <div class="content ">
-        <h1 class="text-center mb-3">ADD OVERLOAD</h1>
-        <div class="mb-2 text-left">
-        <a href="manage_overload.php">
-  <button class="btn btn-md bg-green-500 text-white py-2 px-4 rounded-md">Back</button>
-</a>
+        <div class="content">
+            <h1 class="text-center mb-3">ADD OVERLOAD</h1>
+            <div class="mb-2 text-left">
+                <a href="manage_overload.php">
+                    <button class="btn btn-md bg-success text-white py-2 px-4 rounded-md">Back</button>
+                </a>
+                <button class="btn btn-md bg-success text-white py-2 px-4 rounded-md" onclick="addRow()">Add Row</button>
+            </div>
 
-    <button class="btn btn-md bg-green-500 text-white py-2 px-4 rounded-md" onclick="addRow()">Add Row</button>
-</div>
-
-          <div class="table-wrapper">
-
-        <table class="table table-bordered text-center">
-            <thead class="table-light">
-                <tr>
-                    <th rowspan="2" class="table-success">Employee Name</th>
-                    <th colspan="3">Wednesday</th>
-                    <th colspan="3">Thursday</th>
-                    <th colspan="3">Friday</th>
-                    <th colspan="3">MTTH</th>
-                    <th colspan="3">MTWF</th>
-                    <th colspan="3">TWTHF</th>
-                    <th colspan="3">MW</th>
-                    <th colspan="1">LESS</th>
-                    <th colspan="1" class="table-warning">ADD</th>
-                    <th colspan="1" class="table-danger">ADJUSTMENTS</th>
-                    <th rowspan="2" class="table-success">Grand Total</th>
-                    <th rowspan="2">ACTION</th>
-                </tr>
-                <tr>
-                    <th>DAYS</th>
-                    <th class="table-secondary">HRS</th>
-                    <th>TOTAL</th>
-                    <th>DAYS</th>
-                    <th class="table-secondary">HRS</th>
-                    <th>TOTAL</th>
-                    <th>DAYS</th>
-                    <th class="table-secondary">HRS</th>
-                    <th>TOTAL</th>
-                    <th>DAYS</th>
-                    <th class="table-secondary">HRS</th>
-                    <th>TOTAL</th>
-                    <th>DAYS</th>
-                    <th class="table-secondary">HRS</th>
-                    <th>TOTAL</th>
-                    <th>DAYS</th>
-                    <th class="table-secondary">HRS</th>
-                    <th>TOTAL</th>
-                    <th>DAYS</th>
-                    <th class="table-secondary">HRS</th>
-                    <th>TOTAL</th>
-                    <th>Late OL</th>
-                    <th>Subject</th>
-                    <th>Less</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- No rows initially -->
-            </tbody>
-        </table>
+            <div class="table-wrapper">
+                <table class="table table-bordered text-center">
+                    <thead class="table-light">
+                        <tr>
+                            <th rowspan="2" class="table-success">Employee Name</th>
+                            <th colspan="3" class="table-warning">MWF</th>
+                            <th colspan="3" class="table-warning">TTH</th>
+                            <th colspan="3" class="table-warning">SS</th>
+                            <th colspan="3">MONDAY</th>
+                            <th colspan="3">TUESDAY</th>
+                            <th colspan="3">Wednesday</th>
+                            <th colspan="3">Thursday</th>
+                            <th colspan="3">Friday</th>
+                            <th colspan="3">SATURDAY</th>
+                            <th colspan="3">SUNDAY</th>
+                            <th colspan="3">MTTH</th>
+                            <th colspan="3">MTWF</th>
+                            <th colspan="3">TWTHF</th>
+                            <th colspan="3">MW</th>
+                            <th colspan="1">LESS</th>
+                            <th colspan="1" class="table-warning">ADD</th>
+                            <th colspan="1" class="table-danger">ADJUSTMENTS</th>
+                            <th rowspan="2" class="table-success">Grand Total</th>
+                            <th rowspan="2">ACTION</th>
+                        </tr>
+                        <tr>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>DAYS</th>
+                            <th class="table-secondary">HRS</th>
+                            <th>TOTAL</th>
+                            <th>Late OL</th>
+                            <th>Subject</th>
+                            <th>Less</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- No rows initially -->
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn"
+                style="background-color: blue; color: white; padding: 8px 16px; border-radius: 5px; border: none; margin-top: 12px;"
+                onclick="saveTable()">Save Table</button>
         </div>
-        <button class="btn" 
-        style="background-color: blue; color: white; padding: 8px 16px; border-radius: 5px; border: none; margin-top: 12px;" 
-        onclick="saveTable()">Save Table</button>
-
-    </div>
     </main>
+
     <script>
         // Dynamically fetch employees from PHP
         const employees = <?= json_encode($employees) ?>;
@@ -218,6 +206,8 @@ try {
             const select = document.createElement("select");
             select.className = "form-select";
             select.name = "employee_name[]";
+
+   
 
             // Get the list of existing employee IDs in the table
             const existingEmployeeIds = Array.from(document.querySelectorAll("select[name='employee_name[]']"))
@@ -238,7 +228,7 @@ try {
 
 
             // Add editable cells for the rest of the columns
-            for (let i = 1; i <= 25; i++) {
+            for (let i = 1; i <= 46; i++) {
                 const editableCell = document.createElement("td");
                 const input = document.createElement("input");
                 input.type = "number";
@@ -279,7 +269,7 @@ try {
             let grandTotal = 0;
 
             // Iterate through "DAYS" and "HRS" columns for each day
-            for (let i = 1; i <= 21; i += 3) { // Steps of 3: DAYS, HRS, TOTAL
+            for (let i = 1; i <= 41; i += 3) { // Steps of 3: DAYS, HRS, TOTAL
                 const days = parseFloat(row.querySelector(`input[name="column_${i}[]"]`).value) || 0;
                 const hours = parseFloat(row.querySelector(`input[name="column_${i + 1}[]"]`).value) || 0;
                 const totalCell = row.querySelector(`input[name="column_${i + 2}[]"]`);
@@ -291,15 +281,15 @@ try {
             }
 
             // Handle "Less", "Add", and "Adjustments" columns
-            const less = parseFloat(row.querySelector(`input[name="column_22[]"]`).value) || 0;
-            const add = parseFloat(row.querySelector(`input[name="column_23[]"]`).value) || 0;
-            const adjustments = parseFloat(row.querySelector(`input[name="column_24[]"]`).value) || 0;
+            const less = parseFloat(row.querySelector(`input[name="column_43[]"]`).value) || 0;
+            const add = parseFloat(row.querySelector(`input[name="column_44[]"]`).value) || 0;
+            const adjustments = parseFloat(row.querySelector(`input[name="column_45[]"]`).value) || 0;
 
             // Calculate Grand Total
             grandTotal = grandTotal - less + add - adjustments;
 
             // Update the Grand Total cell
-            const grandTotalCell = row.querySelector(`input[name="column_25[]"]`);
+            const grandTotalCell = row.querySelector(`input[name="column_46[]"]`);
             grandTotalCell.value = grandTotal.toFixed(2);
         }
 
@@ -334,7 +324,7 @@ try {
             newRow.appendChild(employeeCell);
 
             // Add editable cells
-            for (let i = 1; i <= 25; i++) {
+            for (let i = 1; i <= 46; i++) {
                 const editableCell = document.createElement("td");
                 const input = document.createElement("input");
                 input.type = "number";

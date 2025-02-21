@@ -13,14 +13,13 @@ if ($conn->connect_error) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Management</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
-
-<body class="bg-gray-1000">
+<body class="bg-light">
 
     <?php include 'aside.php'; ?>
-
+  
     <main class="flex-1 p-6">
         <div class="container mx-auto">
             <div class="mb-8">
@@ -42,7 +41,6 @@ if ($conn->connect_error) {
                 <table id="employeeTable" class="w-full table-auto">
                     <thead class="bg-gray-200 text-gray-700">
                         <tr>
-                            <th class="px-4 py-2">Employee ID</th>
                             <th class="px-4 py-2">Name</th>
                             <th class="px-4 py-2">Employee Type</th>
                             <th class="px-4 py-2">Classification</th>
@@ -62,9 +60,9 @@ if ($conn->connect_error) {
 
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                echo "<tr class='border-b hover:bg-gray-50'>
-                                  <td class='px-4 py-2'>" . $row['employee_id'] . "</td>
-                                  <td class='px-4 py-2'>" . $row['last_name'] . " " . $row['first_name'] . " " . $row['suffix_title'] . "</td>
+                                echo "<tr class='border-b hover:bg-gray-50' style='text-align: justfied; white-space: nowrap;'>
+                                  <td class='px-4 py-2'>" . $row['last_name'] . ", " . $row['first_name'] . " " . $row['suffix_title'] . "</td>
+                                  
                                   <td class='px-4 py-2'>" . ucfirst($row['employee_type']) . "</td>
                                   <td class='px-4 py-2'>" . $row['classification'] . "</td>
                                   <td class='px-4 py-2'>" . number_format($row['basic_salary'], 2) . "</td>

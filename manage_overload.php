@@ -37,8 +37,9 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    
 
 
     <style>
@@ -160,9 +161,16 @@ try {
                         <thead>
                             <tr>
                                 <th rowspan="2" class="sticky gg">Employee Name</th>
+                                <th colspan="3">MWF</th>
+                                <th colspan="3">TTH</th>
+                                <th colspan="3">SS</th>
+                                <th colspan="3">MONDAY</th>
+                                <th colspan="3">TUESDAY</th>
                                 <th colspan="3">Wednesday</th>
                                 <th colspan="3">Thursday</th>
                                 <th colspan="3">Friday</th>
+                                <th colspan="3">SATURDAY</th>
+                                <th colspan="3">SUNDAY</th>
                                 <th colspan="3">MTTH</th>
                                 <th colspan="3">MTWF</th>
                                 <th colspan="3">TWTHF</th>
@@ -195,6 +203,27 @@ try {
                                 <th>DAYS</th>
                                 <th>HRS</th>
                                 <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
+                                <th>DAYS</th>
+                                <th>HRS</th>
+                                <th>TOTAL</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
@@ -202,69 +231,64 @@ try {
                                 <?php foreach ($overloadData as $row) : ?>
                                     <tr data-id="<?= htmlspecialchars($row['overload_id']) ?>">
 
-
-
                                         <td><?= htmlspecialchars($row['employee_name']) ?></td>
-                                        <td>
-                                            <?= htmlspecialchars(number_format($row['wednesday_days'], 2)) ?>
-                                        </td>
 
+                                        <td><?= htmlspecialchars(number_format($row['mwf_days'], 2)) ?></td>
+                                        <td><?= htmlspecialchars(number_format($row['mwf_hrs'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['mwf_total'], 2)) ?></td>
 
-                                        <td id="wednesday_hrs"><?= htmlspecialchars(number_format($row['wednesday_hrs'], 2)) ?></td>
-                                        <td id="wednesday_total"><?= htmlspecialchars('₱' . number_format($row['wednesday_total'], 2)) ?></td>
+                                        <td><?= htmlspecialchars(number_format($row['tth_days'], 2)) ?></td>
+                                        <td><?= htmlspecialchars(number_format($row['tth_hrs'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['tth_total'], 2)) ?></td>
 
-                                        <script>
-                                            function updateDayTotal(inputElement, day) {
-                                                // Get the input value for days (wednesday_days)
+                                        <td><?= htmlspecialchars(number_format($row['ss_days'], 2)) ?></td>
+                                        <td><?= htmlspecialchars(number_format($row['ss_hrs'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['ss_total'], 2)) ?></td>
 
-                                            }
-                                        </script>
+                                        <td><?= htmlspecialchars(number_format($row['monday_days'], 2)) ?></td>
+                                        <td><?= htmlspecialchars(number_format($row['monday_hrs'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['monday_total'], 2)) ?></td>
 
-                                        <td>
-                                            <?= htmlspecialchars(number_format($row['thursday_days'], 2)) ?>
-                                        </td>
+                                        <td><?= htmlspecialchars(number_format($row['tuesday_days'], 2)) ?></td>
+                                        <td><?= htmlspecialchars(number_format($row['tuesday_hrs'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['tuesday_total'], 2)) ?></td>
 
+                                        <td><?= htmlspecialchars(number_format($row['wednesday_days'], 2)) ?></td>
+                                        <td><?= htmlspecialchars(number_format($row['wednesday_hrs'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['wednesday_total'], 2)) ?></td>
+
+                                        <td><?= htmlspecialchars(number_format($row['thursday_days'], 2)) ?></td>
                                         <td><?= htmlspecialchars(number_format($row['thursday_hrs'], 2)) ?></td>
-                                        <td><?= htmlspecialchars('₱' . number_format($row['thursday_total'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['thursday_total'], 2)) ?></td>
 
-                                        <td>
-                                            <?= htmlspecialchars(number_format($row['friday_days'], 2)) ?>
-                                        </td>
-
+                                        <td><?= htmlspecialchars(number_format($row['friday_days'], 2)) ?></td>
                                         <td><?= htmlspecialchars(number_format($row['friday_hrs'], 2)) ?></td>
-                                        <td><?= htmlspecialchars('₱' . number_format($row['friday_total'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['friday_total'], 2)) ?></td>
 
-                                        <!-- Apply the same for other days as well -->
-                                        <td>
-                                            <?= htmlspecialchars(number_format($row['mtth_days'], 2)) ?>
-                                        </td>
+                                        <td><?= htmlspecialchars(number_format($row['saturday_days'], 2)) ?></td>
+                                        <td><?= htmlspecialchars(number_format($row['saturday_hrs'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['saturday_total'], 2)) ?></td>
 
+                                        <td><?= htmlspecialchars(number_format($row['sunday_days'], 2)) ?></td>
+                                        <td><?= htmlspecialchars(number_format($row['sunday_hrs'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['sunday_total'], 2)) ?></td>
+
+                                        <td> <?= htmlspecialchars(number_format($row['mtth_days'], 2)) ?></td>
                                         <td><?= htmlspecialchars(number_format($row['mtth_hrs'], 2)) ?></td>
-                                        <td><?= htmlspecialchars('₱' . number_format($row['mtth_total'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['mtth_total'], 2)) ?></td>
 
-                                        <td>
-                                            <?= htmlspecialchars(number_format($row['mtwf_days'], 2)) ?>
-                                        </td>
-
+                                        <td> <?= htmlspecialchars(number_format($row['mtwf_days'], 2)) ?></td>
                                         <td><?= htmlspecialchars(number_format($row['mtwf_hrs'], 2)) ?></td>
-                                        <td><?= htmlspecialchars('₱' . number_format($row['mtwf_total'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['mtwf_total'], 2)) ?></td>
 
-                                        <td>
-                                            <?= htmlspecialchars(number_format($row['twthf_days'], 2)) ?>
-                                        </td>
-
+                                        <td><?= htmlspecialchars(number_format($row['twthf_days'], 2)) ?></td>
                                         <td><?= htmlspecialchars(number_format($row['twthf_hrs'], 2)) ?></td>
-                                        <td><?= htmlspecialchars('₱' . number_format($row['twthf_total'], 2)) ?></td>
-                                        <td>
-                                            <?= htmlspecialchars(number_format($row['mw_days'], 2)) ?>
-                                        </td>
+                                        <td><?= htmlspecialchars('' . number_format($row['twthf_total'], 2)) ?></td>
 
-
-
-                                        <!-- The other columns can follow the same pattern -->
-
+                                        <td><?= htmlspecialchars(number_format($row['mw_days'], 2)) ?></td>
                                         <td><?= htmlspecialchars(number_format($row['mw_hrs'], 2)) ?></td>
-                                        <td><?= htmlspecialchars('₱' . number_format($row['mw_total'], 2)) ?></td>
+                                        <td><?= htmlspecialchars('' . number_format($row['mw_total'], 2)) ?></td>
+
                                         <td><?= htmlspecialchars(number_format($row['less_lateOL'], 2)) ?></td>
                                         <td><?= htmlspecialchars(number_format($row['additional'], 2)) ?></td>
                                         <td><?= htmlspecialchars(number_format($row['adjustment_less'], 2)) ?></td>
@@ -309,7 +333,7 @@ try {
 
 
 
-        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
         </div>
 
 
