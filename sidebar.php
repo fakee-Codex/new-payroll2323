@@ -3,8 +3,8 @@ require 'database_connection.php';
 
 $sql = "
     SELECT 
-        e.employee_id,
-        CONCAT(e.last_name, ' ', e.first_name) AS full_name, 
+        e.employee_id, 
+        CONCAT(e.last_name, ', ', e.first_name, ' ', e.suffix_title) AS full_name,
         e.basic_salary, 
         e.honorarium, 
         
@@ -78,15 +78,16 @@ $result = $conn->query($sql);
             border-collapse: collapse;
         }
 
-        th,
+
         td {
             padding: 0.5rem;
-            text-align: center;
+            text-align: justify;
             border: 1px solid #ddd;
         }
 
         th {
             background-color: #f3f4f6;
+            text-align: center;
             font-weight: bold;
         }
 
@@ -95,7 +96,7 @@ $result = $conn->query($sql);
             padding: 0.25rem;
             border: 1px solid #ddd;
             border-radius: 0.375rem;
-            text-align: center;
+            text-align: justify;
         }
 
         td input:focus {
@@ -118,7 +119,7 @@ $result = $conn->query($sql);
         }
 
         .editable-cell {
-            text-align: center;
+            text-align: justify;
             width: 80px;
         }
 
@@ -158,7 +159,6 @@ $result = $conn->query($sql);
             left: 0;
             z-index: 2;
             /* Ensures the first column is above other content */
-
         }
     </style>
     <main>
@@ -167,23 +167,22 @@ $result = $conn->query($sql);
             <div class="table-wrapper">
                 <table id="crudTable" class="table-auto w-full">
                     <thead>
-                        <tr>
-                            <th rowspan="2" class="p-2 bg-gray-200 sticky gg">NAME</th> <!-- Name with Sticky -->
-                            <th colspan="2" class="p-2 bg-gray-200">FULL-TIME</th>
-                            <th colspan="2" class="p-2 bg-gray-200">OVERLOADS</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">TOTAL</th>
-                            <th colspan="2" class="p-2 bg-gray-200">CLUB</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">TOTAL</th>
-                            <th colspan="3" class="p-2 bg-gray-200">ADJUSTMENTS</th>
-                            <th colspan="3" class="p-2 bg-gray-200">WATCH REWARD</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">GROSS PAY</th>
-                            <th colspan="3" class="p-2 bg-gray-200">ABSENCE/LATE</th>
-                            <th colspan="4" class="p-2 bg-gray-200">LOANS</th>
-                            <th colspan="4" class="p-2 bg-gray-200">CONTRIBUTIONS</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">CANTEEN</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">OTHERS</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">TOTAL DEDUCTIONS</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">NETPAY</th>
+                    <tr>
+                            <th rowspan="2" class="p-2 bg-gray-200 sticky gg">Name</th> <!-- Name with Sticky -->
+                            <th colspan="2" class="p-2 bg-gray-200">Full-Time</th>
+                            <th colspan="2" class="p-2 bg-gray-200">Overloads</th>
+                            <th rowspan="2" class="p-2 bg-gray-200">Total</th>
+                            <th colspan="3" class="p-2 bg-gray-200">CLOVES</th>
+                            <th colspan="3" class="p-2 bg-gray-200">Adjustment</th>
+                            <th colspan="3" class="p-2 bg-gray-200">Watch Reward</th>
+                            <th rowspan="2" class="p-2 bg-gray-200">Gross Pay</th>
+                            <th colspan="3" class="p-2 bg-gray-200">Absences/Late</th>
+                            <th colspan="3" class="p-2 bg-gray-200">Loans</th>
+                            <th colspan="5" class="p-2 bg-gray-200">Contributions</th>
+                            <th rowspan="2" class="p-2 bg-gray-200">Canteen</th>
+                            <th rowspan="2" class="p-2 bg-gray-200">Others</th>
+                            <th rowspan="2" class="p-2 bg-gray-200">Total Deductions</th>
+                            <th rowspan="2" class="p-2 bg-gray-200">Net Pay</th>
                             <th rowspan="2" class="p-2 bg-gray-200">Action</th>
 
                         </tr>
@@ -192,8 +191,9 @@ $result = $conn->query($sql);
                             <th class="p-2 bg-gray-200">Honorarium</th>
                             <th class="p-2 bg-gray-200">HR</th>
                             <th class="p-2 bg-gray-200">Rate</th>
-                            <th class="p-2 bg-gray-200">WR</th>
+                            <th class="p-2 bg-gray-200">HR</th>
                             <th class="p-2 bg-gray-200">Rate</th>
+                            <th class="p-2 bg-gray-200">Total</th>
                             <th class="p-2 bg-gray-200">HR</th>
                             <th class="p-2 bg-gray-200">Rate</th>
                             <th class="p-2 bg-gray-200">Total</th>
@@ -206,9 +206,9 @@ $result = $conn->query($sql);
                             <th class="p-2 bg-gray-200">HDMF</th>
                             <th class="p-2 bg-gray-200">MP2</th>
                             <th class="p-2 bg-gray-200">SSS</th>
-                            <th class="p-2 bg-gray-200">RET.</th>
                             <th class="p-2 bg-gray-200">MED.S</th>
                             <th class="p-2 bg-gray-200">SSS</th>
+                            <th class="p-2 bg-gray-200">RET.</th>
                             <th class="p-2 bg-gray-200">P-IBIG</th>
                             <th class="p-2 bg-gray-200">PHIC</th>
 
@@ -219,42 +219,44 @@ $result = $conn->query($sql);
                         if ($result && $result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td data-employee='{$row['employee_id']}' class='p-2 sticky'>{$row['full_name']}</td>"; // Sticky Name
-                                echo "<td class='p-2'>{$row['basic_salary']}</td>"; // Basic Salary
-                                echo "<td class='p-2'>{$row['honorarium']}</td>"; // Honorarium
-                                echo "<td class='p-2'>{$row['overload_hr']}</td>"; 
-                                echo "<td class='p-2'>{$row['overload_rate']}</td>";
-                                echo "<td name='overload_total' class='p-2'>{$row['overload_total']}</td>"; // Overload Total
+                               echo "<td data-employee='{$row['employee_id']}' class='p-2 sticky gg' style='padding: 0.5rem; text-align: justify; border: 1px solid #ddd;'>{$row['full_name']}</td>";
+
+                                echo "<td class='p-2'>" . number_format($row['basic_salary'], 2) . "</td>"; // Basic Salary
+                                echo "<td class='p-2'>" . number_format($row['honorarium'], 2) . "</td>"; // Honorarium
+                                echo "<td class='p-2'>" . number_format($row['overload_hr'], 2) . "</td>"; // Overload HR
+                                echo "<td class='p-2'>" . number_format($row['overload_rate'], 2) . "</td>"; // Overload Rate
+                                echo "<td name='overload_total' class='p-2'>" . number_format($row['overload_total'], 2) . "</td>"; // Overload Total
                                 echo "<td><input type='number' name='wr_hr' class='editable-cell' value='{$row['wr_hr']}'></td>"; // WR HR
                                 echo "<td><input type='number' name='wr_rate' class='editable-cell' value='{$row['wr_rate']}'></td>"; // WR Rate
-                                echo "<td name='wr_total' class='p-2'>{$row['wr_total']}</td>"; // WR Total
+                                echo "<td name='wr_total' class='p-2'>" . number_format($row['wr_total'], 2) . "</td>"; // WR Total
                                 echo "<td><input type='number' name='adjust_rate' class='editable-cell' value='{$row['adjust_rate']}'></td>"; // Adjust Rate
                                 echo "<td><input type='number' name='adjust_hr' class='editable-cell' value='{$row['adjust_hr']}'></td>"; // Adjust HR
-                                echo "<td name='adjust_total' class='p-2'>{$row['adjust_total']}</td>"; // Adjust Total
+                                echo "<td name='adjust_total' class='p-2'>" . number_format($row['adjust_total'], 2) . "</td>"; // Adjust Total
                                 echo "<td><input type='number' name='watch_hr' class='editable-cell' value='{$row['watch_hr']}'></td>"; // Watch HR
                                 echo "<td><input type='number' name='watch_reward' class='editable-cell' value='{$row['watch_reward']}'></td>";
-                                echo "<td name='watch_total' class='p-2'>{$row['watch_total']}</td>"; // Watch Total
-                                echo "<td name='gross_pay' class='p-2'>{$row['gross_pay']}</td>"; // Gross Pay
+                                echo "<td name='watch_total' class='p-2'>" . number_format($row['watch_total'], 2) . "</td>"; // Watch Total
+                                echo "<td name='gross_pay' class='p-2'>" . number_format($row['gross_pay'], 2) . "</td>"; // Gross Pay
                                 echo "<td><input type='number' name='absent_late_hr' class='editable-cell' value='{$row['absent_late_hr']}'></td>"; // Absent Late HR
-
-                                echo "<td class='p-2' name='absent_lateRate'>{$row['absent_lateRate']}</td>";
-
-                                echo "<td name='absent_late_total' class='p-2'>0.00</td>"; // Absent Late Total
-
+                                
+                                echo "<td class='p-2' name='absent_lateRate'>" . number_format($row['absent_lateRate'], 2) . "</td>";
+                                
+                                echo "<td name='absent_late_total' class='p-2'>" . number_format(0.00, 2) . "</td>"; // Absent Late Total
+                                
                                 // echo "<td><input type='number' name='absent_late_rate' class='editable-cell' value='{$row['absent_late_rate']}'></td>"; // Absent Late Rate
-
+                                
                                 echo "<td><input type='number' name='pagibig' class='editable-cell' value='{$row['pagibig']}'></td>"; // Pagibig
                                 echo "<td><input type='number' name='mp2' class='editable-cell' value='{$row['mp2']}'></td>"; // MP2
                                 echo "<td><input type='number' name='sss' class='editable-cell' value='{$row['sss']}'></td>"; // MP2
-                                echo "<td class='p-2'>{$row['pag_ibig_total']}</td>"; // Pag-ibig Total
-                                echo "<td class='p-2'>{$row['medical_savings']}</td>"; // Medical Savings
-                                echo "<td class='p-2'>{$row['sss_total']}</td>"; // SSS Total
-                                echo "<td class='p-2'>{$row['retirement']}</td>"; // Retirement
-                                echo "<td class='p-2'>{$row['philhealth_total']}</td>"; // Philhealth Total
+                                echo "<td class='p-2'>" . number_format($row['pag_ibig_total'], 2) . "</td>"; // Pag-ibig Total
+                                echo "<td class='p-2'>" . number_format($row['medical_savings'], 2) . "</td>"; // Medical Savings
+                                echo "<td class='p-2'>" . number_format($row['sss_total'], 2) . "</td>"; // SSS Total
+                                echo "<td class='p-2'>" . number_format($row['retirement'], 2) . "</td>"; // Retirement
+                                echo "<td class='p-2'>" . number_format($row['philhealth_total'], 2) . "</td>"; // Philhealth Total
                                 echo "<td><input type='number' name='canteen' class='editable-cell' value='{$row['canteen']}'></td>"; // Canteen
                                 echo "<td><input type='number' name='others' class='editable-cell' value='{$row['others']}'></td>"; // Others
-                                echo "<td name='total_deduction' class='p-2'>{$row['total_deduction']}</td>"; // Total Deduction
-                                echo "<td name='net_pay' class='p-2'>{$row['net_pay']}</td>"; // Net Pay
+                                echo "<td name='total_deduction' class='p-2'>" . number_format($row['total_deduction'], 2) . "</td>"; // Total Deduction
+                                echo "<td name='net_pay' class='p-2'>" . number_format($row['net_pay'], 2) . "</td>"; // Net Pay
+                                
 
 
                                 echo "<td>

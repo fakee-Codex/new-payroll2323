@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 $sql = "SELECT 
             c.contributions_id,
             e.employee_id,
-            CONCAT(e.last_name, ', ', e.first_name) AS Name,
+            CONCAT(e.last_name, ', ', e.first_name, ' ', e.suffix_title) AS Name,
             e.employee_type AS Type,
             e.basic_salary AS Basic,
             c.sss_ee, c.pag_ibig_ee, c.philhealth_ee,
@@ -31,8 +31,8 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   
     <style>
 
@@ -46,7 +46,7 @@ $result = $conn->query($sql);
 
     </style>
     <main>
-        <div class="container mt-5 mb-3 text-center">
+        <div class="container mt-5 mb-3 text-center text-white">
             <h1>CONTRIBUTIONS</h1>
         </div>
 
@@ -54,8 +54,8 @@ $result = $conn->query($sql);
         <a href="manage_contributions_add.php" class="btn btn-primary mb-3">Add Contribution</a>
 
         <!-- Table Section -->
-        <div id="contributions-table">
-            <table class="table table-bordered">
+        <div id="contributions-table" style="background-color: white;">
+        <table class="table table-bordered" style="background-color: white;">
                 <thead>
                     <tr>
                         <th>Employee Name</th>
@@ -71,7 +71,7 @@ $result = $conn->query($sql);
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="background-color: white;">
                     <?php
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {

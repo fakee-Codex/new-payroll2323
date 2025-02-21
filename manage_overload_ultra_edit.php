@@ -17,77 +17,7 @@ if (!$result) {
     die("Query failed: " . mysqli_error($conn));  // Handle query failure
 }
 
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     if (isset($_POST['overload_id']) && is_array($_POST['overload_id'])) {
-//         foreach ($_POST['overload_id'] as $index => $overload_id) {
-//             // Use isset to avoid undefined index warnings
-//             $employee_id = isset($_POST['employee_id'][$index]) ? $_POST['employee_id'][$index] : '';
-//             $wednesday_days = isset($_POST['wednesday_days'][$index]) ? $_POST['wednesday_days'][$index] : 0;
-//             $wednesday_hrs = isset($_POST['wednesday_hrs'][$index]) ? $_POST['wednesday_hrs'][$index] : 0;
-//             $wednesday_total = isset($_POST['wednesday_total'][$index]) ? $_POST['wednesday_total'][$index] : 0;
-
-//             $thursday_days = isset($_POST['thursday_days'][$index]) ? $_POST['thursday_days'][$index] : 0;
-//             $thursday_hrs = isset($_POST['thursday_hrs'][$index]) ? $_POST['thursday_hrs'][$index] : 0;
-//             $thursday_total = isset($_POST['thursday_total'][$index]) ? $_POST['thursday_total'][$index] : 0;
-
-//             $friday_days = isset($_POST['friday_days'][$index]) ? $_POST['friday_days'][$index] : 0;
-//             $friday_hrs = isset($_POST['friday_hrs'][$index]) ? $_POST['friday_hrs'][$index] : 0;
-//             $friday_total = isset($_POST['friday_total'][$index]) ? $_POST['friday_total'][$index] : 0;
-
-//             $mtth_days = isset($_POST['mtth_days'][$index]) ? $_POST['mtth_days'][$index] : 0;
-//             $mtth_hrs = isset($_POST['mtth_hrs'][$index]) ? $_POST['mtth_hrs'][$index] : 0;
-//             $mtth_total = isset($_POST['mtth_total'][$index]) ? $_POST['mtth_total'][$index] : 0;
-
-//             $mtwf_days = isset($_POST['mtwf_days'][$index]) ? $_POST['mtwf_days'][$index] : 0;
-//             $mtwf_hrs = isset($_POST['mtwf_hrs'][$index]) ? $_POST['mtwf_hrs'][$index] : 0;
-//             $mtwf_total = isset($_POST['mtwf_total'][$index]) ? $_POST['mtwf_total'][$index] : 0;
-
-//             $twthf_days = isset($_POST['twthf_days'][$index]) ? $_POST['twthf_days'][$index] : 0;
-//             $twthf_hrs = isset($_POST['twthf_hrs'][$index]) ? $_POST['twthf_hrs'][$index] : 0;
-//             $twthf_total = isset($_POST['twthf_total'][$index]) ? $_POST['twthf_total'][$index] : 0;
-
-//             $mw_days = isset($_POST['mw_days'][$index]) ? $_POST['mw_days'][$index] : 0;
-//             $mw_hrs = isset($_POST['mw_hrs'][$index]) ? $_POST['mw_hrs'][$index] : 0;
-//             $mw_total = isset($_POST['mw_total'][$index]) ? $_POST['mw_total'][$index] : 0;
-
-//             $less_lateOL = isset($_POST['less_lateOL'][$index]) ? $_POST['less_lateOL'][$index] : 0;
-//             $additional = isset($_POST['additional'][$index]) ? $_POST['additional'][$index] : 0;
-//             $adjustment_less = isset($_POST['adjustment_less'][$index]) ? $_POST['adjustment_less'][$index] : 0;
-
-//             // Calculate Grand Total
-//             $grand_total = ($wednesday_total + $thursday_total + $friday_total + $mtth_total + $mtwf_total + $twthf_total + $mw_total) - $less_lateOL + $additional - $adjustment_less;
-
-//             // Update the database with the new values
-//             $query = "UPDATE overload SET 
-//                         employee_id = '$employee_id', 
-//                         wednesday_days = '$wednesday_days', wednesday_hrs = '$wednesday_hrs', wednesday_total = '$wednesday_total', 
-//                         thursday_days = '$thursday_days', thursday_hrs = '$thursday_hrs', thursday_total = '$thursday_total', 
-//                         friday_days = '$friday_days', friday_hrs = '$friday_hrs', friday_total = '$friday_total', 
-//                         mtth_days = '$mtth_days', mtth_hrs = '$mtth_hrs', mtth_total = '$mtth_total', 
-//                         mtwf_days = '$mtwf_days', mtwf_hrs = '$mtwf_hrs', mtwf_total = '$mtwf_total', 
-//                         twthf_days = '$twthf_days', twthf_hrs = '$twthf_hrs', twthf_total = '$twthf_total', 
-//                         mw_days = '$mw_days', mw_hrs = '$mw_hrs', mw_total = '$mw_total', 
-//                         less_lateOL = '$less_lateOL', additional = '$additional', adjustment_less = '$adjustment_less',
-//                         grand_total = '$grand_total'
-//                         WHERE overload_id = '$overload_id'";
-
-//             if ($conn->query($query) === TRUE) {
-//                 // On success, return success message for AJAX
-//                 echo "success";
-//             } else {
-//                 // On failure, return error message for AJAX
-//                 echo "Error updating record: " . $conn->error;
-//             }
-//         }
-//     } else {
-//         // If overload_id is missing, return an error message
-//         echo "No overload data received or 'overload_id' is missing.";
-//     }
-//     exit();  // Terminate the script after responding to AJAX
-// }
-
 ?>
-
 
 
 <!DOCTYPE html>
@@ -114,10 +44,20 @@ if (!$result) {
 
         <div class="bg-gray-200 p-2 rounded-lg shadow-md">
 
+
+
             <h2 class="text-2xl font-bold text-center text-gray-700 mb-6">Edit Overload Data</h2>
+            <!-- Back Button -->
+            <div class="text-left mb-4">
+                <button
+                    onclick="window.location.href='manage_overload.php';"
+                    class="bg-gray-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-pink-600">
+                    Back to Manage Overload
+                </button>
+            </div>
+
+
             <form method="POST" action="">
-
-
                 <div class="text-right mb-4">
                     <button id="updateButton" class="bg-green-500 text-white py-2 px-4 rounded-md shadow-md hover:bg-green-600">
                         Save Changes
@@ -130,9 +70,16 @@ if (!$result) {
                         <thead class="bg-blue-600 text-white text-center">
                             <tr>
                                 <th rowspan="2" class="p-3 border border-gray-300 sticky left-0 bg-blue-700 z-10">Employee Name</th>
+                                <th colspan="3" class="p-3 border border-gray-300">MWF</th>
+                                <th colspan="3" class="p-3 border border-gray-300">TTH</th>
+                                <th colspan="3" class="p-3 border border-gray-300">SS</th>
+                                <th colspan="3" class="p-3 border border-gray-300">MONDAY</th>
+                                <th colspan="3" class="p-3 border border-gray-300">TUESDAY</th>
                                 <th colspan="3" class="p-3 border border-gray-300">Wednesday</th>
                                 <th colspan="3" class="p-3 border border-gray-300">Thursday</th>
                                 <th colspan="3" class="p-3 border border-gray-300">Friday</th>
+                                <th colspan="3" class="p-3 border border-gray-300">Saturday</th>
+                                <th colspan="3" class="p-3 border border-gray-300">Sunday</th>
                                 <th colspan="3" class="p-3 border border-gray-300">MTTH</th>
                                 <th colspan="3" class="p-3 border border-gray-300">MTWF</th>
                                 <th colspan="3" class="p-3 border border-gray-300">TWTHF</th>
@@ -140,10 +87,11 @@ if (!$result) {
                                 <th rowspan="2" class="p-3 border border-gray-300">Less</th>
                                 <th rowspan="2" class="p-3 border border-gray-300">Add</th>
                                 <th rowspan="2" class="p-3 border border-gray-300">Adjustments</th>
-                                <th rowspan="2" class="p-3 border border-gray-300">Grand Total</th>
+                                <th rowspan="2" class="p-3 border border-gray-300 sticky left-0 bg-blue-700 z-10">Grand Total</th>
+
                             </tr>
                             <tr class="bg-blue-500">
-                                <?php for ($i = 0; $i < 7; $i++) : ?>
+                                <?php for ($i = 0; $i < 14; $i++) : ?>
                                     <th class="p-2 border border-gray-300">DAYS</th>
                                     <th class="p-2 border border-gray-300">HRS</th>
                                     <th class="p-2 border border-gray-300">TOTAL</th>
@@ -167,6 +115,26 @@ if (!$result) {
                                     </td>
 
                                     <!-- Editable "Days" inputs -->
+                                    <td class="p-3"><input type="number" name="mwf_days[]" value="<?= $row['mwf_days'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
+                                    <td class="p-3 text-center" data-mwf-hrs><?= htmlspecialchars($row['mwf_hrs']) ?></td>
+                                    <td class="p-3 text-center" data-mwf-total><?= htmlspecialchars($row['mwf_total']) ?></td>
+
+                                    <td class="p-3"><input type="number" name="tth_days[]" value="<?= $row['tth_days'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
+                                    <td class="p-3 text-center" data-tth-hrs><?= htmlspecialchars($row['tth_hrs']) ?></td>
+                                    <td class="p-3 text-center" data-tth-total><?= htmlspecialchars($row['tth_total']) ?></td>
+
+                                    <td class="p-3"><input type="number" name="ss_days[]" value="<?= $row['ss_days'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
+                                    <td class="p-3 text-center" data-ss-hrs><?= htmlspecialchars($row['ss_hrs']) ?></td>
+                                    <td class="p-3 text-center" data-ss-total><?= htmlspecialchars($row['ss_total']) ?></td>
+
+                                    <td class="p-3"><input type="number" name="monday_days[]" value="<?= $row['monday_days'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
+                                    <td class="p-3 text-center" data-monday-hrs><?= htmlspecialchars($row['monday_hrs']) ?></td>
+                                    <td class="p-3 text-center" data-monday-total><?= htmlspecialchars($row['monday_total']) ?></td>
+
+                                    <td class="p-3"><input type="number" name="tuesday_days[]" value="<?= $row['tuesday_days'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
+                                    <td class="p-3 text-center" data-tuesday-hrs><?= htmlspecialchars($row['tuesday_hrs']) ?></td>
+                                    <td class="p-3 text-center" data-tuesday-total><?= htmlspecialchars($row['tuesday_total']) ?></td>
+
                                     <td class="p-3"><input type="number" name="wednesday_days[]" value="<?= $row['wednesday_days'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
                                     <td class="p-3 text-center" data-wednesday-hrs><?= htmlspecialchars($row['wednesday_hrs']) ?></td>
                                     <td class="p-3 text-center" data-wednesday-total><?= htmlspecialchars($row['wednesday_total']) ?></td>
@@ -178,6 +146,14 @@ if (!$result) {
                                     <td class="p-3"><input type="number" name="friday_days[]" value="<?= $row['friday_days'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
                                     <td class="p-3 text-center" data-friday-hrs><?= htmlspecialchars($row['friday_hrs']) ?></td>
                                     <td class="p-3 text-center" data-friday-total><?= htmlspecialchars($row['friday_total']) ?></td>
+
+                                    <td class="p-3"><input type="number" name="saturday_days[]" value="<?= $row['saturday_days'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
+                                    <td class="p-3 text-center" data-saturday-hrs><?= htmlspecialchars($row['saturday_hrs']) ?></td>
+                                    <td class="p-3 text-center" data-saturday-total><?= htmlspecialchars($row['saturday_total']) ?></td>
+
+                                    <td class="p-3"><input type="number" name="sunday_days[]" value="<?= $row['sunday_days'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
+                                    <td class="p-3 text-center" data-sunday-hrs><?= htmlspecialchars($row['sunday_hrs']) ?></td>
+                                    <td class="p-3 text-center" data-sunday-total><?= htmlspecialchars($row['sunday_total']) ?></td>
 
                                     <td class="p-3"><input type="number" name="mtth_days[]" value="<?= $row['mtth_days'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
                                     <td class="p-3 text-center" data-mtth-hrs><?= htmlspecialchars($row['mtth_hrs']) ?></td>
@@ -195,11 +171,14 @@ if (!$result) {
                                     <td class="p-3 text-center" data-mw-hrs><?= htmlspecialchars($row['mw_hrs']) ?></td>
                                     <td class="p-3 text-center" data-mw-total><?= htmlspecialchars($row['mw_total']) ?></td>
 
+                                   
+
                                     <!-- Less, Additional, Adjustments, Grand Total -->
                                     <td class="p-3"><input type="number" name="less_lateOL[]" value="<?= $row['less_lateOL'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
                                     <td class="p-3"><input type="number" name="additional[]" value="<?= $row['additional'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
                                     <td class="p-3"><input type="number" name="adjustment_less[]" value="<?= $row['adjustment_less'] ?>" class="w-16 border rounded px-2 py-1 text-center"></td>
-                                    <td class="p-3 text-center font-bold text-blue-600" data-grand-total><?= htmlspecialchars($row['grand_total']) ?></td>
+                                    <td class="p-3 text-center font-bold text-blue-600 sticky right-0 bg-white z-20" data-grand-total>
+                                        <?= htmlspecialchars($row['grand_total']) ?></td>
                                 </tr>
                             <?php endwhile; ?>
                         </tbody>
@@ -296,7 +275,7 @@ if (!$result) {
 
                 inputs.forEach(input => {
                     input.addEventListener("input", function() {
-                        const dayMatch = input.name.match(/(wednesday|thursday|friday|mtth|mtwf|twthf|mw)_days\[\]/);
+                        const dayMatch = input.name.match(/(mwf|tth|wednesday|ss|monday|tuesday|wednesday|thursday|friday|saturday|sunday|mtth|mtwf|twthf|mw)_days\[\]/);
                         if (dayMatch) {
                             const dayColumn = dayMatch[1] + "_days[]";
                             syncColumnInputs(dayColumn, input.value); // Sync all inputs in the same column
@@ -312,7 +291,7 @@ if (!$result) {
 
             function calculateRowTotals(row) {
                 let grandTotal = 0;
-                const dayColumns = ["wednesday", "thursday", "friday", "mtth", "mtwf", "twthf", "mw"];
+                const dayColumns = ["mwf", "tth", "ss", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday", "mtth", "mtwf", "twthf", "mw"];
 
                 dayColumns.forEach(day => {
                     const daysInput = row.querySelector(`input[name="${day}_days[]"]`);
