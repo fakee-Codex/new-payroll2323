@@ -4,7 +4,7 @@ require 'database_connection.php';
 $sql = "
     SELECT 
         e.employee_id,
-        CONCAT(e.first_name, ' ', e.last_name) AS full_name, 
+        CONCAT(e.first_name, ' ', e.last_name, ' ', e.suffix_title) AS full_name, 
         e.basic_salary, 
         e.honorarium, 
         
@@ -27,6 +27,8 @@ $sql = "
         ct.pagibig,
         ct.mp2,
         ct.sss,
+                ct.ret,
+
         ct.canteen,
         ct.others,
         ct.total_deduction,
@@ -176,8 +178,8 @@ $result = $conn->query($sql);
                             <th colspan="3" class="p-2 bg-gray-200">Watch Reward</th>
                             <th rowspan="2" class="p-2 bg-gray-200">Gross Pay</th>
                             <th colspan="3" class="p-2 bg-gray-200">Absences/Late</th>
-                            <th colspan="3" class="p-2 bg-gray-200">Loans</th>
-                            <th colspan="5" class="p-2 bg-gray-200">Contributions</th>
+                            <th colspan="4" class="p-2 bg-gray-200">Loans</th>
+                            <th colspan="1" class="p-2 bg-gray-200">Contributions</th>
                             <th rowspan="2" class="p-2 bg-gray-200">Canteen</th>
                             <th rowspan="2" class="p-2 bg-gray-200">Others</th>
                             <th rowspan="2" class="p-2 bg-gray-200">Total Deductions</th>
@@ -185,6 +187,10 @@ $result = $conn->query($sql);
                             <th rowspan="2" class="p-2 bg-gray-200">Action</th>
 
                         </tr>
+
+
+
+
                         <tr>
                             <th class="p-2 bg-gray-200">Basic</th>
                             <th class="p-2 bg-gray-200">Honorarium</th>
@@ -205,11 +211,12 @@ $result = $conn->query($sql);
                             <th class="p-2 bg-gray-200">HDMF</th>
                             <th class="p-2 bg-gray-200">MP2</th>
                             <th class="p-2 bg-gray-200">SSS</th>
-                            <th class="p-2 bg-gray-200">MED.S</th>
-                            <th class="p-2 bg-gray-200">SSS</th>
-                            <th class="p-2 bg-gray-200">RET.</th>
-                            <th class="p-2 bg-gray-200">P-IBIG</th>
-                            <th class="p-2 bg-gray-200">PHIC</th>
+
+                            <th class="p-2 bg-gray-200">RET.   </th>
+
+
+
+                            <th class="p-2 bg-gray-200">RETIREMENT</th>
 
                         </tr>
                     </thead>
@@ -218,42 +225,60 @@ $result = $conn->query($sql);
                         if ($result && $result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td data-employee='{$row['employee_id']}' class='p-2 sticky'>{$row['full_name']}</td>"; // Sticky Name
-                                echo "<td class='p-2'>{$row['basic_salary']}</td>"; // Basic Salary
-                                echo "<td class='p-2'>{$row['honorarium']}</td>"; // Honorarium
-                                echo "<td class='p-2'>{$row['overload_hr']}</td>"; // Overload HR
-                                echo "<td class='p-2'>{$row['overload_rate']}</td>";
-                                echo "<td name='overload_total' class='p-2'>{$row['overload_total']}</td>"; // Overload Total
+                                echo "<td data-employee='{$row['employee_id']}' class='p-2 sticky gg' style='padding: 0.5rem; text-align: justify; border: 1px solid #ddd; white-space: nowrap; overflow: hidden;'>{$row['full_name']}</td>";
+
+
+                                echo "<td class='p-2'>" . number_format($row['basic_salary'], 2) . "</td>"; // Basic Salary
+                                echo "<td class='p-2'>" . number_format($row['honorarium'], 2) . "</td>"; // Honorarium
+                                echo "<td class='p-2'>" . number_format($row['overload_hr'], 2) . "</td>"; // Overload HR
+                                echo "<td class='p-2'>" . number_format($row['overload_rate'], 2) . "</td>"; // Overload Rate
+
+                                echo "<td name='overload_total' class='p-2'>" . number_format($row['overload_total'], 2) . "</td>"; // Overload Total
                                 echo "<td><input type='number' name='wr_hr' class='editable-cell' value='{$row['wr_hr']}'></td>"; // WR HR
                                 echo "<td><input type='number' name='wr_rate' class='editable-cell' value='{$row['wr_rate']}'></td>"; // WR Rate
-                                echo "<td name='wr_total' class='p-2'>{$row['wr_total']}</td>"; // WR Total
+                                echo "<td name='wr_total' class='p-2'>" . number_format($row['wr_total'], 2) . "</td>"; // WR Total
                                 echo "<td><input type='number' name='adjust_rate' class='editable-cell' value='{$row['adjust_rate']}'></td>"; // Adjust Rate
                                 echo "<td><input type='number' name='adjust_hr' class='editable-cell' value='{$row['adjust_hr']}'></td>"; // Adjust HR
-                                echo "<td name='adjust_total' class='p-2'>{$row['adjust_total']}</td>"; // Adjust Total
+                                echo "<td name='adjust_total' class='p-2'>" . number_format($row['adjust_total'], 2) . "</td>"; // Adjust Total
                                 echo "<td><input type='number' name='watch_hr' class='editable-cell' value='{$row['watch_hr']}'></td>"; // Watch HR
                                 echo "<td><input type='number' name='watch_reward' class='editable-cell' value='{$row['watch_reward']}'></td>";
-                                echo "<td name='watch_total' class='p-2'>{$row['watch_total']}</td>"; // Watch Total
-                                echo "<td name='gross_pay' class='p-2'>{$row['gross_pay']}</td>"; // Gross Pay
+                                echo "<td name='watch_total' class='p-2'>" . number_format($row['watch_total'], 2) . "</td>"; // Watch Total
+                                echo "<td name='gross_pay' class='p-2'>" . number_format($row['gross_pay'], 2) . "</td>"; // Gross Pay
                                 echo "<td><input type='number' name='absent_late_hr' class='editable-cell' value='{$row['absent_late_hr']}'></td>"; // Absent Late HR
 
-                                echo "<td class='p-2' name='absent_lateRate'>{$row['absent_lateRate']}</td>";
+                                echo "<td class='p-2' name='absent_lateRate'>" . number_format($row['absent_lateRate'], 2) . "</td>";
 
-                                echo "<td name='absent_late_total' class='p-2'>0.00</td>"; // Absent Late Total
-
-                                // echo "<td><input type='number' name='absent_late_rate' class='editable-cell' value='{$row['absent_late_rate']}'></td>"; // Absent Late Rate
+                        
+                                echo "<td name='absent_late_total' class='p-2'>" . number_format(0.00, 2) . "</td>"; // Absent Late Total
 
                                 echo "<td><input type='number' name='pagibig' class='editable-cell' value='{$row['pagibig']}'></td>"; // Pagibig
                                 echo "<td><input type='number' name='mp2' class='editable-cell' value='{$row['mp2']}'></td>"; // MP2
                                 echo "<td><input type='number' name='sss' class='editable-cell' value='{$row['sss']}'></td>"; // MP2
-                                echo "<td class='p-2'>{$row['pag_ibig_total']}</td>"; // Pag-ibig Total
-                                echo "<td class='p-2'>{$row['medical_savings']}</td>"; // Medical Savings
-                                echo "<td class='p-2'>{$row['sss_total']}</td>"; // SSS Total
-                                echo "<td class='p-2'>{$row['retirement']}</td>"; // Retirement
-                                echo "<td class='p-2'>{$row['philhealth_total']}</td>"; // Philhealth Total
+
+                                echo "<td><input type='number' name='ret' class='editable-cell' value='{$row['ret']}'></td>"; // MP2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                echo "<td class='p-2'>" . number_format($row['retirement'], 2) . "</td>"; // Retirement
                                 echo "<td><input type='number' name='canteen' class='editable-cell' value='{$row['canteen']}'></td>"; // Canteen
                                 echo "<td><input type='number' name='others' class='editable-cell' value='{$row['others']}'></td>"; // Others
-                                echo "<td name='total_deduction' class='p-2'>{$row['total_deduction']}</td>"; // Total Deduction
-                                echo "<td name='net_pay' class='p-2'>{$row['net_pay']}</td>"; // Net Pay
+                                echo "<td name='total_deduction' class='p-2'>" . number_format($row['total_deduction'], 2) . "</td>"; // Total Deduction
+                                echo "<td name='net_pay' class='p-2'>" . number_format($row['net_pay'], 2) . "</td>"; // Net Pay
+
 
 
                                 echo "<td>
@@ -339,37 +364,46 @@ $result = $conn->query($sql);
                 const watchReward = parseFloat(row.querySelector("input[name='watch_reward']").value) || 0;
 
                 const absentLateHR = parseFloat(row.querySelector("input[name='absent_late_hr']").value) || 0;
-                const absentLateRate = parseFloat(row.querySelector("td:nth-child(16)").textContent) || 0;
+                const absentLateRate = parseFloat(row.querySelector("td:nth-child(18)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
 
                 // Calculate the absent late total
                 const absentLateTotal = absentLateHR * absentLateRate;
 
-                // Update the absent late total cell
+                // Update the absent late total cell    
                 row.querySelector("td[name='absent_late_total']").textContent = absentLateTotal.toFixed(2);
 
                 const pagibig = parseFloat(row.querySelector("input[name='pagibig']").value) || 0;
                 const mp2 = parseFloat(row.querySelector("input[name='mp2']").value) || 0;
                 const sss = parseFloat(row.querySelector("input[name='sss']").value) || 0;
+                const ret = parseFloat(row.querySelector("input[name='ret']").value) || 0;
+
+               
                 const canteen = parseFloat(row.querySelector("input[name='canteen']").value) || 0;
                 const others = parseFloat(row.querySelector("input[name='others']").value) || 0;
-                const pagibigTotal = parseFloat(row.querySelector("td:nth-child(22)").textContent) || 0; // Pag-ibig Total
-                const medicalSavings = parseFloat(row.querySelector("td:nth-child(23)").textContent) || 0; // Medical Savings
-                const sssTotal = parseFloat(row.querySelector("td:nth-child(24)").textContent) || 0; // SSS Total
-                const retirement = parseFloat(row.querySelector("td:nth-child(25)").textContent) || 0; // Retirement
-                const philhealthTotal = parseFloat(row.querySelector("td:nth-child(26)").textContent) || 0; // Philhealth Total
+                const pagibigTotal = parseFloat(row.querySelector("td:nth-child(22)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
+                const medicalSavings = parseFloat(row.querySelector("td:nth-child(23)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
+                const sssTotal = parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
+                const retirement = parseFloat(row.querySelector("td:nth-child(25)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
+
+                const philhealthTotal = parseFloat(row.querySelector("td:nth-child(26)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
 
                 // Calculate totals
                 const wrTotal = wrHR * wrRate;
                 const adjustmentTotal = adjustmentHR * adjustmentRate;
                 const watchRewardTotal = watchHR * watchReward;
 
-                const totalContributions = pagibigTotal + medicalSavings + sssTotal + retirement + philhealthTotal;
-                const totalDeduction = absentLateTotal + pagibig + mp2 + sss + totalContributions + canteen + others;
+                const totalContributions = pagibigTotal + medicalSavings + sssTotal + ret + retirement + philhealthTotal;
+                const totalDeduction = absentLateTotal + pagibig + mp2 + sss + ret + retirement + totalContributions + canteen + others;
 
-                const basicSalary = parseFloat(row.querySelector("td:nth-child(2)").textContent) || 0; // Basic Salary
-                const honorarium = parseFloat(row.querySelector("td:nth-child(3)").textContent) || 0; // Honorarium
+                const basicSalary = parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
+                const honorarium = parseFloat(row.querySelector("td:nth-child(3)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
                 const grossPay = basicSalary + honorarium + overloadTotal + wrTotal + adjustmentTotal + watchRewardTotal;
                 const netPay = grossPay - totalDeduction;
+
+
+                
+                // alert(`Absent Late Hr: ${absentLateHR}\nAbsent Late Rate: ${absentLateRate}\nAbsent Late Total: ${absentLateTotal}\nPagibig: ${pagibig}\nMp2: ${mp2}\nSss: ${sss}\nRet: ${ret} \nRetirement: ${retirement} \nCanteen: ${canteen} \nOthers: ${others} \nTotal Deduction: ${totalDeduction}` );
+
 
                 // Update calculated values in the table
                 row.querySelector("td[name='overload_total']").textContent = overloadTotal.toFixed(2);
@@ -401,7 +435,7 @@ $result = $conn->query($sql);
             });
 
             // Save table data
-            saveButton.addEventListener("click", function() {
+            document.getElementById("saveTableBtn").addEventListener("click", function() {
                 const rows = document.querySelectorAll("#crudTable tbody tr");
                 const data = [];
 
@@ -409,48 +443,54 @@ $result = $conn->query($sql);
                     const rowData = {
                         employee_id: row.querySelector("td[data-employee]").getAttribute("data-employee") || 0, // Default employee_id to 0
                         full_name: row.querySelector("td[data-employee]").textContent || "", // Ensure full_name is set to an empty string if empty
-                        basic_salary: parseFloat(row.querySelector("td:nth-child(2)").textContent) || 0,
-                        honorarium: parseFloat(row.querySelector("td:nth-child(3)").textContent) || 0,
-                        overload_hr: parseFloat(row.querySelector("td:nth-child(4)").textContent) || 0,
-                        overload_rate: parseFloat(row.querySelector("td:nth-child(5)").textContent) || 0,
-                        overload_total: parseFloat(row.querySelector("td[name='overload_total']").textContent) || 0,
+                        basic_salary: parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0,
+                        honorarium: parseFloat(row.querySelector("td:nth-child(3)").textContent.replace(/,/g, '')) || 0,
+                        overload_hr: parseFloat(row.querySelector("td:nth-child(4)").textContent.replace(/,/g, '')) || 0,
+                        overload_rate: parseFloat(row.querySelector("td:nth-child(5)").textContent.replace(/,/g, '')) || 0,
+                        overload_total: parseFloat(row.querySelector("td[name='overload_total']").textContent.replace(/,/g, '')) || 0,
                         wr_hr: parseFloat(row.querySelector("input[name='wr_hr']").value) || 0,
                         wr_rate: parseFloat(row.querySelector("input[name='wr_rate']").value) || 0,
-                        wr_total: parseFloat(row.querySelector("td[name='wr_total']").textContent) || 0,
+                        wr_total: parseFloat(row.querySelector("td[name='wr_total']").textContent.replace(/,/g, '')) || 0,
                         adjust_hr: parseFloat(row.querySelector("input[name='adjust_hr']").value) || 0,
                         adjust_rate: parseFloat(row.querySelector("input[name='adjust_rate']").value) || 0,
-                        adjust_total: parseFloat(row.querySelector("td[name='adjust_total']").textContent) || 0,
+                        adjust_total: parseFloat(row.querySelector("td[name='adjust_total']").textContent.replace(/,/g, '')) || 0,
                         watch_hr: parseFloat(row.querySelector("input[name='watch_hr']").value) || 0,
                         watch_reward: parseFloat(row.querySelector("input[name='watch_reward']").value) || 0,
-                        watch_total: parseFloat(row.querySelector("td[name='watch_total']").textContent) || 0,
-                        gross_pay: parseFloat(row.querySelector("td[name='gross_pay']").textContent) || 0,
+                        watch_total: parseFloat(row.querySelector("td[name='watch_total']").textContent.replace(/,/g, '')) || 0,
+                        gross_pay: parseFloat(row.querySelector("td[name='gross_pay']").textContent.replace(/,/g, '')) || 0,
                         absent_late_hr: parseFloat(row.querySelector("input[name='absent_late_hr']").value) || 0,
-                        absent_lateRate: parseFloat(row.querySelector("input[name='absent_lateRate']").value) || 0,
-                        absent_late_total: parseFloat(row.querySelector("td[name='absent_late_total']").textContent) || 0,
+                        absent_lateRate: parseFloat(row.querySelector("td[name='absent_lateRate']").value) || 0,
+                        absent_late_total: parseFloat(row.querySelector("td[name='absent_late_total']").textContent.replace(/,/g, '')) || 0,
                         pagibig: parseFloat(row.querySelector("input[name='pagibig']").value) || 0,
                         mp2: parseFloat(row.querySelector("input[name='mp2']").value) || 0,
                         sss: parseFloat(row.querySelector("input[name='sss']").value) || 0,
+                        ret: parseFloat(row.querySelector("input[name='ret']").value) || 0,
+                        retirement: parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0,
                         canteen: parseFloat(row.querySelector("input[name='canteen']").value) || 0,
                         others: parseFloat(row.querySelector("input[name='others']").value) || 0,
-                        total_deduction: parseFloat(row.querySelector("td[name='total_deduction']").textContent) || 0,
-                        net_pay: parseFloat(row.querySelector("td[name='net_pay']").textContent) || 0,
+                        total_deduction: parseFloat(row.querySelector("td[name='total_deduction']").textContent.replace(/,/g, '')) || 0,
+                        net_pay: parseFloat(row.querySelector("td[name='net_pay']").textContent.replace(/,/g, '')) || 0,
                     };
+
                     data.push(rowData);
                 });
 
-                // Send data to server using AJAX
+                // Log the data to the console for debugging purposes
+                console.log(JSON.stringify(data, null, 2)); // Log the formatted data to the console
+
+                // Send data to the server using AJAX
                 fetch("cc-save.php", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
                         },
-                        body: JSON.stringify(data),
+                        body: JSON.stringify(data), // Send the data as a JSON string
                     })
                     .then(response => response.json())
                     .then(result => {
                         if (result.success) {
                             alert("Data saved successfully!");
-                            location.reload(); // This refreshes the page
+                            location.reload(); // Refresh the page after successful save
                         } else {
                             alert("Failed to save data: " + result.message);
                             console.error("Server Error: ", result.message); // Log server error message in the console
@@ -461,6 +501,8 @@ $result = $conn->query($sql);
                         alert("An error occurred while saving data.");
                     });
             });
+
+
         });
     </script>
 

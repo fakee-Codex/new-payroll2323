@@ -1,13 +1,101 @@
-Login attempt: Email = admin@gmail.comSQL executed. Rows found: 1User found: Array
-(
-    [id] => 1
-    [password] => asd
-    [email] => admin@gmail.com
-)
-Password verification failed for: admin@gmail.comLogin attempt: Email = admin@gmail.comSQL executed. Rows found: 1User found: Array
-(
-    [id] => 1
-    [password] => $2y$10$6lRgFyZ0YpMCGLG2HCw8C.YyjSN9k4m370O7Ofvn8nhKheqHCQnG2
-    [email] => admin@gmail.com
-)
-Password verification successful for user: admin@gmail.com
+<?php
+// cc-save.php
+require 'database_connection.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Decode the JSON data from the request body
+$data = json_decode(file_get_contents("php://input"), true);
+
+// Define log file path
+$log_file = 'error_log.txt'; 
+
+if ($data) {
+    // Process each row of data
+    foreach ($data as $row) {
+        // Extract data
+        $employee_id = $row['employee_id'];
+        $full_name = $row['full_name'];
+        $basic_salary = $row['basic_salary'];
+        $honorarium = $row['honorarium'];
+        $overload_hr = $row['overload_hr'];
+        $overload_rate = $row['overload_rate'];
+        $overload_total = $row['overload_total'];
+        $wr_hr = $row['wr_hr'];
+        $wr_rate = $row['wr_rate'];
+        $wr_total = $row['wr_total'];
+        $adjust_hr = $row['adjust_hr'];
+        $adjust_rate = $row['adjust_rate'];
+        $adjust_total = $row['adjust_total'];
+        $watch_hr = $row['watch_hr'];
+        $watch_rate = $row['watch_rate'];
+        $watch_total = $row['watch_total'];
+        $gross_pay = $row['gross_pay'];
+        $absent_late_hr = $row['absent_late_hr'];
+        $absent_late_rate = $row['absent_late_rate'];
+        $absent_late_total = $row['absent_late_total'];
+        $pagibig = $row['pagibig'];
+        $mp2 = $row['mp2'];
+        $canteen = $row['canteen'];
+        $others = $row['others'];
+        $total_deduction = $row['total_deduction'];
+        $net_pay = $row['net_pay'];
+
+        // Log extracted data
+        $log_data = "Employee ID: $employee_id, Full Name: $full_name, Basic Salary: $basic_salary, Net Pay: $net_pay\n";
+        file_put_contents('data_log.txt', $log_data, FILE_APPEND);
+
+        // Check if the employee_id already exists in the database
+        $check_sql = "SELECT employee_id FROM computation WHERE employee_id = '$employee_id'";
+        $check_result = $conn->query($check_sql);
+
+        if ($check_result && $check_result->num_rows > 0) {
+            // If the employee_id exists, update the data
+            $update_sql = "UPDATE computation SET
+                overload_rate = '$overload_rate', overload_total = '$overload_total', 
+                wr_hr = '$wr_hr', wr_rate = '$wr_rate', wr_total = '$wr_total', 
+                adjust_hr = '$adjust_hr', adjust_rate = '$adjust_rate', adjust_total = '$adjust_total', 
+                watch_hr = '$watch_hr', watch_rate = '$watch_rate', watch_total = '$watch_total', 
+                gross_pay = '$gross_pay', absent_late_hr = '$absent_late_hr', absent_late_rate = '$absent_late_rate', 
+                absent_late_total = '$absent_late_total', pagibig = '$pagibig', mp2 = '$mp2', 
+                canteen = '$canteen', others = '$others', total_deduction = '$total_deduction', net_pay = '$net_pay' 
+                WHERE employee_id = '$employee_id'";
+
+            if (!mysqli_query($conn, $update_sql)) {
+                $error_message = "Error updating employee ID $employee_id: " . mysqli_error($conn) . "\n";
+                file_put_contents($log_file, $error_message, FILE_APPEND);
+                echo json_encode(["success" => false, "message" => "Database update error"]);
+                exit;
+            }
+        } else {
+            // If employee_id does not exist, insert new data
+            $insert_sql = "INSERT INTO computation (
+                employee_id, overload_rate, overload_total, wr_hr, wr_rate, wr_total, 
+                adjust_hr, adjust_rate, adjust_total, watch_hr, watch_rate, watch_total, 
+                gross_pay, absent_late_hr, absent_late_rate, absent_late_total, pagibig, 
+                mp2, canteen, others, total_deduction, net_pay
+            ) VALUES (
+                '$employee_id', '$overload_rate', '$overload_total', '$wr_hr', '$wr_rate', '$wr_total', 
+                '$adjust_hr', '$adjust_rate', '$adjust_total', '$watch_hr', '$watch_rate', '$watch_total', 
+                '$gross_pay', '$absent_late_hr', '$absent_late_rate', '$absent_late_total', '$pagibig', 
+                '$mp2', '$canteen', '$others', '$total_deduction', '$net_pay'
+            )";
+
+            if (!mysqli_query($conn, $insert_sql)) {
+                $error_message = "Error inserting employee ID $employee_id: " . mysqli_error($conn) . "\n";
+                file_put_contents($log_file, $error_message, FILE_APPEND);
+                echo json_encode(["success" => false, "message" => "Database insert error"]);
+                exit;
+            }
+        }
+    }
+
+    // Send a success response
+    echo json_encode(["success" => true, "message" => "Data saved successfully"]);
+} else {
+    $error_message = "No data received\n";
+    file_put_contents($log_file, $error_message, FILE_APPEND);
+    echo json_encode(["success" => false, "message" => "No data received"]);
+}
+?>
