@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2025 at 12:06 PM
+-- Generation Time: Feb 23, 2025 at 01:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -48,12 +48,28 @@ CREATE TABLE `computation` (
   `pagibig` decimal(10,2) NOT NULL,
   `mp2` decimal(10,2) NOT NULL,
   `sss` decimal(10,0) NOT NULL,
+  `ret` decimal(10,2) NOT NULL,
   `canteen` decimal(10,2) NOT NULL,
   `others` decimal(10,2) NOT NULL,
   `total_deduction` decimal(10,2) NOT NULL,
   `net_pay` decimal(10,2) NOT NULL,
   `reg_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `computation`
+--
+
+INSERT INTO `computation` (`computation_id`, `employee_id`, `overload_rate`, `overload_total`, `wr_hr`, `wr_rate`, `wr_total`, `adjust_hr`, `adjust_rate`, `adjust_total`, `watch_hr`, `watch_rate`, `watch_total`, `gross_pay`, `absent_late_hr`, `absent_late_rate`, `absent_late_total`, `pagibig`, `mp2`, `sss`, `ret`, `canteen`, `others`, `total_deduction`, `net_pay`, `reg_date`) VALUES
+(39, 401, 3545.00, 435.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 14435.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 14435.00, '2025-02-23 12:00:26'),
+(40, 402, 5345.00, 200.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 45200.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 45200.00, '2025-02-23 12:00:26'),
+(41, 403, 6423.00, 1266.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 51266.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 51266.00, '2025-02-23 12:00:26'),
+(42, 404, 433.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 8345.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 8345.00, '2025-02-23 12:00:26'),
+(43, 423, 232.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 16000.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 16000.00, '2025-02-23 12:00:26'),
+(44, 424, 334.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 18100.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 18100.00, '2025-02-23 12:00:26'),
+(45, 425, 400.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 5353.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 5353.00, '2025-02-23 12:00:26'),
+(46, 441, 200.00, 9800.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 24000.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 24000.00, '2025-02-23 12:00:26'),
+(47, 444, 100.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 19000.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0, 0.00, 0.00, 0.00, 0.00, 19000.00, '2025-02-23 11:59:37');
 
 -- --------------------------------------------------------
 
@@ -73,16 +89,6 @@ CREATE TABLE `contributions` (
   `medical_savings` decimal(10,0) NOT NULL,
   `retirement` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `contributions`
---
-
-INSERT INTO `contributions` (`contributions_id`, `employee_id`, `sss_ee`, `pag_ibig_ee`, `philhealth_ee`, `sss_er`, `pag_ibig_er`, `philhealth_er`, `medical_savings`, `retirement`) VALUES
-(11, 401, 1350, 210, 750, 2850, 205, 750, 440, 480),
-(12, 402, 2250, 200, 1250, 4750, 200, 1250, 420, 360),
-(14, 404, 1575, 200, 875, 3325, 200, 875, 150, 530),
-(16, 423, 540, 200, 300, 1140, 200, 300, 800, 550);
 
 -- --------------------------------------------------------
 
@@ -139,7 +145,8 @@ INSERT INTO `employees` (`employee_id`, `first_name`, `last_name`, `suffix_title
 (423, 'MIley', 'Zyrus', '', 'full-time', 'Bao', 15000.00, 1000.00, 500, 232, 232, 144, '2025-02-01 05:07:37'),
 (424, 'Mykas', 'Lugan', '', 'full-time', 'Inventories', 18000.00, 100.00, 222, 334, 123, 173, '2025-02-04 02:35:06'),
 (425, 'Hazel', 'Pecodana', 'bayot', 'full-time', 'Yobmot', 5000.00, 353.00, 500, 400, 450, 48, '2025-02-07 03:22:24'),
-(441, 'Christian', 'Hermonio', 'Gay', 'full-time', 'Bayot', 13200.00, 1000.00, 3000, 200, 2300, 127, '2025-02-11 08:30:36');
+(441, 'Christian', 'Hermonio', 'Gay', 'full-time', 'Bayot', 13200.00, 1000.00, 3000, 200, 2300, 127, '2025-02-11 08:30:36'),
+(444, 'kliunsa', 'latkliunsa', 's', 'full-time', 'asd', 18000.00, 1000.00, 100, 100, 100, 173, '2025-02-23 10:27:22');
 
 -- --------------------------------------------------------
 
@@ -281,7 +288,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `computation`
 --
 ALTER TABLE `computation`
-  MODIFY `computation_id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `computation_id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `contributions`
@@ -299,7 +306,7 @@ ALTER TABLE `contribution_percentages`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=444;
+  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=445;
 
 --
 -- AUTO_INCREMENT for table `overload`

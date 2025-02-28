@@ -23,11 +23,11 @@ if ($data) {
         $adjust_rate = $row['adjust_rate'];
         $adjust_total = $row['adjust_total'];
         $watch_hr = $row['watch_hr'];
-        $watch_rate = $row['watch_rate'];
+        $watch_rate = $row['watch_reward'];
         $watch_total = $row['watch_total'];
         $gross_pay = $row['gross_pay'];
         $absent_late_hr = $row['absent_late_hr'];
-        $absent_late_rate = $row['absent_late_rate'];
+        $absent_late_rate = $row['absent_lateRate'];
         $absent_late_total = $row['absent_late_total'];
         $pagibig = $row['pagibig'];
         $mp2 = $row['mp2'];
@@ -93,4 +93,3 @@ if ($data) {
     // Send an error response if no data received
     echo json_encode(["success" => false, "message" => "No data received"]);
 }
-?>
