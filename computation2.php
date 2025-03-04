@@ -169,21 +169,25 @@ $result = $conn->query($sql);
                 <table id="crudTable" class="table-auto w-full">
                     <thead>
                         <tr>
-                            <th rowspan="2" class="p-2 bg-gray-200 sticky gg">Name</th> <!-- Name with Sticky -->
-                            <th colspan="2" class="p-2 bg-gray-200">Full-Time</th>
-                            <th colspan="2" class="p-2 bg-gray-200">Overloads</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">Total</th>
-                            <th colspan="3" class="p-2 bg-gray-200">CLOVES</th>
-                            <th colspan="3" class="p-2 bg-gray-200">Adjustment</th>
-                            <th colspan="3" class="p-2 bg-gray-200">Watch Reward</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">Gross Pay</th>
+                            <th rowspan="2" class="p-2 bg-amber-100 sticky gg ">Name</th> <!-- Name with Sticky -->
+                            <th colspan="2" class="p-2 bg-rose-400">Full-Time</th>
+                            <th colspan="2" class="p-2 bg-red-100">Overloads</th>
+                            <th rowspan="2" class="p-2 bg-red-100">Total</th>
+                            <th colspan="3" class="p-2 bg-pink-300">CLUBS</th>
+                            <th colspan="3" class="p-2 bg-indigo-200">Adjustment</th>
+                            <th colspan="3" class="p-2 bg-pink-100">Watch Reward</th>
+                            <th rowspan="2" class="p-2 bg-yellow-200">Gross Pay</th>
+
+
                             <th colspan="3" class="p-2 bg-gray-200">Absences/Late</th>
-                            <th colspan="4" class="p-2 bg-gray-200">Loans</th>
-                            <th colspan="1" class="p-2 bg-gray-200">Contributions</th>
+                            <th colspan="4" class="p-2 bg-green-200">Loans</th>
+
+                            <th colspan="1" class="p-2 bg-orange-200">Contributions</th>
+
                             <th rowspan="2" class="p-2 bg-gray-200">Canteen</th>
                             <th rowspan="2" class="p-2 bg-gray-200">Others</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">Total Deductions</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">Net Pay</th>
+                            <th rowspan="2" class="p-2 bg-blue-200">Total Deductions</th>
+                            <th rowspan="2" class="p-2 bg-red-300">Net Pay</th>
                             <th rowspan="2" class="p-2 bg-gray-200">Action</th>
 
                         </tr>
@@ -192,31 +196,34 @@ $result = $conn->query($sql);
 
 
                         <tr>
-                            <th class="p-2 bg-gray-200">Basic</th>
-                            <th class="p-2 bg-gray-200">Honorarium</th>
-                            <th class="p-2 bg-gray-200">HR</th>
-                            <th class="p-2 bg-gray-200">Rate</th>
+                            <th class="p-2 bg-teal-200">Basic</th>
+                            <th class="p-2 bg-cyan-200">Honorarium</th>
+                            <th class="p-2 bg-red-100">HR</th>
+                            <th class="p-2 bg-red-100">Rate</th>
+                            <th class="p-2 bg-pink-300">WR</th>
+                            <th class="p-2 bg-pink-300">Rate</th>
+                            <th class="p-2 bg-pink-300">Total</th>
+                            <th class="p-2 bg-indigo-200">HR</th>
+                            <th class="p-2 bg-indigo-200">Rate</th>
+                            <th class="p-2 bg-indigo-200">Total</th>
+                            <th class="p-2 bg-pink-100">HR</th>
+                            <th class="p-2 bg-pink-100">Rate</th>
+                            <th class="p-2 bg-pink-100">Total</th>
                             <th class="p-2 bg-gray-200">HR</th>
                             <th class="p-2 bg-gray-200">Rate</th>
                             <th class="p-2 bg-gray-200">Total</th>
-                            <th class="p-2 bg-gray-200">HR</th>
-                            <th class="p-2 bg-gray-200">Rate</th>
-                            <th class="p-2 bg-gray-200">Total</th>
-                            <th class="p-2 bg-gray-200">HR</th>
-                            <th class="p-2 bg-gray-200">Rate</th>
-                            <th class="p-2 bg-gray-200">Total</th>
-                            <th class="p-2 bg-gray-200">HR</th>
-                            <th class="p-2 bg-gray-200">Rate</th>
-                            <th class="p-2 bg-gray-200">Total</th>
-                            <th class="p-2 bg-gray-200">HDMF</th>
-                            <th class="p-2 bg-gray-200">MP2</th>
-                            <th class="p-2 bg-gray-200">SSS</th>
-
-                            <th class="p-2 bg-gray-200">RET.   </th>
+                            <th class="p-2 bg-green-200">HDMF</th>
+                            <th class="p-2 bg-green-200">MP2</th>
+                            <th class="p-2 bg-green-200">SSS</th>
+                            <th class="p-2 bg-green-200">RET.</th>
 
 
 
-                            <th class="p-2 bg-gray-200">RETIREMENT</th>
+
+
+
+                            <th class="p-2 bg-orange-200">RETIREMENT</th>
+
 
                         </tr>
                     </thead>
@@ -225,8 +232,9 @@ $result = $conn->query($sql);
                         if ($result && $result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td data-employee='{$row['employee_id']}' class='p-2 sticky gg' style='padding: 0.5rem; text-align: justify; border: 1px solid #ddd; white-space: nowrap; overflow: hidden;'>{$row['full_name']}</td>";
-
+                                echo "<td data-employee='{$row['employee_id']}' class='p-2 sticky gg' 
+                                style='padding: 0.5rem; text-align: justify; border: 1px solid #ddd; 
+                                white-space: nowrap; overflow: hidden; background-color: #fef3c7;'>{$row['full_name']}</td>";
 
                                 echo "<td class='p-2'>" . number_format($row['basic_salary'], 2) . "</td>"; // Basic Salary
                                 echo "<td class='p-2'>" . number_format($row['honorarium'], 2) . "</td>"; // Honorarium
@@ -234,29 +242,48 @@ $result = $conn->query($sql);
                                 echo "<td class='p-2'>" . number_format($row['overload_rate'], 2) . "</td>"; // Overload Rate
 
                                 echo "<td name='overload_total' class='p-2'>" . number_format($row['overload_total'], 2) . "</td>"; // Overload Total
-                                echo "<td><input type='number' name='wr_hr' class='editable-cell' value='{$row['wr_hr']}'></td>"; // WR HR
-                                echo "<td><input type='number' name='wr_rate' class='editable-cell' value='{$row['wr_rate']}'></td>"; // WR Rate
-                                echo "<td name='wr_total' class='p-2'>" . number_format($row['wr_total'], 2) . "</td>"; // WR Total
+                                echo "<td style='background-color: #f9a8d4;'>
+                                <input type='number' name='wr_hr' class='editable-cell' value='{$row['wr_hr']}'>
+                              </td>"; // WR HR
+
+                                echo "<td style='background-color: #f9a8d4;'>
+                                <input type='number' name='wr_rate' class='editable-cell' value='{$row['wr_rate']}'>
+                              </td>"; // WR Rate
+
+                                echo "<td name='wr_total' class='p-2' style='background-color: #f9a8d4;'>"
+                                    . number_format($row['wr_total'], 2) .
+                                    "</td>"; // WR Total
                                 echo "<td><input type='number' name='adjust_rate' class='editable-cell' value='{$row['adjust_rate']}'></td>"; // Adjust Rate
                                 echo "<td><input type='number' name='adjust_hr' class='editable-cell' value='{$row['adjust_hr']}'></td>"; // Adjust HR
                                 echo "<td name='adjust_total' class='p-2'>" . number_format($row['adjust_total'], 2) . "</td>"; // Adjust Total
                                 echo "<td><input type='number' name='watch_hr' class='editable-cell' value='{$row['watch_hr']}'></td>"; // Watch HR
                                 echo "<td><input type='number' name='watch_reward' class='editable-cell' value='{$row['watch_reward']}'></td>";
                                 echo "<td name='watch_total' class='p-2'>" . number_format($row['watch_total'], 2) . "</td>"; // Watch Total
-                                echo "<td name='gross_pay' class='p-2'>" . number_format($row['gross_pay'], 2) . "</td>"; // Gross Pay
+                                echo "<td name='gross_pay' class='p-2' style='background-color: #fef08a;'>"
+                                    . number_format($row['gross_pay'], 2) .
+                                    "</td>"; // Gross Pay
                                 echo "<td><input type='number' name='absent_late_hr' class='editable-cell' value='{$row['absent_late_hr']}'></td>"; // Absent Late HR
 
                                 echo "<td class='p-2' name='absent_lateRate'>" . number_format($row['absent_lateRate'], 2) . "</td>";
 
-                        
+
                                 echo "<td name='absent_late_total' class='p-2'>" . number_format(0.00, 2) . "</td>"; // Absent Late Total
 
-                                echo "<td><input type='number' name='pagibig' class='editable-cell' value='{$row['pagibig']}'></td>"; // Pagibig
-                                echo "<td><input type='number' name='mp2' class='editable-cell' value='{$row['mp2']}'></td>"; // MP2
-                                echo "<td><input type='number' name='sss' class='editable-cell' value='{$row['sss']}'></td>"; // MP2
+                                echo "<td style='background-color: #bbf7d0;'>
+                                <input type='number' name='pagibig' class='editable-cell' value='{$row['pagibig']}'>
+                              </td>"; // Pagibig
 
-                                echo "<td><input type='number' name='ret' class='editable-cell' value='{$row['ret']}'></td>"; // MP2
+                                echo "<td style='background-color: #bbf7d0;'>
+                                <input type='number' name='mp2' class='editable-cell' value='{$row['mp2']}'>
+                              </td>"; // MP2
 
+                                echo "<td style='background-color: #bbf7d0;'>
+                                <input type='number' name='sss' class='editable-cell' value='{$row['sss']}'>
+                              </td>"; // SSS
+
+                                echo "<td style='background-color: #bbf7d0;'>
+                                <input type='number' name='ret' class='editable-cell' value='{$row['ret']}'>
+                              </td>"; // RET
 
 
 
@@ -377,23 +404,25 @@ $result = $conn->query($sql);
                 const sss = parseFloat(row.querySelector("input[name='sss']").value) || 0;
                 const ret = parseFloat(row.querySelector("input[name='ret']").value) || 0;
 
-               
+
+                // const pagibigTotal = parseFloat(row.querySelector("td:nth-child(22)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
+                // const medicalSavings = parseFloat(row.querySelector("td:nth-child(23)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
+                // const sssTotal = parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
+                const retirement = parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
+
+
+
+
                 const canteen = parseFloat(row.querySelector("input[name='canteen']").value) || 0;
                 const others = parseFloat(row.querySelector("input[name='others']").value) || 0;
-                const pagibigTotal = parseFloat(row.querySelector("td:nth-child(22)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
-                const medicalSavings = parseFloat(row.querySelector("td:nth-child(23)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
-                const sssTotal = parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
-                const retirement = parseFloat(row.querySelector("td:nth-child(25)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
-
-                const philhealthTotal = parseFloat(row.querySelector("td:nth-child(26)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
 
                 // Calculate totals
                 const wrTotal = wrHR * wrRate;
                 const adjustmentTotal = adjustmentHR * adjustmentRate;
                 const watchRewardTotal = watchHR * watchReward;
 
-                const totalContributions = pagibigTotal + medicalSavings + sssTotal + ret + retirement + philhealthTotal;
-                const totalDeduction = absentLateTotal + pagibig + mp2 + sss + ret + retirement + totalContributions + canteen + others;
+                const totalLoans = pagibig + mp2 + sss + ret;
+                const totalDeduction = absentLateTotal + totalLoans + retirement + canteen + others;
 
                 const basicSalary = parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
                 const honorarium = parseFloat(row.querySelector("td:nth-child(3)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
@@ -401,18 +430,40 @@ $result = $conn->query($sql);
                 const netPay = grossPay - totalDeduction;
 
 
-                
+
                 // alert(`Absent Late Hr: ${absentLateHR}\nAbsent Late Rate: ${absentLateRate}\nAbsent Late Total: ${absentLateTotal}\nPagibig: ${pagibig}\nMp2: ${mp2}\nSss: ${sss}\nRet: ${ret} \nRetirement: ${retirement} \nCanteen: ${canteen} \nOthers: ${others} \nTotal Deduction: ${totalDeduction}` );
 
 
                 // Update calculated values in the table
-                row.querySelector("td[name='overload_total']").textContent = overloadTotal.toFixed(2);
-                row.querySelector("td[name='wr_total']").textContent = wrTotal.toFixed(2);
-                row.querySelector("td[name='adjust_total']").textContent = adjustmentTotal.toFixed(2);
-                row.querySelector("td[name='watch_total']").textContent = watchRewardTotal.toFixed(2);
-                row.querySelector("td[name='gross_pay']").textContent = grossPay.toFixed(2);
-                row.querySelector("td[name='total_deduction']").textContent = totalDeduction.toFixed(2);
-                row.querySelector("td[name='net_pay']").textContent = netPay.toFixed(2);
+                row.querySelector("td[name='overload_total']").textContent = overloadTotal.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                row.querySelector("td[name='wr_total']").textContent = wrTotal.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                row.querySelector("td[name='adjust_total']").textContent = adjustmentTotal.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                row.querySelector("td[name='watch_total']").textContent = watchRewardTotal.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+                row.querySelector("td[name='gross_pay']").textContent = grossPay.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                row.querySelector("td[name='total_deduction']").textContent = totalDeduction.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                row.querySelector("td[name='net_pay']").textContent = netPay.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
             }
 
             // Trigger calculation when the page loads
@@ -475,11 +526,13 @@ $result = $conn->query($sql);
                     data.push(rowData);
                 });
 
-                // Log the data to the console for debugging purposes
-                console.log(JSON.stringify(data, null, 2)); // Log the formatted data to the console
 
-                // Send data to the server using AJAX
-                fetch("cc-save.php", {
+
+                if (confirm("Are you sure you want to save this data?"))
+
+
+                    // Send data to the server using AJAX
+                    fetch("cc-save.php", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",

@@ -11,11 +11,8 @@ main {
   padding: 20px;
   transition: margin-left 0.5s ease;
   min-height: 100vh;
-  background: linear-gradient(
-    135deg,
-    #56405f,
-    #39879e
-  ); /* Background color for better visibility */
+  background: rgb(192, 176, 176);
+
 }
 
 .sidebar {

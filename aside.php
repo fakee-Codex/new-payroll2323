@@ -59,9 +59,10 @@
             <span class="tooltip">Overload</span>
         </li>
         <li>
-            <a href="">
-                <i class='bx bx-cog'></i>
-                <span class="links_name">Settings</span>
+            <a href="super_print.php">
+                <i class='bx bx-printer'></i>
+                
+                <span class="links_name">Print Payslips</span>
             </a>
             <span class="tooltip">Settings</span>
         </li>

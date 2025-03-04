@@ -202,7 +202,7 @@ $conn->close();
                                 <span class="input-group-text"></span>
                                 <input type="number" step="0.01" name="medical_savings" id="medical_savings"
                                     class="form-control form-control-sm border-primary text-center"
-                                    placeholder="Medical" style="max-width: 150px;" required>
+                                    placeholder="Medical" style="max-width: 150px;">
                             </div>
                         </div>
 
@@ -213,7 +213,7 @@ $conn->close();
                                 <span class="input-group-text"></span>
                                 <input type="number" step="0.01" name="retirement" id="retirement"
                                     class="form-control form-control-sm border-primary text-center"
-                                    placeholder="Retirement" style="max-width: 150px;" required>
+                                    placeholder="Retirement" style="max-width: 150px;">
                             </div>
                         </div>
                     </div>

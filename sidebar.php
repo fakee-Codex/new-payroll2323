@@ -73,6 +73,8 @@ $result = $conn->query($sql);
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
+
+
     <style>
         /* Custom Tailwind style for table and button */
         .table-wrapper {
@@ -176,54 +178,60 @@ $result = $conn->query($sql);
                 <table id="crudTable" class="table-auto w-full">
                     <thead>
                         <tr>
-                            <th rowspan="2" class="p-2 bg-gray-200 sticky gg ">Name</th> <!-- Name with Sticky -->
-                            <th colspan="2" class="p-2 bg-gray-200">Full-Time</th>
-                            <th colspan="2" class="p-2 bg-gray-200">Overloads</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">Total</th>
-                            <th colspan="3" class="p-2 bg-gray-200">CLOVES</th>
-                            <th colspan="3" class="p-2 bg-gray-200">Adjustment</th>
-                            <th colspan="3" class="p-2 bg-gray-200">Watch Reward</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">Gross Pay</th>
+                            <th rowspan="2" class="p-2 bg-amber-100 sticky gg ">Name</th> <!-- Name with Sticky -->
+                            <th colspan="2" class="p-2 bg-rose-400">Full-Time</th>
+                            <th colspan="2" class="p-2 bg-red-100">Overloads</th>
+                            <th rowspan="2" class="p-2 bg-red-100">Total</th>
+                            <th colspan="3" class="p-2 bg-pink-300">CLUBS</th>
+                            <th colspan="3" class="p-2 bg-indigo-200">Adjustment</th>
+                            <th colspan="3" class="p-2 bg-pink-100">Watch Reward</th>
+                            <th rowspan="2" class="p-2 bg-yellow-200">Gross Pay</th>
+
+
                             <th colspan="3" class="p-2 bg-gray-200">Absences/Late</th>
-                            <th colspan="3" class="p-2 bg-gray-200">Loans</th>
-                            <th colspan="5" class="p-2 bg-gray-200">Contributions</th>
+                            <th colspan="3" class="p-2 bg-green-200">Loans</th>
+
+                            <th colspan="5" class="p-2 bg-orange-200">Contributions</th>
+
                             <th rowspan="2" class="p-2 bg-gray-200">Canteen</th>
                             <th rowspan="2" class="p-2 bg-gray-200">Others</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">Total Deductions</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">Net Pay</th>
+                            <th rowspan="2" class="p-2 bg-blue-200">Total Deductions</th>
+                            <th rowspan="2" class="p-2 bg-red-300">Net Pay</th>
                             <th rowspan="2" class="p-2 bg-gray-200">Action</th>
 
                         </tr>
                         <tr>
-                            <th class="p-2 bg-gray-200">Basic</th>
-                            <th class="p-2 bg-gray-200">Honorarium</th>
-                            <th class="p-2 bg-gray-200">HR</th>
-                            <th class="p-2 bg-gray-200">Rate</th>
+                            <th class="p-2 bg-teal-200">Basic</th>
+                            <th class="p-2 bg-cyan-200">Honorarium</th>
+                            <th class="p-2 bg-red-100">HR</th>
+                            <th class="p-2 bg-red-100">Rate</th>
+                            <th class="p-2 bg-pink-300">WR</th>
+                            <th class="p-2 bg-pink-300">Rate</th>
+                            <th class="p-2 bg-pink-300">Total</th>
+                            <th class="p-2 bg-indigo-200">HR</th>
+                            <th class="p-2 bg-indigo-200">Rate</th>
+                            <th class="p-2 bg-indigo-200">Total</th>
+                            <th class="p-2 bg-pink-100">HR</th>
+                            <th class="p-2 bg-pink-100">Rate</th>
+                            <th class="p-2 bg-pink-100">Total</th>
                             <th class="p-2 bg-gray-200">HR</th>
                             <th class="p-2 bg-gray-200">Rate</th>
                             <th class="p-2 bg-gray-200">Total</th>
-                            <th class="p-2 bg-gray-200">HR</th>
-                            <th class="p-2 bg-gray-200">Rate</th>
-                            <th class="p-2 bg-gray-200">Total</th>
-                            <th class="p-2 bg-gray-200">HR</th>
-                            <th class="p-2 bg-gray-200">Rate</th>
-                            <th class="p-2 bg-gray-200">Total</th>
-                            <th class="p-2 bg-gray-200">HR</th>
-                            <th class="p-2 bg-gray-200">Rate</th>
-                            <th class="p-2 bg-gray-200">Total</th>
-                            <th class="p-2 bg-gray-200">HDMF</th>
-                            <th class="p-2 bg-gray-200">MP2</th>
-                            <th class="p-2 bg-gray-200">SSS</th>
+                            <th class="p-2 bg-green-200">HDMF</th>
+                            <th class="p-2 bg-green-200">MP2</th>
+                            <th class="p-2 bg-green-200">SSS</th>
 
 
 
 
 
-                            <th class="p-2 bg-gray-200">MED.S</th>
-                            <th class="p-2 bg-gray-200">SSS</th>
-                            <th class="p-2 bg-gray-200">RET.</th>
-                            <th class="p-2 bg-gray-200">P-IBIG</th>
-                            <th class="p-2 bg-gray-200">PHIC</th>
+
+                            <th class="p-2 bg-orange-200">MED.S</th>
+                            <th class="p-2 bg-orange-200">SSS</th>
+                            <th class="p-2 bg-orange-200">RETIREMENT</th>
+                            <th class="p-2 bg-orange-200">P-IBIG</th>
+                            <th class="p-2 bg-orange-200">PHIC</th>
+
 
                         </tr>
                     </thead>
@@ -246,7 +254,11 @@ $result = $conn->query($sql);
                                 echo "<td><input type='number' name='adjust_hr' class='editable-cell' value='{$row['adjust_hr']}'></td>"; // Adjust HR
                                 echo "<td name='adjust_total' class='p-2'>" . number_format($row['adjust_total'], 2) . "</td>"; // Adjust Total
                                 echo "<td><input type='number' name='watch_hr' class='editable-cell' value='{$row['watch_hr']}'></td>"; // Watch HR
-                                echo "<td><input type='number' name='watch_reward' class='editable-cell' value='{$row['watch_reward']}'></td>";
+
+
+
+                                echo "<td class='p-2' name='watch_reward'>" . number_format($row['watch_reward'], 2) . "</td>";
+
                                 echo "<td name='watch_total' class='p-2'>" . number_format($row['watch_total'], 2) . "</td>"; // Watch Total
                                 echo "<td name='gross_pay' class='p-2'>" . number_format($row['gross_pay'], 2) . "</td>"; // Gross Pay
                                 echo "<td><input type='number' name='absent_late_hr' class='editable-cell' value='{$row['absent_late_hr']}'></td>"; // Absent Late HR
@@ -260,10 +272,13 @@ $result = $conn->query($sql);
                                 echo "<td><input type='number' name='pagibig' class='editable-cell' value='{$row['pagibig']}'></td>"; // Pagibig
                                 echo "<td><input type='number' name='mp2' class='editable-cell' value='{$row['mp2']}'></td>"; // MP2
                                 echo "<td><input type='number' name='sss' class='editable-cell' value='{$row['sss']}'></td>"; // MP2
-                                echo "<td class='p-2'>" . number_format($row['pag_ibig_total'], 2) . "</td>"; // Pag-ibig Total
+
                                 echo "<td class='p-2'>" . number_format($row['medical_savings'], 2) . "</td>"; // Medical Savings
                                 echo "<td class='p-2'>" . number_format($row['sss_total'], 2) . "</td>"; // SSS Total
+
                                 echo "<td class='p-2'>" . number_format($row['retirement'], 2) . "</td>"; // Retirement
+
+                                echo "<td class='p-2'>" . number_format($row['pag_ibig_total'], 2) . "</td>"; // Pag-ibig Total
                                 echo "<td class='p-2'>" . number_format($row['philhealth_total'], 2) . "</td>"; // Philhealth Total
                                 echo "<td><input type='number' name='canteen' class='editable-cell' value='{$row['canteen']}'></td>"; // Canteen
                                 echo "<td><input type='number' name='others' class='editable-cell' value='{$row['others']}'></td>"; // Others
@@ -336,146 +351,183 @@ $result = $conn->query($sql);
             const saveButton = document.getElementById("saveTableBtn");
 
             function calculateRow(row) {
-    const overloadHR = parseFloat(row.querySelector("td:nth-child(4)").textContent.replace(/,/g, '')) || 0;
-    const overloadRate = parseFloat(row.querySelector("td:nth-child(5)").textContent.replace(/,/g, '')) || 0;
+                const overloadHR = parseFloat(row.querySelector("td:nth-child(4)").textContent.replace(/,/g, '')) || 0;
+                const overloadRate = parseFloat(row.querySelector("td:nth-child(5)").textContent.replace(/,/g, '')) || 0;
 
-    const overloadTotal = overloadHR * overloadRate;
+                const overloadTotal = overloadHR * overloadRate;
 
-    row.querySelector("td[name='overload_total']").textContent = overloadTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                row.querySelector("td[name='overload_total']").textContent = overloadTotal.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
 
-    const adjustmentHR = parseFloat(row.querySelector("input[name='adjust_hr']").value) || 0;
-    const adjustmentRate = parseFloat(row.querySelector("input[name='adjust_rate']").value) || 0;
-    const wrHR = parseFloat(row.querySelector("input[name='wr_hr']").value) || 0;
-    const wrRate = parseFloat(row.querySelector("input[name='wr_rate']").value) || 0;
-    const watchHR = parseFloat(row.querySelector("input[name='watch_hr']").value) || 0;
-    const watchReward = parseFloat(row.querySelector("input[name='watch_reward']").value) || 0;
-    
-    const absentLateHR = parseFloat(row.querySelector("input[name='absent_late_hr']").value.trim()) || 0;
-    const absentLateRate = parseFloat(row.querySelector("td[name='absent_lateRate']").textContent.replace(/,/g, '').trim()) || 0;
-    
-    const absentLateTotal = absentLateHR * absentLateRate;
-    row.querySelector("td[name='absent_late_total']").textContent = absentLateTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                const adjustmentHR = parseFloat(row.querySelector("input[name='adjust_hr']").value) || 0;
+                const adjustmentRate = parseFloat(row.querySelector("input[name='adjust_rate']").value) || 0;
+                const wrHR = parseFloat(row.querySelector("input[name='wr_hr']").value) || 0;
+                const wrRate = parseFloat(row.querySelector("input[name='wr_rate']").value) || 0;
+                const watchHR = parseFloat(row.querySelector("input[name='watch_hr']").value) || 0;
 
-    const pagibig = parseFloat(row.querySelector("input[name='pagibig']").value) || 0;
-    const mp2 = parseFloat(row.querySelector("input[name='mp2']").value) || 0;
-    const sss = parseFloat(row.querySelector("input[name='sss']").value) || 0;
-    const canteen = parseFloat(row.querySelector("input[name='canteen']").value) || 0;
-    const others = parseFloat(row.querySelector("input[name='others']").value) || 0;
+                const watchReward = parseFloat(row.querySelector("td[name='watch_reward']").textContent.replace(/,/g, '').trim()) || 0;
 
-    const pagibigTotal = parseFloat(row.querySelector("td:nth-child(22)").textContent.replace(/,/g, '')) || 0;
-    const medicalSavings = parseFloat(row.querySelector("td:nth-child(23)").textContent.replace(/,/g, '')) || 0;
-    const sssTotal = parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0;
-    const retirement = parseFloat(row.querySelector("td:nth-child(25)").textContent.replace(/,/g, '')) || 0;
-    const philhealthTotal = parseFloat(row.querySelector("td:nth-child(26)").textContent.replace(/,/g, '')) || 0;
 
-    const wrTotal = wrHR * wrRate;
-    const adjustmentTotal = adjustmentHR * adjustmentRate;
-    const watchRewardTotal = watchHR * watchReward;
+                const absentLateHR = parseFloat(row.querySelector("input[name='absent_late_hr']").value.trim()) || 0;
+                const absentLateRate = parseFloat(row.querySelector("td[name='absent_lateRate']").textContent.replace(/,/g, '').trim()) || 0;
 
-    const totalContributions = pagibigTotal + medicalSavings + sssTotal + retirement + philhealthTotal;
-    const totalDeduction = absentLateTotal + pagibig + mp2 + sss + totalContributions + canteen + others;
+                const absentLateTotal = absentLateHR * absentLateRate;
+                row.querySelector("td[name='absent_late_total']").textContent = absentLateTotal.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
 
-    const basicSalary = parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0;
-    const honorarium = parseFloat(row.querySelector("td:nth-child(3)").textContent.replace(/,/g, '')) || 0;
-    const grossPay = basicSalary + honorarium + overloadTotal + wrTotal + adjustmentTotal + watchRewardTotal;
-    const netPay = grossPay - totalDeduction;
+                const pagibig = parseFloat(row.querySelector("input[name='pagibig']").value) || 0;
+                const mp2 = parseFloat(row.querySelector("input[name='mp2']").value) || 0;
+                const sss = parseFloat(row.querySelector("input[name='sss']").value) || 0;
 
-    row.querySelector("td[name='overload_total']").textContent = overloadTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    row.querySelector("td[name='wr_total']").textContent = wrTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    row.querySelector("td[name='adjust_total']").textContent = adjustmentTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    row.querySelector("td[name='watch_total']").textContent = watchRewardTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    
-    row.querySelector("td[name='gross_pay']").textContent = grossPay.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    row.querySelector("td[name='total_deduction']").textContent = totalDeduction.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    row.querySelector("td[name='net_pay']").textContent = netPay.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+                const medicalSavings = parseFloat(row.querySelector("td:nth-child(23)").textContent.replace(/,/g, '')) || 0;
+                const sssTotal = parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0;
+                const retirement = parseFloat(row.querySelector("td:nth-child(25)").textContent.replace(/,/g, '')) || 0;
+                const pagibigTotal = parseFloat(row.querySelector("td:nth-child(26)").textContent.replace(/,/g, '')) || 0;
+                const philhealthTotal = parseFloat(row.querySelector("td:nth-child(27)").textContent.replace(/,/g, '')) || 0;
 
-// Trigger calculation when the page loads
-function calculateAllRows() {
-    const rows = document.querySelectorAll("#crudTable tbody tr");
-    rows.forEach(row => {
-        calculateRow(row);
-    });
-}
 
-// Calculate all rows once the page is loaded
-calculateAllRows();
 
-// Attach input event listener to editable cells
-document.querySelectorAll(".editable-cell").forEach(cell => {
-    cell.addEventListener("input", function() {
-        const row = this.closest("tr");
-        calculateRow(row);
-    });
-});
+                const canteen = parseFloat(row.querySelector("input[name='canteen']").value) || 0;
+                const others = parseFloat(row.querySelector("input[name='others']").value) || 0;
+
+                const wrTotal = wrHR * wrRate;
+                const adjustmentTotal = adjustmentHR * adjustmentRate;
+                const watchRewardTotal = watchHR * watchReward;
+
+                const totalContributions = medicalSavings + sssTotal + retirement + pagibigTotal + philhealthTotal;
+                const totalDeduction = absentLateTotal + pagibig + mp2 + sss + totalContributions + canteen + others;
+
+                const basicSalary = parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0;
+                const honorarium = parseFloat(row.querySelector("td:nth-child(3)").textContent.replace(/,/g, '')) || 0;
+                const grossPay = basicSalary + honorarium + overloadTotal + wrTotal + adjustmentTotal + watchRewardTotal;
+                const netPay = grossPay - totalDeduction;
+
+                row.querySelector("td[name='overload_total']").textContent = overloadTotal.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                row.querySelector("td[name='wr_total']").textContent = wrTotal.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                row.querySelector("td[name='adjust_total']").textContent = adjustmentTotal.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                row.querySelector("td[name='watch_total']").textContent = watchRewardTotal.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+                row.querySelector("td[name='gross_pay']").textContent = grossPay.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                row.querySelector("td[name='total_deduction']").textContent = totalDeduction.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                row.querySelector("td[name='net_pay']").textContent = netPay.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            }
+
+            // Trigger calculation when the page loads
+            function calculateAllRows() {
+                const rows = document.querySelectorAll("#crudTable tbody tr");
+                rows.forEach(row => {
+                    calculateRow(row);
+                });
+            }
+
+            // Calculate all rows once the page is loaded
+            calculateAllRows();
+
+            // Attach input event listener to editable cells
+            document.querySelectorAll(".editable-cell").forEach(cell => {
+                cell.addEventListener("input", function() {
+                    const row = this.closest("tr");
+                    calculateRow(row);
+                });
+            });
 
 
             // Save table data
             saveButton.addEventListener("click", function() {
-    const rows = document.querySelectorAll("#crudTable tbody tr");
-    const data = [];
+                const rows = document.querySelectorAll("#crudTable tbody tr");
+                const data = [];
 
-    rows.forEach(row => {
-        const rowData = {
-            employee_id: row.querySelector("td[data-employee]").getAttribute("data-employee") || 0, // Default employee_id to 0
-            full_name: row.querySelector("td[data-employee]").textContent || "", // Ensure full_name is set to an empty string if empty
-            basic_salary: parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0, 
-            honorarium: parseFloat(row.querySelector("td:nth-child(3)").textContent.replace(/,/g, '')) || 0,
-            overload_hr: parseFloat(row.querySelector("td:nth-child(4)").textContent.replace(/,/g, '')) || 0, 
-            overload_rate: parseFloat(row.querySelector("td:nth-child(5)").textContent.replace(/,/g, '')) || 0, 
-            overload_total: parseFloat(row.querySelector("td[name='overload_total']").textContent.replace(/,/g, '')) || 0,
-            wr_hr: parseFloat(row.querySelector("input[name='wr_hr']").value) || 0,
-            wr_rate: parseFloat(row.querySelector("input[name='wr_rate']").value) || 0,
-            wr_total: parseFloat(row.querySelector("td[name='wr_total']").textContent.replace(/,/g, '')) || 0,
-            adjust_hr: parseFloat(row.querySelector("input[name='adjust_hr']").value) || 0,
-            adjust_rate: parseFloat(row.querySelector("input[name='adjust_rate']").value) || 0,
-            adjust_total: parseFloat(row.querySelector("td[name='adjust_total']").textContent.replace(/,/g, '')) || 0, 
-            watch_hr: parseFloat(row.querySelector("input[name='watch_hr']").value) || 0,
-            watch_reward: parseFloat(row.querySelector("input[name='watch_reward']").value) || 0,
-            watch_total: parseFloat(row.querySelector("td[name='watch_total']").textContent.replace(/,/g, '')) || 0,
-            gross_pay: parseFloat(row.querySelector("td[name='gross_pay']").textContent.replace(/,/g, '')) || 0, // Fixed extra period
-            absent_late_hr: parseFloat(row.querySelector("input[name='absent_late_hr']").value) || 0,
-            absent_lateRate: parseFloat(row.querySelector("td[name='absent_lateRate']").textContent.replace(/,/g, '')) || 0, // Fixed `.value`
-            absent_late_total: parseFloat(row.querySelector("td[name='absent_late_total']").textContent.replace(/,/g, '')) || 0, // Fixed extra period
-            pagibig: parseFloat(row.querySelector("input[name='pagibig']").value) || 0,
-            mp2: parseFloat(row.querySelector("input[name='mp2']").value) || 0,
-            sss: parseFloat(row.querySelector("input[name='sss']").value) || 0,
-            canteen: parseFloat(row.querySelector("input[name='canteen']").value) || 0,
-            others: parseFloat(row.querySelector("input[name='others']").value) || 0,
-            total_deduction: parseFloat(row.querySelector("td[name='total_deduction']").textContent.replace(/,/g, '')) || 0, 
-            net_pay: parseFloat(row.querySelector("td[name='net_pay']").textContent.replace(/,/g, '')) || 0
-        };
-        data.push(rowData);
-    });
+                rows.forEach(row => {
+                    const rowData = {
+                        employee_id: row.querySelector("td[data-employee]").getAttribute("data-employee") || 0, // Default employee_id to 0
+                        full_name: row.querySelector("td[data-employee]").textContent || "", // Ensure full_name is set to an empty string if empty
+                        basic_salary: parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0,
+                        honorarium: parseFloat(row.querySelector("td:nth-child(3)").textContent.replace(/,/g, '')) || 0,
+                        overload_hr: parseFloat(row.querySelector("td:nth-child(4)").textContent.replace(/,/g, '')) || 0,
+                        overload_rate: parseFloat(row.querySelector("td:nth-child(5)").textContent.replace(/,/g, '')) || 0,
+                        overload_total: parseFloat(row.querySelector("td[name='overload_total']").textContent.replace(/,/g, '')) || 0,
+                        wr_hr: parseFloat(row.querySelector("input[name='wr_hr']").value) || 0,
+                        wr_rate: parseFloat(row.querySelector("input[name='wr_rate']").value) || 0,
+                        wr_total: parseFloat(row.querySelector("td[name='wr_total']").textContent.replace(/,/g, '')) || 0,
+                        adjust_hr: parseFloat(row.querySelector("input[name='adjust_hr']").value) || 0,
+                        adjust_rate: parseFloat(row.querySelector("input[name='adjust_rate']").value) || 0,
+                        adjust_total: parseFloat(row.querySelector("td[name='adjust_total']").textContent.replace(/,/g, '')) || 0,
+                        watch_hr: parseFloat(row.querySelector("input[name='watch_hr']").value) || 0,
 
-    // alert("Collected Data: \n" + JSON.stringify(data, null, 2));
+                        watch_reward: parseFloat(row.querySelector("td[name='watch_reward']").textContent.replace(/,/g, '')) || 0, // Fixed `.value`
 
-    if (confirm("Are you sure you want to save this data?")) {
-// Send data to server using AJAX
-fetch("cc-save.php", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-    })
-    .then(response => response.json())
-    .then(result => {
-        if (result.success) {
-            alert("Data saved successfully!");
-            location.reload(); // This refreshes the page
-        } else {
-            alert("Failed to save data: " + result.message);
-            console.error("Server Error: ", result.message);
-        }
-    })
-    .catch(error => {
-        console.error("Error occurred while sending request:", error);
-        alert("An error occurred while saving data.");
-    });    }
 
-    
-});
+
+                        watch_total: parseFloat(row.querySelector("td[name='watch_total']").textContent.replace(/,/g, '')) || 0,
+                        gross_pay: parseFloat(row.querySelector("td[name='gross_pay']").textContent.replace(/,/g, '')) || 0, // Fixed extra period
+                        absent_late_hr: parseFloat(row.querySelector("input[name='absent_late_hr']").value) || 0,
+                        absent_lateRate: parseFloat(row.querySelector("td[name='absent_lateRate']").textContent.replace(/,/g, '')) || 0, // Fixed `.value`
+                        absent_late_total: parseFloat(row.querySelector("td[name='absent_late_total']").textContent.replace(/,/g, '')) || 0, // Fixed extra period
+                        pagibig: parseFloat(row.querySelector("input[name='pagibig']").value) || 0,
+                        mp2: parseFloat(row.querySelector("input[name='mp2']").value) || 0,
+                        sss: parseFloat(row.querySelector("input[name='sss']").value) || 0,
+                        canteen: parseFloat(row.querySelector("input[name='canteen']").value) || 0,
+                        others: parseFloat(row.querySelector("input[name='others']").value) || 0,
+                        total_deduction: parseFloat(row.querySelector("td[name='total_deduction']").textContent.replace(/,/g, '')) || 0,
+                        net_pay: parseFloat(row.querySelector("td[name='net_pay']").textContent.replace(/,/g, '')) || 0
+                    };
+                    data.push(rowData);
+                });
+
+                // alert("Collected Data: \n" + JSON.stringify(data, null, 2));
+
+                if (confirm("Are you sure you want to save this data?")) {
+                    // Send data to server using AJAX
+                    fetch("cc-save.php", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(data),
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                            if (result.success) {
+                                alert("Data saved successfully!");
+                                location.reload(); // This refreshes the page
+                            } else {
+                                alert("Failed to save data: " + result.message);
+                                console.error("Server Error: ", result.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error occurred while sending request:", error);
+                            alert("An error occurred while saving data.");
+                        });
+                }
+
+
+            });
 
         });
     </script>
