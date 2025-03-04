@@ -12,35 +12,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if email and password are not empty
     if (!empty($email) && !empty($password)) {
         // Fetch user details from the database
-        $sql = "SELECT password, email FROM users WHERE email = ?";
+        $sql = "SELECT id, password FROM users WHERE email = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('s', $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        
+        if ($stmt) {
+            $stmt->bind_param('s', $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
+            if ($result->num_rows > 0) {
+                $user = $result->fetch_assoc();
 
-            // Verify the password
-            if (password_verify($password, $user['password'])) {
-                // Store user session details
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['email'] = $user['email'];
+                // Verify the password
+                if (password_verify($password, $user['password'])) {
+                    // Store user session details
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['email'] = $email;
 
-                // Redirect to dashboard
-                header("Location: dashboard.php");
-                exit;
-            } else {
-                $error_message = "Invalid email or password.";
+                    // Redirect to dashboard
+                    header("Location: dashboard.php");
+                    exit;
+                }
             }
+
+            $error_message = "Invalid email or password."; // Generic message
         } else {
-            $error_message = "User not found.";
+            $error_message = "Database error. Please try again later.";
         }
     } else {
         $error_message = "Please enter email and password.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
