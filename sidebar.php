@@ -70,10 +70,9 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
 
+    
 
     <style>
         /* Custom Tailwind style for table and button */
@@ -177,63 +176,56 @@ $result = $conn->query($sql);
             <div class="table-wrapper">
                 <table id="crudTable" class="table-auto w-full">
                     <thead>
-                        <tr>
-                            <th rowspan="2" class="p-2 bg-amber-100 sticky gg ">Name</th> <!-- Name with Sticky -->
-                            <th colspan="2" class="p-2 bg-rose-400">Full-Time</th>
-                            <th colspan="2" class="p-2 bg-red-100">Overloads</th>
-                            <th rowspan="2" class="p-2 bg-red-100">Total</th>
-                            <th colspan="3" class="p-2 bg-pink-300">CLUBS</th>
-                            <th colspan="3" class="p-2 bg-indigo-200">Adjustment</th>
-                            <th colspan="3" class="p-2 bg-pink-100">Watch Reward</th>
-                            <th rowspan="2" class="p-2 bg-yellow-200">Gross Pay</th>
+                    <tr>
+    <th rowspan="2" class="p-2 bg-warning position-sticky top-0">Name</th> <!-- Sticky Name -->
+    <th colspan="2" class="p-2 bg-danger text-white">Full-Time</th>
+    <th colspan="2" class="p-2 bg-light">Overloads</th>
+    <th rowspan="2" class="p-2 bg-light">Total</th>
+    <th colspan="3" class="p-2 bg-danger-subtle">CLUBS</th>
+    <th colspan="3" class="p-2 bg-primary-subtle">Adjustment</th>
+    <th colspan="3" class="p-2 bg-danger-subtle">Watch Reward</th>
+    <th rowspan="2" class="p-2 bg-warning">Gross Pay</th>
 
+    <th colspan="3" class="p-2 bg-secondary">Absences/Late</th>
+    <th colspan="3" class="p-2 bg-success">Loans</th>
 
-                            <th colspan="3" class="p-2 bg-gray-200">Absences/Late</th>
-                            <th colspan="3" class="p-2 bg-green-200">Loans</th>
+    <th colspan="5" class="p-2 bg-warning">Contributions</th>
 
-                            <th colspan="5" class="p-2 bg-orange-200">Contributions</th>
+    <th rowspan="2" class="p-2 bg-secondary">Canteen</th>
+    <th rowspan="2" class="p-2 bg-secondary">Others</th>
+    <th rowspan="2" class="p-2 bg-info">Total Deductions</th>
+    <th rowspan="2" class="p-2 bg-danger">Net Pay</th>
+    <th rowspan="2" class="p-2 bg-secondary">Action</th>
+</tr>
 
-                            <th rowspan="2" class="p-2 bg-gray-200">Canteen</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">Others</th>
-                            <th rowspan="2" class="p-2 bg-blue-200">Total Deductions</th>
-                            <th rowspan="2" class="p-2 bg-red-300">Net Pay</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">Action</th>
+<tr>
+    <th class="p-2 bg-info">Basic</th>
+    <th class="p-2 bg-primary-subtle">Honorarium</th>
+    <th class="p-2 bg-danger-subtle">HR</th>
+    <th class="p-2 bg-danger-subtle">Rate</th>
+    <th class="p-2 bg-danger">WR</th>
+    <th class="p-2 bg-danger">Rate</th>
+    <th class="p-2 bg-danger">Total</th>
+    <th class="p-2 bg-primary">HR</th>
+    <th class="p-2 bg-primary">Rate</th>
+    <th class="p-2 bg-primary">Total</th>
+    <th class="p-2 bg-danger-subtle">HR</th>
+    <th class="p-2 bg-danger-subtle">Rate</th>
+    <th class="p-2 bg-danger-subtle">Total</th>
+    <th class="p-2 bg-secondary">HR</th>
+    <th class="p-2 bg-secondary">Rate</th>
+    <th class="p-2 bg-secondary">Total</th>
+    <th class="p-2 bg-success">HDMF</th>
+    <th class="p-2 bg-success">MP2</th>
+    <th class="p-2 bg-success">SSS</th>
 
-                        </tr>
-                        <tr>
-                            <th class="p-2 bg-teal-200">Basic</th>
-                            <th class="p-2 bg-cyan-200">Honorarium</th>
-                            <th class="p-2 bg-red-100">HR</th>
-                            <th class="p-2 bg-red-100">Rate</th>
-                            <th class="p-2 bg-pink-300">WR</th>
-                            <th class="p-2 bg-pink-300">Rate</th>
-                            <th class="p-2 bg-pink-300">Total</th>
-                            <th class="p-2 bg-indigo-200">HR</th>
-                            <th class="p-2 bg-indigo-200">Rate</th>
-                            <th class="p-2 bg-indigo-200">Total</th>
-                            <th class="p-2 bg-pink-100">HR</th>
-                            <th class="p-2 bg-pink-100">Rate</th>
-                            <th class="p-2 bg-pink-100">Total</th>
-                            <th class="p-2 bg-gray-200">HR</th>
-                            <th class="p-2 bg-gray-200">Rate</th>
-                            <th class="p-2 bg-gray-200">Total</th>
-                            <th class="p-2 bg-green-200">HDMF</th>
-                            <th class="p-2 bg-green-200">MP2</th>
-                            <th class="p-2 bg-green-200">SSS</th>
+    <th class="p-2 bg-warning">MED.S</th>
+    <th class="p-2 bg-warning">SSS</th>
+    <th class="p-2 bg-warning">RETIREMENT</th>
+    <th class="p-2 bg-warning">P-IBIG</th>
+    <th class="p-2 bg-warning">PHIC</th>
+</tr>
 
-
-
-
-
-
-                            <th class="p-2 bg-orange-200">MED.S</th>
-                            <th class="p-2 bg-orange-200">SSS</th>
-                            <th class="p-2 bg-orange-200">RETIREMENT</th>
-                            <th class="p-2 bg-orange-200">P-IBIG</th>
-                            <th class="p-2 bg-orange-200">PHIC</th>
-
-
-                        </tr>
                     </thead>
                     <tbody>
                         <?php
@@ -499,7 +491,7 @@ $result = $conn->query($sql);
                     data.push(rowData);
                 });
 
-                // alert("Collected Data: \n" + JSON.stringify(data, null, 2));
+                alert("Collected Data: \n" + JSON.stringify(data, null, 2));
 
                 if (confirm("Are you sure you want to save this data?")) {
                     // Send data to server using AJAX

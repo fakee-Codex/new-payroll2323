@@ -3,7 +3,12 @@
 <link rel="stylesheet" href="styles.css">
 <script src="script.js" defer></script>
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-<script src="https://cdn.tailwindcss.com"></script>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS (optional, needed for interactive components) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
 <aside class="sidebar">
         <div class="logo-details">
             <div class="logo_name">GFI PAYCHECKS</div>
@@ -16,7 +21,7 @@
             <span class="tooltip">Search</span>
         </li>
         <li>
-            <a href="#">
+            <a href="dashboard.php">
                 <i class='bx bx-grid-alt'></i>
                 <span class="links_name">Dashboard</span>
             </a>
