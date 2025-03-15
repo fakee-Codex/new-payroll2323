@@ -12,10 +12,9 @@ try {
 
     // Fetch full-time employees
     $employeeQuery = "
-    SELECT employee_id, CONCAT(first_name, ' ', last_name) AS name 
-    FROM employees 
-    WHERE employee_type = 'full-time' 
-    AND employee_id NOT IN (SELECT DISTINCT employee_id FROM overload)";
+                        SELECT employee_id, CONCAT(last_name, ', ', first_name, ', ', suffix_title) AS name 
+                        FROM employees 
+                        WHERE employee_id NOT IN (SELECT employee_id FROM overload);";
     $employeeStmt = $pdo->prepare($employeeQuery);
     $employeeStmt->execute();
     $employees = $employeeStmt->fetchAll(PDO::FETCH_ASSOC);
@@ -23,9 +22,6 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,13 +54,13 @@ try {
             margin-top: 20px;
         }
 
-    
-    
-
-        
 
 
-   
+
+
+
+
+
         .content {
             padding: 2rem;
             background-color: #f9fafb;
@@ -192,79 +188,7 @@ try {
         // Dynamically fetch employees from PHP
         const employees = <?= json_encode($employees) ?>;
 
-        function addRow() {
-            const tableBody = document.querySelector("table tbody");
-            if (!tableBody) {
-                console.error("Table body not found");
-                return;
-            }
-
-            const newRow = document.createElement("tr");
-
-            // Add dropdown for Employee Name
-            const employeeCell = document.createElement("td");
-            const select = document.createElement("select");
-            select.className = "form-select";
-            select.name = "employee_name[]";
-
-   
-
-            // Get the list of existing employee IDs in the table
-            const existingEmployeeIds = Array.from(document.querySelectorAll("select[name='employee_name[]']"))
-                .map(existingSelect => existingSelect.value);
-
-            // Populate dropdown with employee options, excluding already selected ones
-            employees.forEach(employee => {
-                if (!existingEmployeeIds.includes(employee.employee_id.toString())) { // Exclude already selected employee IDs
-                    const option = document.createElement("option");
-                    option.value = employee.employee_id;
-                    option.textContent = employee.name;
-                    select.appendChild(option);
-                }
-            });
-
-            employeeCell.appendChild(select);
-            newRow.appendChild(employeeCell);
-
-
-            // Add editable cells for the rest of the columns
-            for (let i = 1; i <= 46; i++) {
-                const editableCell = document.createElement("td");
-                const input = document.createElement("input");
-                input.type = "number";
-                input.className = "form-control";
-                input.name = `column_${i}[]`;
-
-                // Restrict input to decimal values only
-                input.addEventListener("input", (e) => {
-                    const value = e.target.value;
-                    if (!/^(\d+(\.\d{0,2})?)?$/.test(value)) { // Allow only decimals with up to 2 decimal places
-                        e.target.value = value.slice(0, -1);
-                    }
-                });
-
-                editableCell.appendChild(input);
-                newRow.appendChild(editableCell);
-            }
-
-            // Add action buttons (Delete Row)
-            const actionCell = document.createElement("td");
-            const deleteButton = document.createElement("button");
-            deleteButton.className = "btn btn-sm btn-danger";
-            deleteButton.textContent = "Remove";
-            deleteButton.onclick = () => {
-                newRow.remove();
-            };
-            actionCell.appendChild(deleteButton);
-            newRow.appendChild(actionCell);
-
-            // Append the new row to the table
-            tableBody.appendChild(newRow);
-
-            // Add calculation listeners to the new row
-            addCalculationListeners(newRow);
-        }
-
+    
         function calculateRowTotals(row) {
             let grandTotal = 0;
 

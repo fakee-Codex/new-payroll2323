@@ -16,7 +16,7 @@ $sql = "SELECT
             e.basic_salary AS Basic,
             c.sss_ee, c.pag_ibig_ee, c.philhealth_ee,
             c.sss_er, c.pag_ibig_er, c.philhealth_er,
-            c.medical_savings, c.retirement
+            c.medical_savings, c.retirement, c.mp2
         FROM contributions c
         JOIN employees e ON c.employee_id = e.employee_id";
 
@@ -31,8 +31,8 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar</title>
 
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+     <link href="css/bootstrap.min.css" rel="stylesheet">
+    
   
     <style>
 
@@ -62,12 +62,13 @@ $result = $conn->query($sql);
                         <th>Employee Type</th>
                         <th>Basic Salary</th>
                         <th>SSS Total</th>
-                        <th>Pag-ibig Total</th>
-                        <th>PhilHealth Total</th>
+                        <th>Pag-ibig (HDMF) Total</th>
+                        <th>PhilHealth (PHIC) Total</th>
                         <th>Total EE</th>
                         <th>Total ER</th>
                         <th>Medical Savings</th>
                         <th>Retirement</th>
+                        <th>MP2</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -82,6 +83,7 @@ $result = $conn->query($sql);
                             $total_er = $row['sss_er'] + $row['pag_ibig_er'] + $row['philhealth_er'];
                             $medical_savings = $row['medical_savings'];
                             $retirement = $row['retirement'];
+                            $mp2 = $row['mp2'];
 
                             echo "<tr>
                     <td>{$row['Name']}</td>
@@ -94,6 +96,7 @@ $result = $conn->query($sql);
                     <td>" . number_format($total_er, 2) . "</td>
                     <td>" . number_format($medical_savings, 2) . "</td>
                     <td>" . number_format($retirement, 2) . "</td>
+                    <td>" . number_format($mp2, 2) . "</td>
                     <td>
                         <a href='manage_contributions_edit.php?id={$row['contributions_id']}' class='btn btn-warning btn-sm'>Edit</a>
                         <button class='btn btn-info btn-sm' data-bs-toggle='modal' data-bs-target='#viewModal' 
@@ -128,7 +131,8 @@ $result = $conn->query($sql);
                 </div>
             </div>
         </div>
-
+                        
+        <!-- View button -->
         <script>
             function loadModal(id) {
                 fetch(`get_contribution_data.php?id=${id}`)

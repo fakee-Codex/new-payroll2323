@@ -75,91 +75,102 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Employee</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+   
+
 </head>
 
 <body class="bg-gray-100">
     <?php include 'aside.php'; ?>
-    <main class="flex-1 p-6 bg-gray-900">
-        <div class="container mx-auto bg-white p-6 rounded-lg shadow-lg max-w-3xl">
-            <h1 class="text-3xl font-bold text-gray-900 mb-6 text-center">Edit Employee</h1>
+    <main class="flex-grow-1 p-3 text-white">
+        <div class="container bg-white text-black mt-5">
+            <h1 class="h3 text-center fw-bold mb-4">Edit Employee</h1>
 
             <!-- Back Button -->
-            <div class="text-left mb-4">
-                <a href="sidebarManageemployee.php" class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600">Back</a>
+            <div class="mb-3">
+                <a href="sidebarManageemployee.php" class="btn btn-primary">Back</a>
             </div>
 
-            <!-- Edit Employee Form Section -->
-            <div id="editEmployeeForm" style="display: block;">
-                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Employee Information</h2>
-                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="space-y-6 grid grid-cols-2 gap-4">
-                    <input type="hidden" name="employee_id" value="<?php echo $employee['employee_id']; ?>">
+            <!-- Form -->
+            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <input type="hidden" name="employee_id" value="<?php echo $employee['employee_id']; ?>">
 
-                    <!-- First Column -->
-                    <div>
-                        <label for="edit_first_name" class="text-sm font-medium text-gray-700">First Name</label>
-                        <input type="text" name="first_name" id="edit_first_name" value="<?php echo isset($employee['first_name']) ? $employee['first_name'] : ''; ?>" class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                <div class="row">
+                    <!-- Personal Information -->
+                    <div class="col-md-6">
+                        <fieldset class="border border-2 p-3 rounded">
+                            <legend class="fw-semibold">Personal Information</legend>
+                            <div class="mb-3">
+                                <label class="form-label">First Name</label>
+                                <input type="text" name="first_name" value="<?php echo isset($employee['first_name']) ? $employee['first_name'] : ''; ?>" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" name="last_name" value="<?php echo isset($employee['last_name']) ? $employee['last_name'] : ''; ?>" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Suffix / Title</label>
+                                <input type="text" name="suffix_title" value="<?php echo isset($employee['suffix_title']) ? $employee['suffix_title'] : ''; ?>" class="form-control">
+                            </div>
+                        </fieldset>
                     </div>
 
-                    <div>
-                        <label for="edit_suffix_title" class="text-sm font-medium text-gray-700">Suffix / Title</label>
-                        <input type="text" name="suffix_title" id="edit_suffix_title" value="<?php echo isset($employee['suffix_title']) ? $employee['suffix_title'] : ''; ?>" class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    <!-- Job Information -->
+                    <div class="col-md-6">
+                        <fieldset class="border border-2 p-3 rounded">
+                            <legend class="fw-semibold">Job Information</legend>
+                            <div class="mb-3">
+                                <label class="form-label">Employee Type</label>
+                                <select name="employee_type" class="form-select">
+                                    <option value="full-time" <?php echo (isset($employee['employee_type']) && $employee['employee_type'] == 'full-time') ? 'selected' : ''; ?>>Full-Time</option>
+                                    <option value="part-time" <?php echo (isset($employee['employee_type']) && $employee['employee_type'] == 'part-time') ? 'selected' : ''; ?>>Part-Time</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Job Position</label>
+                                <input type="text" name="classification" value="<?php echo isset($employee['classification']) ? $employee['classification'] : ''; ?>" class="form-control">
+                            </div>
+                        </fieldset>
                     </div>
+                </div>
 
-                    <div>
-                        <label for="edit_classification" class="text-sm font-medium text-gray-700">Classification</label>
-                        <input type="text" name="classification" id="edit_classification" value="<?php echo isset($employee['classification']) ? $employee['classification'] : ''; ?>" class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                <!-- Salary Details -->
+                <fieldset class="border border-2 p-3 rounded mt-3">
+                    <legend class="fw-semibold text-center">Salary Details</legend>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Basic Salary</label>
+                            <input type="number" name="basic_salary" id="edit_basic_salary" value="<?php echo isset($employee['basic_salary']) ? $employee['basic_salary'] : ''; ?>" class="form-control" oninput="calculateAbsentLateRate(this)">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">F&S Development</label>
+                            <input type="number" name="honorarium" value="<?php echo isset($employee['honorarium']) ? $employee['honorarium'] : ''; ?>" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Incentives</label>
+                            <input type="number" name="incentives" value="<?php echo isset($employee['incentives']) ? $employee['incentives'] : ''; ?>" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Overload Rate</label>
+                            <input type="number" name="overload_rate" value="<?php echo isset($employee['overload_rate']) ? $employee['overload_rate'] : ''; ?>" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Watch Reward</label>
+                            <input type="number" name="watch_reward" value="<?php echo isset($employee['watch_reward']) ? $employee['watch_reward'] : ''; ?>" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Absent/Late Rate</label>
+                            <input type="number" name="absent_lateRate" id="edit_absent_lateRate" value="<?php echo isset($employee['absent_lateRate']) ? $employee['absent_lateRate'] : ''; ?>" class="form-control" readonly step="0.01">
+                        </div>
                     </div>
+                </fieldset>
 
-                    <div>
-                        <label for="edit_incentives" class="text-sm font-medium text-gray-700">Incentives</label>
-                        <input type="number" name="incentives" id="edit_incentives" value="<?php echo isset($employee['incentives']) ? $employee['incentives'] : ''; ?>" class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                    </div>
-
-                    <div>
-                        <label for="edit_overload_rate" class="text-sm font-medium text-gray-700">Overload Rate</label>
-                        <input type="number" name="overload_rate" id="edit_overload_rate" value="<?php echo isset($employee['overload_rate']) ? $employee['overload_rate'] : ''; ?>" class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                    </div>
-
-                    <div>
-                        <label for="edit_absent_lateRate" class="text-sm font-medium text-gray-700">Absent/late Rate</label>
-                        <input type="number" name="absent_lateRate" id="edit_absent_lateRate" value="<?php echo isset($employee['absent_lateRate']) ? $employee['absent_lateRate'] : ''; ?>" class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" readonly step="0.01">
-                    </div>
-
-                    <!-- Second Column -->
-                    <div>
-                        <label for="edit_last_name" class="text-sm font-medium text-gray-700">Last Name</label>
-                        <input type="text" name="last_name" id="edit_last_name" value="<?php echo isset($employee['last_name']) ? $employee['last_name'] : ''; ?>" class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                    </div>
-
-                    <div>
-                        <label for="edit_employee_type" class="text-sm font-medium text-gray-700">Employee Type</label>
-                        <select name="employee_type" id="edit_employee_type" class="form-select block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                            <option value="full-time" <?php echo (isset($employee['employee_type']) && $employee['employee_type'] == 'full-time') ? 'selected' : ''; ?>>Full-Time</option>
-                            <option value="part-time" <?php echo (isset($employee['employee_type']) && $employee['employee_type'] == 'part-time') ? 'selected' : ''; ?>>Part-Time</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="edit_basic_salary" class="text-sm font-medium text-gray-700">Basic Salary</label>
-                        <input type="number" name="basic_salary" id="edit_basic_salary" value="<?php echo isset($employee['basic_salary']) ? $employee['basic_salary'] : ''; ?>" class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" oninput="calculateAbsentLateRate(this)">
-                    </div>
-
-                    <div>
-                        <label for="edit_honorarium" class="text-sm font-medium text-gray-700">F&S Development</label>
-                        <input type="number" name="honorarium" id="edit_honorarium" value="<?php echo isset($employee['honorarium']) ? $employee['honorarium'] : ''; ?>" class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                    </div>
-
-                    <div>
-                        <label for="edit_watch_reward" class="text-sm font-medium text-gray-700">Watch Reward</label>
-                        <input type="number" name="watch_reward" id="edit_watch_reward" value="<?php echo isset($employee['watch_reward']) ? $employee['watch_reward'] : ''; ?>" class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                    </div>
-
-                    <button type="submit" name="update" class="bg-blue-500 text-white py-2 px-4 rounded-md shadow hover:bg-blue-600 w-full col-span-2">Save Changes</button>
-                </form>
-            </div>
+                <!-- Submit Button -->
+                <button type="submit" name="update" class="btn btn-primary w-100 mt-3">Save Changes</button>
+            </form>
         </div>
+
     </main>
     <script>
         // Function to calculate the absent/late rate

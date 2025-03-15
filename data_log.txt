@@ -1,180 +1,498 @@
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 5535, Net Pay: 95465
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 5535, Net Pay: 95465
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 5535, Net Pay: 95465
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 5535, Net Pay: 95465
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 5535, Net Pay: 95465
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 8180, Net Pay: 250620
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 5980, Net Pay: 2365
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 3430, Net Pay: 12570
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 3010, Net Pay: 15090
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 1050, Net Pay: 4303
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24000, Absent Late HR: 0, Absent Late Rate: 127, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 2816, Net Pay: 21184
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 5535, Net Pay: 95465
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 8180, Net Pay: 250620
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 5980, Net Pay: 2365
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 3430, Net Pay: 12570
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 3010, Net Pay: 15090
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 1050, Net Pay: 4303
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 2300, Watch Total: 2300, Gross Pay: 26300, Absent Late HR: 0, Absent Late Rate: 127, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 484, Others: 0, Total Deduction: 3300, Net Pay: 23000
-Employee ID: 401, Full Name: Manila Bay MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 480, Net Pay: 100520
-Employee ID: 402, Full Name: Williedfg Pacquiao , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 200, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 45200, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 360, Net Pay: 44840
-Employee ID: 403, Full Name: genisis mantilla , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1266, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 51266, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 51266
-Employee ID: 404, Full Name: John Joseph , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 530, Net Pay: 7815
-Employee ID: 423, Full Name: MIley Zyrus , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 550, Net Pay: 15450
-Employee ID: 424, Full Name: Mykas Lugan , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 120, Net Pay: 17980
-Employee ID: 425, Full Name: Hazel Pecodana bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 5353
-Employee ID: 441, Full Name: Christian Hermonio Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 2300, Watch Total: 2300, Gross Pay: 26300, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 484, Others: 0, Total Deduction: 884, Net Pay: 25416
-Employee ID: 401, Full Name: Manila Bay MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 480, Net Pay: 100520
-Employee ID: 402, Full Name: Williedfg Pacquiao , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 200, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 45200, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 360, Net Pay: 44840
-Employee ID: 403, Full Name: genisis mantilla , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1266, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 51266, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 51266
-Employee ID: 404, Full Name: John Joseph , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 530, Net Pay: 7815
-Employee ID: 423, Full Name: MIley Zyrus , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 550, Net Pay: 15450
-Employee ID: 424, Full Name: Mykas Lugan , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 120, Net Pay: 17980
-Employee ID: 425, Full Name: Hazel Pecodana bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 5353
-Employee ID: 441, Full Name: Christian Hermonio Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 2300, Watch Total: 2300, Gross Pay: 26300, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 484, Others: 0, Total Deduction: 884, Net Pay: 25416
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 7035, Net Pay: 93965
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 7035, Net Pay: 93965
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 7035, Net Pay: 93965
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 7035, Net Pay: 93965
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Manila Bay MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 480, Net Pay: 100520
-Employee ID: 402, Full Name: Williedfg Pacquiao , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 200, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 45200, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 360, Net Pay: 44840
-Employee ID: 403, Full Name: genisis mantilla , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1266, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 51266, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 51266
-Employee ID: 404, Full Name: John Joseph , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 530, Net Pay: 7815
-Employee ID: 423, Full Name: MIley Zyrus , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 550, Net Pay: 15450
-Employee ID: 424, Full Name: Mykas Lugan , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 120, Net Pay: 17980
-Employee ID: 425, Full Name: Hazel Pecodana bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 5353
-Employee ID: 441, Full Name: Christian Hermonio Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 0, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, Canteen: 32, Others: 100, Total Deduction: 970, Net Pay: 23357
-Employee ID: 401, Full Name: Manila Bay MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 480, Net Pay: 100520
-Employee ID: 402, Full Name: Williedfg Pacquiao , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 200, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 45200, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 360, Net Pay: 44840
-Employee ID: 403, Full Name: genisis mantilla , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1266, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 51266, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 51266
-Employee ID: 404, Full Name: John Joseph , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 530, Net Pay: 7815
-Employee ID: 423, Full Name: MIley Zyrus , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 550, Net Pay: 15450
-Employee ID: 424, Full Name: Mykas Lugan , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 120, Net Pay: 17980
-Employee ID: 425, Full Name: Hazel Pecodana bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 5353
-Employee ID: 441, Full Name: Christian Hermonio Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 0, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, Canteen: 32, Others: 100, Total Deduction: 970, Net Pay: 23357
-Employee ID: 401, Full Name: Manila Bay MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 1234, Watch Total: 0, Gross Pay: 101000, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 480, Net Pay: 100520
-Employee ID: 402, Full Name: Williedfg Pacquiao , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 200, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 45200, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 360, Net Pay: 44840
-Employee ID: 403, Full Name: genisis mantilla , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1266, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 51266, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 51266
-Employee ID: 404, Full Name: John Joseph , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 530, Net Pay: 7815
-Employee ID: 423, Full Name: MIley Zyrus , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 550, Net Pay: 15450
-Employee ID: 424, Full Name: Mykas Lugan , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 120, Net Pay: 17980
-Employee ID: 425, Full Name: Hazel Pecodana bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 5353
-Employee ID: 441, Full Name: Christian Hermonio Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 0, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, ret: 11, Canteen: 32, Others: 100, Total Deduction: 970, Net Pay: 23357
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 1234, Watch Total: 1234, Gross Pay: 102234, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7035, Net Pay: 95199
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, ret: , Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 1234, Watch Total: 1234, Gross Pay: 102234, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7035, Net Pay: 95199
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, ret: , Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 1234, Watch Total: 1234, Gross Pay: 102234, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7035, Net Pay: 95199
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, ret: , Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 1234, Watch Total: 1234, Gross Pay: 102234, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7035, Net Pay: 95199
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, ret: , Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 1234, Watch Total: 1234, Gross Pay: 102234, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7035, Net Pay: 95199
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, ret: , Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Manila Bay MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 1234, Watch Total: 1234, Gross Pay: 102234, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 480, Net Pay: 101754
-Employee ID: 402, Full Name: Williedfg Pacquiao , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 200, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 45200, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 360, Net Pay: 44840
-Employee ID: 403, Full Name: genisis mantilla , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1266, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 51266, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 51266
-Employee ID: 404, Full Name: John Joseph , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 530, Net Pay: 7815
-Employee ID: 423, Full Name: MIley Zyrus , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 550, Net Pay: 15450
-Employee ID: 424, Full Name: Mykas Lugan , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 120, Net Pay: 17980
-Employee ID: 425, Full Name: Hazel Pecodana bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 5353
-Employee ID: 441, Full Name: Christian Hermonio Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 0, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, ret: 0, Canteen: 32, Others: 100, Total Deduction: 959, Net Pay: 23368
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 1234, Watch Total: 1234, Gross Pay: 102234, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 10, MP2: 20, sss: 30, ret: , Canteen: 0, Others: 0, Total Deduction: 7095, Net Pay: 95139
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, ret: , Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 1234, Watch Total: 1234, Gross Pay: 102234, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 10, MP2: 20, sss: 30, ret: , Canteen: 9, Others: 10, Total Deduction: 7114, Net Pay: 95120
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, ret: , Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 1234, Watch Total: 1234, Gross Pay: 102234, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 10, MP2: 20, sss: 30, ret: , Canteen: 19, Others: 10, Total Deduction: 7124, Net Pay: 95110
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, ret: , Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Bay, Manila MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 1234, Watch Total: 1234, Gross Pay: 102234, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 10, MP2: 20, sss: 30, ret: , Canteen: 19, Others: 10, Total Deduction: 7124, Net Pay: 95110
-Employee ID: 402, Full Name: Pacquiao, Williedfg , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 213800, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 258800, Absent Late HR: 0, Absent Late Rate: 240, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 10680, Net Pay: 248120
-Employee ID: 403, Full Name: mantilla, genisis , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1355253, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 1405253, Absent Late HR: 0, Absent Late Rate: 385, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 1405253
-Employee ID: 404, Full Name: Joseph, John , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 77, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 7730, Net Pay: 615
-Employee ID: 423, Full Name: Zyrus, MIley , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 144, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4030, Net Pay: 11970
-Employee ID: 424, Full Name: Lugan, Mykas , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 173, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 4990, Net Pay: 13110
-Employee ID: 425, Full Name: Pecodana, Hazel bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 48, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: , Canteen: 0, Others: 0, Total Deduction: 1600, Net Pay: 3753
-Employee ID: 441, Full Name: Hermonio, Christian Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 127, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, ret: , Canteen: 32, Others: 100, Total Deduction: 4827, Net Pay: 19500
-Employee ID: 401, Full Name: Manila Bay MIT, Basic Salary: 8000, Honorarium: 6000, Overload HR: 145, Overload Rate: 600, Overload Total: 87000, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 1, Watch Rate: 1234, Watch Total: 1234, Gross Pay: 102234, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 10, MP2: 20, sss: 30, ret: 0, Canteen: 19, Others: 10, Total Deduction: 569, Net Pay: 101665
-Employee ID: 402, Full Name: Williedfg Pacquiao , Basic Salary: 25000, Honorarium: 20000, Overload HR: 40, Overload Rate: 5345, Overload Total: 200, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 3342, Watch Total: 0, Gross Pay: 45200, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 360, Net Pay: 44840
-Employee ID: 403, Full Name: genisis mantilla , Basic Salary: 40000, Honorarium: 10000, Overload HR: 211, Overload Rate: 6423, Overload Total: 1266, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 6454, Watch Total: 0, Gross Pay: 51266, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 51266
-Employee ID: 404, Full Name: John Joseph , Basic Salary: 8000, Honorarium: 345, Overload HR: 0, Overload Rate: 433, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 432, Watch Total: 0, Gross Pay: 8345, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 530, Net Pay: 7815
-Employee ID: 423, Full Name: MIley Zyrus , Basic Salary: 15000, Honorarium: 1000, Overload HR: 0, Overload Rate: 232, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 232, Watch Total: 0, Gross Pay: 16000, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 550, Net Pay: 15450
-Employee ID: 424, Full Name: Mykas Lugan , Basic Salary: 18000, Honorarium: 100, Overload HR: 0, Overload Rate: 334, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 123, Watch Total: 0, Gross Pay: 18100, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 120, Net Pay: 17980
-Employee ID: 425, Full Name: Hazel Pecodana bayot, Basic Salary: 5000, Honorarium: 353, Overload HR: 0, Overload Rate: 400, Overload Total: 0, WR HR: 0, WR Rate: 0, WR Total: 0, Adjust HR: 0, Adjust Rate: 0, Adjust Total: 0, Watch HR: 0, Watch Rate: 450, Watch Total: 0, Gross Pay: 5353, Absent Late HR: 0, Absent Late Rate: 0, Absent Late Total: 0, Pagibig: 0, MP2: 0, sss: 0, ret: 0, Canteen: 0, Others: 0, Total Deduction: 0, Net Pay: 5353
-Employee ID: 441, Full Name: Christian Hermonio Gay, Basic Salary: 13200, Honorarium: 1000, Overload HR: 49, Overload Rate: 200, Overload Total: 9800, WR HR: 1, WR Rate: 27, WR Total: 27, Adjust HR: 100, Adjust Rate: 3, Adjust Total: 300, Watch HR: 0, Watch Rate: 2300, Watch Total: 0, Gross Pay: 24327, Absent Late HR: 1, Absent Late Rate: 0, Absent Late Total: 127, Pagibig: 100, MP2: 100, sss: 100, ret: 0, Canteen: 32, Others: 100, Total Deduction: 959, Net Pay: 23368
+Array
+(
+    [0] => Array
+        (
+            [employee_id] => 401
+            [full_name] => Manila Bay MIT
+            [basic_salary] => 8000
+            [honorarium] => 6000
+            [overload_hr] => 45
+            [overload_rate] => 600
+            [overload_total] => 27000
+            [wr_hr] => 1
+            [wr_rate] => 5
+            [wr_total] => 5
+            [adjust_hr] => 3
+            [adjust_rate] => 2
+            [adjust_total] => 6
+            [watch_hr] => 1
+            [watch_reward] => 1234
+            [watch_total] => 1234
+            [gross_pay] => 42245
+            [absent_late_hr] => 3
+            [absent_lateRate] => 77
+            [absent_late_total] => 231
+            [hdmf_pag] => 442
+            [sss] => 223
+            [ret] => 331
+            [retirement] => 222
+            [mp2] => 333
+            [canteen] => 12
+            [others] => 12
+            [total_deduction] => 1806
+            [net_pay] => 40439
+        )
+
+    [1] => Array
+        (
+            [employee_id] => 402
+            [full_name] => Williedfg Pacquiao 
+            [basic_salary] => 25000
+            [honorarium] => 20000
+            [overload_hr] => 40
+            [overload_rate] => 300
+            [overload_total] => 12000
+            [wr_hr] => 1
+            [wr_rate] => 5
+            [wr_total] => 5
+            [adjust_hr] => 3
+            [adjust_rate] => 2
+            [adjust_total] => 6
+            [watch_hr] => 1
+            [watch_reward] => 2100
+            [watch_total] => 2100
+            [gross_pay] => 59111
+            [absent_late_hr] => 3
+            [absent_lateRate] => 240
+            [absent_late_total] => 720
+            [hdmf_pag] => 0
+            [sss] => 0
+            [ret] => 0
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 12
+            [others] => 12
+            [total_deduction] => 744
+            [net_pay] => 58367
+        )
+
+    [2] => Array
+        (
+            [employee_id] => 403
+            [full_name] => genisis mantilla 
+            [basic_salary] => 40000
+            [honorarium] => 10000
+            [overload_hr] => 211
+            [overload_rate] => 400
+            [overload_total] => 84400
+            [wr_hr] => 1
+            [wr_rate] => 5
+            [wr_total] => 5
+            [adjust_hr] => 3
+            [adjust_rate] => 2
+            [adjust_total] => 6
+            [watch_hr] => 1
+            [watch_reward] => 1100
+            [watch_total] => 1100
+            [gross_pay] => 135511
+            [absent_late_hr] => 3
+            [absent_lateRate] => 385
+            [absent_late_total] => 1155
+            [hdmf_pag] => 200
+            [sss] => 300
+            [ret] => 500
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 12
+            [others] => 12
+            [total_deduction] => 2179
+            [net_pay] => 133332
+        )
+
+    [3] => Array
+        (
+            [employee_id] => 404
+            [full_name] => John Joseph 
+            [basic_salary] => 8000
+            [honorarium] => 345
+            [overload_hr] => 0
+            [overload_rate] => 433
+            [overload_total] => 0
+            [wr_hr] => 1
+            [wr_rate] => 5
+            [wr_total] => 5
+            [adjust_hr] => 3
+            [adjust_rate] => 2
+            [adjust_total] => 6
+            [watch_hr] => 1
+            [watch_reward] => 432
+            [watch_total] => 432
+            [gross_pay] => 8788
+            [absent_late_hr] => 3
+            [absent_lateRate] => 77
+            [absent_late_total] => 231
+            [hdmf_pag] => 0
+            [sss] => 0
+            [ret] => 0
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 12
+            [others] => 12
+            [total_deduction] => 255
+            [net_pay] => 8533
+        )
+
+    [4] => Array
+        (
+            [employee_id] => 423
+            [full_name] => MIley Zyrus 
+            [basic_salary] => 15000
+            [honorarium] => 1000
+            [overload_hr] => 14
+            [overload_rate] => 232
+            [overload_total] => 3248
+            [wr_hr] => 1
+            [wr_rate] => 5
+            [wr_total] => 5
+            [adjust_hr] => 3
+            [adjust_rate] => 2
+            [adjust_total] => 6
+            [watch_hr] => 1
+            [watch_reward] => 232
+            [watch_total] => 232
+            [gross_pay] => 19491
+            [absent_late_hr] => 3
+            [absent_lateRate] => 144
+            [absent_late_total] => 432
+            [hdmf_pag] => 0
+            [sss] => 0
+            [ret] => 0
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 12
+            [others] => 12
+            [total_deduction] => 456
+            [net_pay] => 19035
+        )
+
+    [5] => Array
+        (
+            [employee_id] => 424
+            [full_name] => Mykas Lugan 
+            [basic_salary] => 18000
+            [honorarium] => 100
+            [overload_hr] => 0
+            [overload_rate] => 334
+            [overload_total] => 0
+            [wr_hr] => 1
+            [wr_rate] => 5
+            [wr_total] => 5
+            [adjust_hr] => 3
+            [adjust_rate] => 2
+            [adjust_total] => 6
+            [watch_hr] => 1
+            [watch_reward] => 123
+            [watch_total] => 123
+            [gross_pay] => 18234
+            [absent_late_hr] => 3
+            [absent_lateRate] => 173
+            [absent_late_total] => 519
+            [hdmf_pag] => 0
+            [sss] => 0
+            [ret] => 0
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 12
+            [others] => 12
+            [total_deduction] => 543
+            [net_pay] => 17691
+        )
+
+    [6] => Array
+        (
+            [employee_id] => 425
+            [full_name] => Hazel Pecodana bayot
+            [basic_salary] => 5000
+            [honorarium] => 353
+            [overload_hr] => 0
+            [overload_rate] => 400
+            [overload_total] => 0
+            [wr_hr] => 1
+            [wr_rate] => 5
+            [wr_total] => 5
+            [adjust_hr] => 3
+            [adjust_rate] => 2
+            [adjust_total] => 6
+            [watch_hr] => 1
+            [watch_reward] => 450
+            [watch_total] => 450
+            [gross_pay] => 5814
+            [absent_late_hr] => 3
+            [absent_lateRate] => 48
+            [absent_late_total] => 144
+            [hdmf_pag] => 442
+            [sss] => 231
+            [ret] => 324
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 12
+            [others] => 12
+            [total_deduction] => 1165
+            [net_pay] => 4649
+        )
+
+    [7] => Array
+        (
+            [employee_id] => 441
+            [full_name] => Christian Hermonio Gay
+            [basic_salary] => 13200
+            [honorarium] => 1000
+            [overload_hr] => 49
+            [overload_rate] => 200
+            [overload_total] => 9800
+            [wr_hr] => 1
+            [wr_rate] => 5
+            [wr_total] => 5
+            [adjust_hr] => 3
+            [adjust_rate] => 2
+            [adjust_total] => 6
+            [watch_hr] => 1
+            [watch_reward] => 2300
+            [watch_total] => 2300
+            [gross_pay] => 26311
+            [absent_late_hr] => 3
+            [absent_lateRate] => 127
+            [absent_late_total] => 381
+            [hdmf_pag] => 200
+            [sss] => 100
+            [ret] => 180
+            [retirement] => 130
+            [mp2] => 150
+            [canteen] => 12
+            [others] => 12
+            [total_deduction] => 1165
+            [net_pay] => 25146
+        )
+
+    [8] => Array
+        (
+            [employee_id] => 444
+            [full_name] => Pablo  Escobar 
+            [basic_salary] => 7300
+            [honorarium] => 1000
+            [overload_hr] => 6
+            [overload_rate] => 325
+            [overload_total] => 1950
+            [wr_hr] => 0
+            [wr_rate] => 0
+            [wr_total] => 0
+            [adjust_hr] => 0
+            [adjust_rate] => 0
+            [adjust_total] => 0
+            [watch_hr] => 0
+            [watch_reward] => 500
+            [watch_total] => 0
+            [gross_pay] => 10250
+            [absent_late_hr] => 0
+            [absent_lateRate] => 70
+            [absent_late_total] => 0
+            [hdmf_pag] => 0
+            [sss] => 0
+            [ret] => 0
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 0
+            [others] => 0
+            [total_deduction] => 0
+            [net_pay] => 10250
+        )
+
+    [9] => Array
+        (
+            [employee_id] => 445
+            [full_name] => Jake Onibar 
+            [basic_salary] => 9500
+            [honorarium] => 800
+            [overload_hr] => 6
+            [overload_rate] => 350
+            [overload_total] => 2100
+            [wr_hr] => 0
+            [wr_rate] => 0
+            [wr_total] => 0
+            [adjust_hr] => 0
+            [adjust_rate] => 0
+            [adjust_total] => 0
+            [watch_hr] => 0
+            [watch_reward] => 600
+            [watch_total] => 0
+            [gross_pay] => 12400
+            [absent_late_hr] => 0
+            [absent_lateRate] => 91
+            [absent_late_total] => 0
+            [hdmf_pag] => 0
+            [sss] => 0
+            [ret] => 0
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 0
+            [others] => 0
+            [total_deduction] => 0
+            [net_pay] => 12400
+        )
+
+    [10] => Array
+        (
+            [employee_id] => 446
+            [full_name] => Ramoza Alber LPT
+            [basic_salary] => 11000
+            [honorarium] => 1000
+            [overload_hr] => 31
+            [overload_rate] => 120
+            [overload_total] => 3720
+            [wr_hr] => 0
+            [wr_rate] => 0
+            [wr_total] => 0
+            [adjust_hr] => 0
+            [adjust_rate] => 0
+            [adjust_total] => 0
+            [watch_hr] => 0
+            [watch_reward] => 500
+            [watch_total] => 0
+            [gross_pay] => 15720
+            [absent_late_hr] => 0
+            [absent_lateRate] => 106
+            [absent_late_total] => 0
+            [hdmf_pag] => 0
+            [sss] => 0
+            [ret] => 0
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 0
+            [others] => 0
+            [total_deduction] => 0
+            [net_pay] => 15720
+        )
+
+    [11] => Array
+        (
+            [employee_id] => 447
+            [full_name] => Bong Rangsit 
+            [basic_salary] => 15000
+            [honorarium] => 200
+            [overload_hr] => 0
+            [overload_rate] => 600
+            [overload_total] => 0
+            [wr_hr] => 0
+            [wr_rate] => 0
+            [wr_total] => 0
+            [adjust_hr] => 0
+            [adjust_rate] => 0
+            [adjust_total] => 0
+            [watch_hr] => 0
+            [watch_reward] => 250
+            [watch_total] => 0
+            [gross_pay] => 15200
+            [absent_late_hr] => 0
+            [absent_lateRate] => 144
+            [absent_late_total] => 0
+            [hdmf_pag] => 0
+            [sss] => 0
+            [ret] => 0
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 0
+            [others] => 0
+            [total_deduction] => 0
+            [net_pay] => 15200
+        )
+
+    [12] => Array
+        (
+            [employee_id] => 448
+            [full_name] => Bite  Queen 
+            [basic_salary] => 18000
+            [honorarium] => 200
+            [overload_hr] => 64
+            [overload_rate] => 600
+            [overload_total] => 38400
+            [wr_hr] => 0
+            [wr_rate] => 0
+            [wr_total] => 0
+            [adjust_hr] => 0
+            [adjust_rate] => 0
+            [adjust_total] => 0
+            [watch_hr] => 0
+            [watch_reward] => 250
+            [watch_total] => 0
+            [gross_pay] => 56600
+            [absent_late_hr] => 0
+            [absent_lateRate] => 173
+            [absent_late_total] => 0
+            [hdmf_pag] => 0
+            [sss] => 0
+            [ret] => 0
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 0
+            [others] => 0
+            [total_deduction] => 0
+            [net_pay] => 56600
+        )
+
+    [13] => Array
+        (
+            [employee_id] => 449
+            [full_name] => Bernardito Yuzon 
+            [basic_salary] => 13350
+            [honorarium] => 1000
+            [overload_hr] => 0
+            [overload_rate] => 344
+            [overload_total] => 0
+            [wr_hr] => 0
+            [wr_rate] => 0
+            [wr_total] => 0
+            [adjust_hr] => 0
+            [adjust_rate] => 0
+            [adjust_total] => 0
+            [watch_hr] => 0
+            [watch_reward] => 500
+            [watch_total] => 0
+            [gross_pay] => 14350
+            [absent_late_hr] => 0
+            [absent_lateRate] => 128
+            [absent_late_total] => 0
+            [hdmf_pag] => 0
+            [sss] => 0
+            [ret] => 0
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 0
+            [others] => 0
+            [total_deduction] => 0
+            [net_pay] => 14350
+        )
+
+    [14] => Array
+        (
+            [employee_id] => 450
+            [full_name] => Mark  Henry 
+            [basic_salary] => 25326
+            [honorarium] => 2000
+            [overload_hr] => 0
+            [overload_rate] => 645
+            [overload_total] => 0
+            [wr_hr] => 0
+            [wr_rate] => 0
+            [wr_total] => 0
+            [adjust_hr] => 0
+            [adjust_rate] => 0
+            [adjust_total] => 0
+            [watch_hr] => 0
+            [watch_reward] => 566
+            [watch_total] => 0
+            [gross_pay] => 27326
+            [absent_late_hr] => 0
+            [absent_lateRate] => 244
+            [absent_late_total] => 0
+            [hdmf_pag] => 0
+            [sss] => 0
+            [ret] => 0
+            [retirement] => 0
+            [mp2] => 0
+            [canteen] => 0
+            [others] => 0
+            [total_deduction] => 0
+            [net_pay] => 27326
+        )
+
+)

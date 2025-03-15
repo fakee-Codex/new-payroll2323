@@ -1,4 +1,5 @@
 <?php
+
 require 'database_connection.php';
 
 $sql = "
@@ -24,16 +25,25 @@ $sql = "
         ct.gross_pay,
         ct.absent_late_hr,
          e.absent_lateRate,
+        ct.absent_late_total,
+
+        n.ret,
+        n.sss,
+        n.hdmf_pag,
+
+
         ct.pagibig,
-        ct.mp2,
-        ct.sss,
-                ct.ret,
+        
+      
+                
 
         ct.canteen,
         ct.others,
         ct.total_deduction,
         ct.net_pay,
         ct.reg_date,
+
+        c.mp2,
 
                 
                
@@ -49,6 +59,7 @@ $sql = "
         COALESCE((c.philhealth_ee + c.philhealth_er), 0) AS philhealth_total
     FROM employees e
     LEFT JOIN overload o ON e.employee_id = o.employee_id
+    LEFT JOIN loans n ON e.employee_id = n.employee_id
     LEFT JOIN contributions c ON e.employee_id = c.employee_id
     LEFT JOIN computation ct ON e.employee_id = ct.employee_id
 
@@ -65,7 +76,6 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom Tailwind style for table and button */
         .table-wrapper {
@@ -137,6 +147,15 @@ $result = $conn->query($sql);
             font-size: 1.75rem;
             color: #333;
         }
+
+        #crudTable {
+
+            display: block;
+            max-height: 600px;
+            /* Adjust height as needed */
+            overflow-y: auto;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -157,38 +176,65 @@ $result = $conn->query($sql);
         .gg {
             position: sticky;
             left: 0;
-            z-index: 2;
+            z-index: 1;
             /* Ensures the first column is above other content */
+        }
 
+        .nggh {
+            position: sticky;
+            top: 0;
+            z-index: 3;
+            /* Ensures the first column is above other content */
+        }
+
+        .bgg {
+            position: sticky;
+            left: 0;
+            z-index: 4;
+            /* Ensures the first column is above other content */
         }
     </style>
     <main>
         <div class="content">
-            <h1 class="text-xl font-bold mb-4">GFI File 301 Payroll (September 16-30, 2024)</h1>
+
+            <?php if (isset($_GET['added_success']) && $_GET['added_success'] == 1): ?>
+                <div id="alert" class="alert alert-success" role="alert" style="background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                    Added successful!
+                </div>
+            <?php endif; ?>
+
+
+            <h1 class="text-xl font-bold mb-4">
+                GFI Payroll (<?php echo date('F'); ?> 16-30, <?php echo date('Y'); ?>)
+            </h1>
             <div class="table-wrapper">
-                <table id="crudTable" class="table-auto w-full">
-                    <thead>
+                <table id="crudTable" class="table table-bordered w-full border">
+
+                    <thead class="nggh">
                         <tr>
-                            <th rowspan="2" class="p-2 bg-amber-100 sticky gg ">Name</th> <!-- Name with Sticky -->
-                            <th colspan="2" class="p-2 bg-rose-400">Full-Time</th>
-                            <th colspan="2" class="p-2 bg-red-100">Overloads</th>
-                            <th rowspan="2" class="p-2 bg-red-100">Total</th>
-                            <th colspan="3" class="p-2 bg-pink-300">CLUBS</th>
-                            <th colspan="3" class="p-2 bg-indigo-200">Adjustment</th>
-                            <th colspan="3" class="p-2 bg-pink-100">Watch Reward</th>
-                            <th rowspan="2" class="p-2 bg-yellow-200">Gross Pay</th>
+                            <th rowspan="2" class="p-2 position-sticky top-0 text-center align-middle" style="background-color: #FEF08A;">Name</th>
 
 
-                            <th colspan="3" class="p-2 bg-gray-200">Absences/Late</th>
-                            <th colspan="4" class="p-2 bg-green-200">Loans</th>
+                            <th colspan="2" class="p-2" style="background-color: #E3F2FD; text-align: center; vertical-align: middle;">Full-Time</th>
+                            <th colspan="2" class="p-2" style="background-color: #E3F2FD; text-align: center; vertical-align: middle;">Overloads</th>
+                            <th rowspan="2" class="p-2" style="background-color: #E3F2FD; text-align: center; vertical-align: middle;">Total</th>
 
-                            <th colspan="1" class="p-2 bg-orange-200">Contributions</th>
+                            <th colspan="3" class="p-2 text-center align-middle" style="background-color: #D4EDDA;">CLUBS</th>
+                            <th colspan="3" class="p-2 text-center align-middle" style="background-color: #D4EDDA;">Adjustment</th>
+                            <th colspan="3" class="p-2 text-center align-middle" style="background-color: #D4EDDA;">Watch Reward</th>
 
-                            <th rowspan="2" class="p-2 bg-gray-200">Canteen</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">Others</th>
-                            <th rowspan="2" class="p-2 bg-blue-200">Total Deductions</th>
-                            <th rowspan="2" class="p-2 bg-red-300">Net Pay</th>
-                            <th rowspan="2" class="p-2 bg-gray-200">Action</th>
+                            <th rowspan="2" class="p-2" style="background-color: #FFCBA4; text-align: center; vertical-align: middle;">Gross Pay</th>
+
+                            <th colspan="3" class="p-2 text-center align-middle" style="background-color: #FFD6D6;">Absences/Late</th>
+                            <th colspan="3" class="p-2 text-center align-middle" style="background-color: #F0F0F0;">Loans</th>
+
+                            <th colspan="2" class="p-2 text-center align-middle" style="background-color: #E6E6FA;">Contributions</th>
+
+                            <th rowspan="2" class="p-2" style="background-color: #FFD6D6; text-align: center; vertical-align: middle;">Canteen</th>
+                            <th rowspan="2" class="p-2" style="background-color: #FFD6D6; text-align: center; vertical-align: middle;">Others</th>
+                            <th rowspan="2" class="p-2" style="background-color: #FFD6D6; text-align: center; vertical-align: middle;">Total Deductions</th>
+                            <th rowspan="2" class="p-2" style="background-color: #FFCBA4; text-align: center; vertical-align: middle;">Net Pay</th>
+                            <th rowspan="2" class="p-2 bg-secondary text-center align-middle">Action</th>
 
                         </tr>
 
@@ -196,33 +242,32 @@ $result = $conn->query($sql);
 
 
                         <tr>
-                            <th class="p-2 bg-teal-200">Basic</th>
-                            <th class="p-2 bg-cyan-200">Honorarium</th>
-                            <th class="p-2 bg-red-100">HR</th>
-                            <th class="p-2 bg-red-100">Rate</th>
-                            <th class="p-2 bg-pink-300">WR</th>
-                            <th class="p-2 bg-pink-300">Rate</th>
-                            <th class="p-2 bg-pink-300">Total</th>
-                            <th class="p-2 bg-indigo-200">HR</th>
-                            <th class="p-2 bg-indigo-200">Rate</th>
-                            <th class="p-2 bg-indigo-200">Total</th>
-                            <th class="p-2 bg-pink-100">HR</th>
-                            <th class="p-2 bg-pink-100">Rate</th>
-                            <th class="p-2 bg-pink-100">Total</th>
-                            <th class="p-2 bg-gray-200">HR</th>
-                            <th class="p-2 bg-gray-200">Rate</th>
-                            <th class="p-2 bg-gray-200">Total</th>
-                            <th class="p-2 bg-green-200">HDMF</th>
-                            <th class="p-2 bg-green-200">MP2</th>
-                            <th class="p-2 bg-green-200">SSS</th>
-                            <th class="p-2 bg-green-200">RET.</th>
+                        <th class="p-2 align-middle" style="background-color: #E3F2FD;">Basic</th>
+                            <th class="p-2 align-middle" style="background-color: #E3F2FD;">Honorarium</th>
+                            <th class="p-2 align-middle" style="background-color: #E3F2FD;">HR</th>
+                            <th class="p-2 align-middle" style="background-color: #E3F2FD;">Rate</th>
+
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">WR</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">Rate</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">Total</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">HR</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">Rate</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">Total</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">HR</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">Rate</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">Total</th>
+
+                            <th class="p-2 align-middle" style="background-color: #FFD6D6;">HR</th>
+                            <th class="p-2 align-middle" style="background-color: #FFD6D6;">Rate</th>
+                            <th class="p-2 align-middle" style="background-color: #FFD6D6;">Total</th>
 
 
+                            <th class="p-2 align-middle" style="background-color: #F0F0F0;">RET</th>
+                            <th class="p-2 align-middle" style="background-color: #F0F0F0;">SSS</th>>
+                            <th class="p-2 align-middle" style="background-color: #F0F0F0;">HDMF (pag-ibig)</th>
 
-
-
-
-                            <th class="p-2 bg-orange-200">RETIREMENT</th>
+                            <th class="p-2 align-middle" style="background-color: #E6E6FA;">RETIREMENT</th>
+                            <th class="p-2 align-middle" style="background-color: #E6E6FA;">MP2</th>
 
 
                         </tr>
@@ -232,79 +277,63 @@ $result = $conn->query($sql);
                         if ($result && $result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td data-employee='{$row['employee_id']}' class='p-2 sticky gg' 
-                                style='padding: 0.5rem; text-align: justify; border: 1px solid #ddd; 
-                                white-space: nowrap; overflow: hidden; background-color: #fef3c7;'>{$row['full_name']}</td>";
+                                echo "<td data-employee='{$row['employee_id']}' class='p-2 sticky gg' style='padding: 0.5rem; text-align: justify; border: 1px solid #ddd; white-space: nowrap; overflow: hidden; background-color: #FEF08A;'>{$row['full_name']}</td>";
 
-                                echo "<td class='p-2'>" . number_format($row['basic_salary'], 2) . "</td>"; // Basic Salary
-                                echo "<td class='p-2'>" . number_format($row['honorarium'], 2) . "</td>"; // Honorarium
-                                echo "<td class='p-2'>" . number_format($row['overload_hr'], 2) . "</td>"; // Overload HR
-                                echo "<td class='p-2'>" . number_format($row['overload_rate'], 2) . "</td>"; // Overload Rate
-
-                                echo "<td name='overload_total' class='p-2'>" . number_format($row['overload_total'], 2) . "</td>"; // Overload Total
-                                echo "<td style='background-color: #f9a8d4;'>
-                                <input type='number' name='wr_hr' class='editable-cell' value='{$row['wr_hr']}'>
-                              </td>"; // WR HR
-
-                                echo "<td style='background-color: #f9a8d4;'>
-                                <input type='number' name='wr_rate' class='editable-cell' value='{$row['wr_rate']}'>
-                              </td>"; // WR Rate
-
-                                echo "<td name='wr_total' class='p-2' style='background-color: #f9a8d4;'>"
-                                    . number_format($row['wr_total'], 2) .
-                                    "</td>"; // WR Total
-                                echo "<td><input type='number' name='adjust_rate' class='editable-cell' value='{$row['adjust_rate']}'></td>"; // Adjust Rate
-                                echo "<td><input type='number' name='adjust_hr' class='editable-cell' value='{$row['adjust_hr']}'></td>"; // Adjust HR
-                                echo "<td name='adjust_total' class='p-2'>" . number_format($row['adjust_total'], 2) . "</td>"; // Adjust Total
-                                echo "<td><input type='number' name='watch_hr' class='editable-cell' value='{$row['watch_hr']}'></td>"; // Watch HR
-                                echo "<td><input type='number' name='watch_reward' class='editable-cell' value='{$row['watch_reward']}'></td>";
-                                echo "<td name='watch_total' class='p-2'>" . number_format($row['watch_total'], 2) . "</td>"; // Watch Total
-                                echo "<td name='gross_pay' class='p-2' style='background-color: #fef08a;'>"
-                                    . number_format($row['gross_pay'], 2) .
-                                    "</td>"; // Gross Pay
-                                echo "<td><input type='number' name='absent_late_hr' class='editable-cell' value='{$row['absent_late_hr']}'></td>"; // Absent Late HR
-
-                                echo "<td class='p-2' name='absent_lateRate'>" . number_format($row['absent_lateRate'], 2) . "</td>";
-
-
-                                echo "<td name='absent_late_total' class='p-2'>" . number_format(0.00, 2) . "</td>"; // Absent Late Total
-
-                                echo "<td style='background-color: #bbf7d0;'>
-                                <input type='number' name='pagibig' class='editable-cell' value='{$row['pagibig']}'>
-                              </td>"; // Pagibig
-
-                                echo "<td style='background-color: #bbf7d0;'>
-                                <input type='number' name='mp2' class='editable-cell' value='{$row['mp2']}'>
-                              </td>"; // MP2
-
-                                echo "<td style='background-color: #bbf7d0;'>
-                                <input type='number' name='sss' class='editable-cell' value='{$row['sss']}'>
-                              </td>"; // SSS
-
-                                echo "<td style='background-color: #bbf7d0;'>
-                                <input type='number' name='ret' class='editable-cell' value='{$row['ret']}'>
-                              </td>"; // RET
+                                echo "<td class='p-2' style='background-color: #E3F2FD;'>" . number_format($row['basic_salary'], 2) . "</td>"; // Basic Salary
+                                echo "<td class='p-2' style='background-color: #E3F2FD;'>" . number_format($row['honorarium'], 2) . "</td>"; // Honorarium
+                                echo "<td class='p-2' style='background-color: #E3F2FD;'>" . number_format($row['overload_hr'], 2) . "</td>"; // Overload HR
+                                echo "<td class='p-2' style='background-color: #E3F2FD;'>" . number_format($row['overload_rate'], 2, '.', ',') . "</td>"; // Overload Rate
+                                echo "<td name='overload_total' class='p-2' style='background-color: #E3F2FD;'>" . number_format($row['overload_total'], 2) . "</td>"; // Overload Total
 
 
 
+                                echo "<td style='background-color: #D4EDDA;'><input type='number' name='wr_hr' class='editable-cell' value='{$row['wr_hr']}'></td>"; // WR HR
+                                echo "<td style='background-color: #D4EDDA;'><input type='number' name='wr_rate' class='editable-cell' value='{$row['wr_rate']}'></td>"; // WR Rate
+                                echo "<td name='wr_total' class='p-2' style='background-color: #D4EDDA;'>" . number_format($row['wr_total'], 2) . "</td>"; // WR Total
+                                echo "<td style='background-color: #D4EDDA;'><input type='number' name='adjust_rate' class='editable-cell' value='{$row['adjust_rate']}'></td>"; // Adjust Rate
+                                echo "<td style='background-color: #D4EDDA;'><input type='number' name='adjust_hr' class='editable-cell' value='{$row['adjust_hr']}'></td>"; // Adjust HR
+                                echo "<td name='adjust_total' class='p-2' style='background-color: #D4EDDA;'>" . number_format($row['adjust_total'], 2) . "</td>"; // Adjust Total
+                                echo "<td style='background-color: #D4EDDA;'><input type='number' name='watch_hr' class='editable-cell' value='{$row['watch_hr']}'></td>"; // Watch HR
+                                echo "<td class='p-2' name='watch_reward' style='background-color: #D4EDDA;'>" . number_format($row['watch_reward'], 2) . "</td>"; // Watch Reward
+                                echo "<td name='watch_total' class='p-2' style='background-color: #D4EDDA;'>" . number_format($row['watch_total'], 2) . "</td>"; // Watch Total
 
 
 
+                                echo "<td name='gross_pay' class='p-2' style='background-color: #FFCBA4;'>" . number_format($row['gross_pay'], 2) . "</td>"; // Gross Pay
+
+                                echo "<td style='background-color: #FFD6D6;'><input type='number' name='absent_late_hr' class='editable-cell' value='{$row['absent_late_hr']}'></td>"; // Absent Late HR
+                                echo "<td class='p-2' name='absent_lateRate' style='background-color: #FFD6D6;'>" . number_format($row['absent_lateRate'], 2) . "</td>";
+                                echo "<td name='absent_late_total' class='p-2' style='background-color: #FFD6D6;'>" . number_format(0.00, 2) . "</td>"; // Absent Late Total
 
 
 
+                                //loans
+
+
+                                echo "<td class='p-2' style='background-color: #F0F0F0;'>" . number_format($row['hdmf_pag'], 2) . "</td>"; // Pag-ibig
+                                echo "<td class='p-2' style='background-color: #F0F0F0;'>" . number_format($row['sss'], 2) . "</td>"; // SSS
+                                echo "<td class='p-2' style='background-color: #F0F0F0;'>" . number_format($row['ret'], 2) . "</td>"; // RET
+
+
+                            
+
+                                // contributions
+
+                               
+
+                                echo "<td class='p-2' style='background-color: #E6E6FA;'>" . number_format($row['retirement'], 2) . "</td>"; // retirement
+                                echo "<td class='p-2' style='background-color: #E6E6FA;'>" . number_format($row['mp2'], 2) . "</td>"; // mp2
+
+                     
 
 
 
+                                echo "<td style='background-color: #FFD6D6;'><input type='number' name='canteen' class='editable-cell' value='{$row['canteen']}'></td>"; // Canteen
+                                echo "<td style='background-color: #FFD6D6;'><input type='number' name='others' class='editable-cell' value='{$row['others']}'></td>"; // Others
 
 
-
-
-                                echo "<td class='p-2'>" . number_format($row['retirement'], 2) . "</td>"; // Retirement
-                                echo "<td><input type='number' name='canteen' class='editable-cell' value='{$row['canteen']}'></td>"; // Canteen
-                                echo "<td><input type='number' name='others' class='editable-cell' value='{$row['others']}'></td>"; // Others
-                                echo "<td name='total_deduction' class='p-2'>" . number_format($row['total_deduction'], 2) . "</td>"; // Total Deduction
-                                echo "<td name='net_pay' class='p-2'>" . number_format($row['net_pay'], 2) . "</td>"; // Net Pay
+                                echo "<td name='total_deduction' class='p-2' style='background-color: #FFD6D6;'>" . number_format($row['total_deduction'], 2) . "</td>"; // Total Deduction
+                                echo "<td name='net_pay' class='p-2' style='background-color: #FFCBA4;'>" . number_format($row['net_pay'], 2) . "</td>"; // Net Pay
 
 
 
@@ -374,13 +403,12 @@ $result = $conn->query($sql);
 
             // Function to calculate values for a row
             function calculateRow(row) {
-                const overloadHR = parseFloat(row.querySelector("td:nth-child(4)").textContent) || 0; // Overload HR
-                const overloadRate = parseFloat(row.querySelector("td:nth-child(5)").textContent) || 0; // Overload Rate (non-editable)
+                const basicSalary = parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0;
+                const honorarium = parseFloat(row.querySelector("td:nth-child(3)").textContent.replace(/,/g, '')) || 0;
+                const overloadHR = parseFloat(row.querySelector("td:nth-child(4)").textContent.replace(/,/g, '')) || 0;
+                const overloadRate = parseFloat(row.querySelector("td:nth-child(5)").textContent.replace(/,/g, '')) || 0;
 
-                // Calculate overload total (HR * Rate)
                 const overloadTotal = overloadHR * overloadRate;
-
-                // Update the overload total cell
                 row.querySelector("td[name='overload_total']").textContent = overloadTotal.toFixed(2);
 
                 const adjustmentHR = parseFloat(row.querySelector("input[name='adjust_hr']").value) || 0;
@@ -388,57 +416,37 @@ $result = $conn->query($sql);
                 const wrHR = parseFloat(row.querySelector("input[name='wr_hr']").value) || 0;
                 const wrRate = parseFloat(row.querySelector("input[name='wr_rate']").value) || 0;
                 const watchHR = parseFloat(row.querySelector("input[name='watch_hr']").value) || 0;
-                const watchReward = parseFloat(row.querySelector("input[name='watch_reward']").value) || 0;
+                const watchReward = parseFloat(row.querySelector("td:nth-child(14)").textContent.replace(/,/g, '')) || 0;
 
                 const absentLateHR = parseFloat(row.querySelector("input[name='absent_late_hr']").value) || 0;
-                const absentLateRate = parseFloat(row.querySelector("td:nth-child(18)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
-
-                // Calculate the absent late total
+                const absentLateRate = parseFloat(row.querySelector("td:nth-child(18)").textContent.replace(/,/g, '')) || 0;
                 const absentLateTotal = absentLateHR * absentLateRate;
-
-                // Update the absent late total cell    
                 row.querySelector("td[name='absent_late_total']").textContent = absentLateTotal.toFixed(2);
 
-                const pagibig = parseFloat(row.querySelector("input[name='pagibig']").value) || 0;
-                const mp2 = parseFloat(row.querySelector("input[name='mp2']").value) || 0;
-                const sss = parseFloat(row.querySelector("input[name='sss']").value) || 0;
-                const ret = parseFloat(row.querySelector("input[name='ret']").value) || 0;
+                // Fix Loan calculations
+                const hdmfPag = parseFloat(row.querySelector("td:nth-child(20)").textContent.replace(/,/g, '')) || 0;
+                const sss = parseFloat(row.querySelector("td:nth-child(21)").textContent.replace(/,/g, '')) || 0;
+                const ret = parseFloat(row.querySelector("td:nth-child(22)").textContent.replace(/,/g, '')) || 0;
 
-
-                // const pagibigTotal = parseFloat(row.querySelector("td:nth-child(22)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
-                // const medicalSavings = parseFloat(row.querySelector("td:nth-child(23)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
-                // const sssTotal = parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
-                const retirement = parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
-
-
-
+                const retirement = parseFloat(row.querySelector("td:nth-child(23)").textContent.replace(/,/g, '')) || 0;
+                const mp2 = parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0;
 
                 const canteen = parseFloat(row.querySelector("input[name='canteen']").value) || 0;
+
                 const others = parseFloat(row.querySelector("input[name='others']").value) || 0;
 
-                // Calculate totals
+
                 const wrTotal = wrHR * wrRate;
                 const adjustmentTotal = adjustmentHR * adjustmentRate;
                 const watchRewardTotal = watchHR * watchReward;
 
-                const totalLoans = pagibig + mp2 + sss + ret;
-                const totalDeduction = absentLateTotal + totalLoans + retirement + canteen + others;
+                const totalLoans = hdmfPag + sss + ret;
+                const totalContributions = retirement + mp2;
+                const totalDeduction = absentLateTotal + totalLoans + totalContributions + canteen + others;
 
-                const basicSalary = parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
-                const honorarium = parseFloat(row.querySelector("td:nth-child(3)").textContent.replace(/,/g, '')) || 0; // Remove commas before parsing
                 const grossPay = basicSalary + honorarium + overloadTotal + wrTotal + adjustmentTotal + watchRewardTotal;
                 const netPay = grossPay - totalDeduction;
 
-
-
-                // alert(`Absent Late Hr: ${absentLateHR}\nAbsent Late Rate: ${absentLateRate}\nAbsent Late Total: ${absentLateTotal}\nPagibig: ${pagibig}\nMp2: ${mp2}\nSss: ${sss}\nRet: ${ret} \nRetirement: ${retirement} \nCanteen: ${canteen} \nOthers: ${others} \nTotal Deduction: ${totalDeduction}` );
-
-
-                // Update calculated values in the table
-                row.querySelector("td[name='overload_total']").textContent = overloadTotal.toLocaleString(undefined, {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                });
                 row.querySelector("td[name='wr_total']").textContent = wrTotal.toLocaleString(undefined, {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
@@ -451,7 +459,6 @@ $result = $conn->query($sql);
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 });
-
                 row.querySelector("td[name='gross_pay']").textContent = grossPay.toLocaleString(undefined, {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
@@ -465,6 +472,7 @@ $result = $conn->query($sql);
                     maximumFractionDigits: 2
                 });
             }
+
 
             // Trigger calculation when the page loads
             function calculateAllRows() {
@@ -495,6 +503,10 @@ $result = $conn->query($sql);
                         employee_id: row.querySelector("td[data-employee]").getAttribute("data-employee") || 0, // Default employee_id to 0
                         full_name: row.querySelector("td[data-employee]").textContent || "", // Ensure full_name is set to an empty string if empty
                         basic_salary: parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0,
+
+
+
+
                         honorarium: parseFloat(row.querySelector("td:nth-child(3)").textContent.replace(/,/g, '')) || 0,
                         overload_hr: parseFloat(row.querySelector("td:nth-child(4)").textContent.replace(/,/g, '')) || 0,
                         overload_rate: parseFloat(row.querySelector("td:nth-child(5)").textContent.replace(/,/g, '')) || 0,
@@ -506,53 +518,81 @@ $result = $conn->query($sql);
                         adjust_rate: parseFloat(row.querySelector("input[name='adjust_rate']").value) || 0,
                         adjust_total: parseFloat(row.querySelector("td[name='adjust_total']").textContent.replace(/,/g, '')) || 0,
                         watch_hr: parseFloat(row.querySelector("input[name='watch_hr']").value) || 0,
-                        watch_reward: parseFloat(row.querySelector("input[name='watch_reward']").value) || 0,
+
+
+                        watch_reward: parseFloat(row.querySelector("td:nth-child(14)").textContent.replace(/,/g, '')) || 0,
+
+
+
+
+
                         watch_total: parseFloat(row.querySelector("td[name='watch_total']").textContent.replace(/,/g, '')) || 0,
                         gross_pay: parseFloat(row.querySelector("td[name='gross_pay']").textContent.replace(/,/g, '')) || 0,
                         absent_late_hr: parseFloat(row.querySelector("input[name='absent_late_hr']").value) || 0,
-                        absent_lateRate: parseFloat(row.querySelector("td[name='absent_lateRate']").value) || 0,
+
+
+
+                        absent_lateRate: parseFloat(row.querySelector("td:nth-child(18)").textContent.replace(/,/g, '')) || 0,
+
                         absent_late_total: parseFloat(row.querySelector("td[name='absent_late_total']").textContent.replace(/,/g, '')) || 0,
-                        pagibig: parseFloat(row.querySelector("input[name='pagibig']").value) || 0,
-                        mp2: parseFloat(row.querySelector("input[name='mp2']").value) || 0,
-                        sss: parseFloat(row.querySelector("input[name='sss']").value) || 0,
-                        ret: parseFloat(row.querySelector("input[name='ret']").value) || 0,
-                        retirement: parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0,
+
+
+                        hdmf_pag: parseFloat(row.querySelector("td:nth-child(20)").textContent.replace(/,/g, '')) || 0,
+                        sss: parseFloat(row.querySelector("td:nth-child(21)").textContent.replace(/,/g, '')) || 0,
+                        ret: parseFloat(row.querySelector("td:nth-child(22)").textContent.replace(/,/g, '')) || 0,
+
+
+
+
+                        retirement: parseFloat(row.querySelector("td:nth-child(23)").textContent.replace(/,/g, '')) || 0,
+                        mp2: parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0,
+
+
+
+
+
+
+
                         canteen: parseFloat(row.querySelector("input[name='canteen']").value) || 0,
                         others: parseFloat(row.querySelector("input[name='others']").value) || 0,
                         total_deduction: parseFloat(row.querySelector("td[name='total_deduction']").textContent.replace(/,/g, '')) || 0,
                         net_pay: parseFloat(row.querySelector("td[name='net_pay']").textContent.replace(/,/g, '')) || 0,
                     };
 
+                    console.log(rowData); // Log the rowData to the console for debugging
                     data.push(rowData);
                 });
 
 
 
-                if (confirm("Are you sure you want to save this data?"))
 
-
-                    // Send data to the server using AJAX
+                if (confirm("Are you sure you want to save this data?")) {
                     fetch("cc-save.php", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(data), // Send the data as a JSON string
-                    })
-                    .then(response => response.json())
-                    .then(result => {
-                        if (result.success) {
-                            alert("Data saved successfully!");
-                            location.reload(); // Refresh the page after successful save
-                        } else {
-                            alert("Failed to save data: " + result.message);
-                            console.error("Server Error: ", result.message); // Log server error message in the console
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error occurred while sending request:", error); // Log the error if the network request fails
-                        alert("An error occurred while saving data.");
-                    });
+                            method: "POST",
+                            body: JSON.stringify(data), // Ensure 'data' is properly structured
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        })
+                        .then(response => response.json()) // Convert response to JSON
+                        .then(jsonData => {
+                            console.log("Response Data:", jsonData);
+                            if (jsonData.success) {
+                                alert(jsonData.message); // Get message from PHP response
+                            } else {
+                                console.error("Error Response:", jsonData);
+                                alert("Error: " + jsonData.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Fetch Error:", error);
+                            alert("An error occurred while saving the data.");
+                        });
+                }
+
+
+
+
             });
 
 

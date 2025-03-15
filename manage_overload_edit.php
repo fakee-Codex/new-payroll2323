@@ -140,11 +140,11 @@ try {
 <body>
 
     <?php include 'aside.php'; ?> <!-- This will import the sidebar -->
- 
+
     <main>
 
         <div class="content">
-            <h1 class="text-center mb-5">Employee Name:  <?= htmlspecialchars($row['employee_name']) ?></h1>
+            <h1 class="text-center mb-5">Employee Name: <?= htmlspecialchars($row['employee_name']) ?></h1>
 
             <form id="editForm">
                 <input type="hidden" name="row_id" value="<?= htmlspecialchars($row['overload_id']) ?>">
@@ -154,10 +154,9 @@ try {
                         <thead class="table-light">
                             <tr>
 
-                            <th colspan="3" class="table-warning">MWF</th>
-                            <th colspan="3" class="table-warning">TTH</th>
-                            <th colspan="3" class="table-warning">SS</th>
-                            <th colspan="3">MONDAY</th>
+                                <th colspan="3" class="table-warning">MWF</th>
+                                <th colspan="3" class="table-warning">TTH</th>
+                                <th colspan="3" class="table-warning">SS</th>
                                 <th colspan="3">MONDAY</th>
                                 <th colspan="3">TUESDAY</th>
                                 <th colspan="3">Wednesday</th>
@@ -217,9 +216,7 @@ try {
                                 <th>DAYS</th>
                                 <th>HRS</th>
                                 <th>TOTAL</th>
-                                <th>DAYS</th>
-                                <th>HRS</th>
-                                <th>TOTAL</th>
+                           
                             </tr>
                         </thead>
                         <tbody>
@@ -285,6 +282,7 @@ try {
                                 <td><input type="number" step="0.01" class="form-control" name="mw_hrs" value="<?= htmlspecialchars($row['mw_hrs'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control readonly-input" name="mw_total" value="<?= htmlspecialchars($row['mw_total'] ?? 0) ?>" readonly></td>
 
+                                
 
                                 <td><input type="number" step="0.01" class="form-control" name="less_lateOL" value="<?= htmlspecialchars($row['less_lateOL'] ?? 0) ?>"></td>
                                 <td><input type="number" step="0.01" class="form-control" name="additional" value="<?= htmlspecialchars($row['additional'] ?? 0) ?>"></td>

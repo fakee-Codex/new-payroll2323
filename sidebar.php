@@ -1,11 +1,8 @@
 <?php
+
+
 require 'database_connection.php';
 
-
-// if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] !== true) {
-//     header('Location: index.php');
-//     exit;
-// }
 
 
 
@@ -32,15 +29,23 @@ $sql = "
         ct.gross_pay,
         ct.absent_late_hr,
          e.absent_lateRate,
-        ct.pagibig,
-        ct.mp2,
-        ct.sss,
+        ct.absent_late_total,
+
+        n.ret,
+        n.sss,
+        n.hdmf_pag,
+
+      
+ 
+        
         ct.canteen,
         ct.others,
         ct.total_deduction,
         ct.net_pay,
         ct.reg_date,
-
+        c.mp2,
+        c.medical_savings,
+      
                 
                
 
@@ -48,13 +53,14 @@ $sql = "
 
 
         COALESCE(SUM(o.grand_total), 0) AS overload_hr, 
-        COALESCE(c.medical_savings, 0) AS medical_savings, 
-        COALESCE(c.retirement, 0) AS retirement, 
+    
+       
         COALESCE((c.sss_ee + c.sss_er), 0) AS sss_total, 
         COALESCE((c.pag_ibig_ee + c.pag_ibig_er), 0) AS pag_ibig_total, 
         COALESCE((c.philhealth_ee + c.philhealth_er), 0) AS philhealth_total
     FROM employees e
     LEFT JOIN overload o ON e.employee_id = o.employee_id
+    LEFT JOIN loans n ON e.employee_id = n.employee_id
     LEFT JOIN contributions c ON e.employee_id = c.employee_id
     LEFT JOIN computation ct ON e.employee_id = ct.employee_id
 
@@ -70,9 +76,6 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sidebar</title>
-
-
-    
 
     <style>
         /* Custom Tailwind style for table and button */
@@ -146,6 +149,15 @@ $result = $conn->query($sql);
             font-size: 1.75rem;
             color: #333;
         }
+
+        #crudTable {
+
+            display: block;
+            max-height: 600px;
+            /* Adjust height as needed */
+            overflow-y: auto;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -166,128 +178,158 @@ $result = $conn->query($sql);
         .gg {
             position: sticky;
             left: 0;
-            z-index: 2;
+            z-index: 1;
+            /* Ensures the first column is above other content */
+        }
+
+        .nggh {
+            position: sticky;
+            top: 0;
+            z-index: 3;
+            /* Ensures the first column is above other content */
+        }
+
+        .bgg {
+            position: sticky;
+            left: 0;
+            z-index: 4;
             /* Ensures the first column is above other content */
         }
     </style>
     <main>
         <div class="content">
-            <h1 class="text-xl font-bold mb-4">GFI File 301 Payroll (September 1-15, 2024)</h1>
+            <h1 class="text-xl font-bold mb-4">
+                GFI Payroll (<?php echo date('F'); ?> 1-15, <?php echo date('Y'); ?>)
+            </h1>
+
             <div class="table-wrapper">
-                <table id="crudTable" class="table-auto w-full">
-                    <thead>
-                    <tr>
-    <th rowspan="2" class="p-2 bg-warning position-sticky top-0">Name</th> <!-- Sticky Name -->
-    <th colspan="2" class="p-2 bg-danger text-white">Full-Time</th>
-    <th colspan="2" class="p-2 bg-light">Overloads</th>
-    <th rowspan="2" class="p-2 bg-light">Total</th>
-    <th colspan="3" class="p-2 bg-danger-subtle">CLUBS</th>
-    <th colspan="3" class="p-2 bg-primary-subtle">Adjustment</th>
-    <th colspan="3" class="p-2 bg-danger-subtle">Watch Reward</th>
-    <th rowspan="2" class="p-2 bg-warning">Gross Pay</th>
+                <table id="crudTable" class="table table-bordered w-full border">
 
-    <th colspan="3" class="p-2 bg-secondary">Absences/Late</th>
-    <th colspan="3" class="p-2 bg-success">Loans</th>
+                    <thead class="nggh">
+                        <tr>
+                            <th rowspan="2" class="p-2 position-sticky top-0 text-center align-middle" style="background-color: #FEF08A;">Name</th>
 
-    <th colspan="5" class="p-2 bg-warning">Contributions</th>
 
-    <th rowspan="2" class="p-2 bg-secondary">Canteen</th>
-    <th rowspan="2" class="p-2 bg-secondary">Others</th>
-    <th rowspan="2" class="p-2 bg-info">Total Deductions</th>
-    <th rowspan="2" class="p-2 bg-danger">Net Pay</th>
-    <th rowspan="2" class="p-2 bg-secondary">Action</th>
-</tr>
+                            <th colspan="2" class="p-2" style="background-color: #E3F2FD; text-align: center; vertical-align: middle;">Full-Time</th>
+                            <th colspan="2" class="p-2" style="background-color: #E3F2FD; text-align: center; vertical-align: middle;">Overloads</th>
+                            <th rowspan="2" class="p-2" style="background-color: #E3F2FD; text-align: center; vertical-align: middle;">Total</th>
 
-<tr>
-    <th class="p-2 bg-info">Basic</th>
-    <th class="p-2 bg-primary-subtle">Honorarium</th>
-    <th class="p-2 bg-danger-subtle">HR</th>
-    <th class="p-2 bg-danger-subtle">Rate</th>
-    <th class="p-2 bg-danger">WR</th>
-    <th class="p-2 bg-danger">Rate</th>
-    <th class="p-2 bg-danger">Total</th>
-    <th class="p-2 bg-primary">HR</th>
-    <th class="p-2 bg-primary">Rate</th>
-    <th class="p-2 bg-primary">Total</th>
-    <th class="p-2 bg-danger-subtle">HR</th>
-    <th class="p-2 bg-danger-subtle">Rate</th>
-    <th class="p-2 bg-danger-subtle">Total</th>
-    <th class="p-2 bg-secondary">HR</th>
-    <th class="p-2 bg-secondary">Rate</th>
-    <th class="p-2 bg-secondary">Total</th>
-    <th class="p-2 bg-success">HDMF</th>
-    <th class="p-2 bg-success">MP2</th>
-    <th class="p-2 bg-success">SSS</th>
+                            <th colspan="3" class="p-2 text-center align-middle" style="background-color: #D4EDDA;">CLUBS</th>
+                            <th colspan="3" class="p-2 text-center align-middle" style="background-color: #D4EDDA;">Adjustment</th>
+                            <th colspan="3" class="p-2 text-center align-middle" style="background-color: #D4EDDA;">Watch Reward</th>
 
-    <th class="p-2 bg-warning">MED.S</th>
-    <th class="p-2 bg-warning">SSS</th>
-    <th class="p-2 bg-warning">RETIREMENT</th>
-    <th class="p-2 bg-warning">P-IBIG</th>
-    <th class="p-2 bg-warning">PHIC</th>
-</tr>
+                            <th rowspan="2" class="p-2" style="background-color: #FFCBA4; text-align: center; vertical-align: middle;">Gross Pay</th>
+
+                            <th colspan="3" class="p-2 text-center align-middle" style="background-color: #FFD6D6;">Absences/Late</th>
+                            <th colspan="3" class="p-2 text-center align-middle" style="background-color: #F0F0F0;">Loans</th>
+
+                            <th colspan="5" class="p-2 text-center align-middle" style="background-color: #E6E6FA;">Contributions</th>
+
+                            <th rowspan="2" class="p-2" style="background-color: #FFD6D6; text-align: center; vertical-align: middle;">Canteen</th>
+                            <th rowspan="2" class="p-2" style="background-color: #FFD6D6; text-align: center; vertical-align: middle;">Others</th>
+                            <th rowspan="2" class="p-2" style="background-color: #FFD6D6; text-align: center; vertical-align: middle;">Total Deductions</th>
+                            <th rowspan="2" class="p-2" style="background-color: #FFCBA4; text-align: center; vertical-align: middle;">Net Pay</th>
+                            <th rowspan="2" class="p-2 bg-secondary text-center align-middle">Action</th>
+
+                        </tr>
+
+                        <tr>
+                            <th class="p-2 align-middle" style="background-color: #E3F2FD;">Basic</th>
+                            <th class="p-2 align-middle" style="background-color: #E3F2FD;">Honorarium</th>
+                            <th class="p-2 align-middle" style="background-color: #E3F2FD;">HR</th>
+                            <th class="p-2 align-middle" style="background-color: #E3F2FD;">Rate</th>
+
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">WR</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">Rate</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">Total</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">HR</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">Rate</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">Total</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">HR</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">Rate</th>
+                            <th class="p-2 align-middle" style="background-color: #D4EDDA;">Total</th>
+
+                            <th class="p-2 align-middle" style="background-color: #FFD6D6;">HR</th>
+                            <th class="p-2 align-middle" style="background-color: #FFD6D6;">Rate</th>
+                            <th class="p-2 align-middle" style="background-color: #FFD6D6;">Total</th>
+
+                            <th class="p-2 align-middle" style="background-color: #F0F0F0;">RET</th>
+                            <th class="p-2 align-middle" style="background-color: #F0F0F0;">SSS</th>
+                            <th class="p-2 align-middle" style="background-color: #F0F0F0;">HDMF (pag-ibig)</th>
+
+                            <th class="p-2 align-middle" style="background-color: #E6E6FA;">MP2</th>
+                            <th class="p-2 align-middle" style="background-color: #E6E6FA;">MED. S</th>
+                            <th class="p-2 align-middle" style="background-color: #E6E6FA;">SSS</th>
+                            <th class="p-2 align-middle" style="background-color: #E6E6FA;">HDMF (mandatory)</th>
+                            <th class="p-2 align-middle" style="background-color: #E6E6FA;">PHIC</th>
+                        </tr>
 
                     </thead>
-                    <tbody>
+                    <tbody class="ngg">
+
                         <?php
                         if ($result && $result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td data-employee='{$row['employee_id']}' class='p-2 sticky gg' style='padding: 0.5rem; text-align: justify; border: 1px solid #ddd; white-space: nowrap; overflow: hidden;'>{$row['full_name']}</td>";
-
-                                echo "<td class='p-2'>" . number_format($row['basic_salary'], 2) . "</td>"; // Basic Salary
-                                echo "<td class='p-2'>" . number_format($row['honorarium'], 2) . "</td>"; // Honorarium
-                                echo "<td class='p-2'>" . number_format($row['overload_hr'], 2) . "</td>"; // Overload HR
-                                echo "<td class='p-2'>" . number_format($row['overload_rate'], 2, '.', ',') . "</td>"; // Overload Rate
-                                echo "<td name='overload_total' class='p-2'>" . number_format($row['overload_total'], 2) . "</td>"; // Overload Total
-                                echo "<td><input type='number' name='wr_hr' class='editable-cell' value='{$row['wr_hr']}'></td>"; // WR HR
-                                echo "<td><input type='number' name='wr_rate' class='editable-cell' value='{$row['wr_rate']}'></td>"; // WR Rate
-                                echo "<td name='wr_total' class='p-2'>" . number_format($row['wr_total'], 2) . "</td>"; // WR Total
-                                echo "<td><input type='number' name='adjust_rate' class='editable-cell' value='{$row['adjust_rate']}'></td>"; // Adjust Rate
-                                echo "<td><input type='number' name='adjust_hr' class='editable-cell' value='{$row['adjust_hr']}'></td>"; // Adjust HR
-                                echo "<td name='adjust_total' class='p-2'>" . number_format($row['adjust_total'], 2) . "</td>"; // Adjust Total
-                                echo "<td><input type='number' name='watch_hr' class='editable-cell' value='{$row['watch_hr']}'></td>"; // Watch HR
+                                echo "<td data-employee='{$row['employee_id']}' class='p-2 sticky gg' style='padding: 0.5rem; text-align: justify; border: 1px solid #ddd; white-space: nowrap; overflow: hidden; background-color: #FEF08A;'>{$row['full_name']}</td>";
 
 
 
-                                echo "<td class='p-2' name='watch_reward'>" . number_format($row['watch_reward'], 2) . "</td>";
-
-                                echo "<td name='watch_total' class='p-2'>" . number_format($row['watch_total'], 2) . "</td>"; // Watch Total
-                                echo "<td name='gross_pay' class='p-2'>" . number_format($row['gross_pay'], 2) . "</td>"; // Gross Pay
-                                echo "<td><input type='number' name='absent_late_hr' class='editable-cell' value='{$row['absent_late_hr']}'></td>"; // Absent Late HR
-
-                                echo "<td class='p-2' name='absent_lateRate'>" . number_format($row['absent_lateRate'], 2) . "</td>";
-
-                                echo "<td name='absent_late_total' class='p-2'>" . number_format(0.00, 2) . "</td>"; // Absent Late Total
-
-                                // echo "<td><input type='number' name='absent_late_rate' class='editable-cell' value='{$row['absent_late_rate']}'></td>"; // Absent Late Rate
-
-                                echo "<td><input type='number' name='pagibig' class='editable-cell' value='{$row['pagibig']}'></td>"; // Pagibig
-                                echo "<td><input type='number' name='mp2' class='editable-cell' value='{$row['mp2']}'></td>"; // MP2
-                                echo "<td><input type='number' name='sss' class='editable-cell' value='{$row['sss']}'></td>"; // MP2
-
-                                echo "<td class='p-2'>" . number_format($row['medical_savings'], 2) . "</td>"; // Medical Savings
-                                echo "<td class='p-2'>" . number_format($row['sss_total'], 2) . "</td>"; // SSS Total
-
-                                echo "<td class='p-2'>" . number_format($row['retirement'], 2) . "</td>"; // Retirement
-
-                                echo "<td class='p-2'>" . number_format($row['pag_ibig_total'], 2) . "</td>"; // Pag-ibig Total
-                                echo "<td class='p-2'>" . number_format($row['philhealth_total'], 2) . "</td>"; // Philhealth Total
-                                echo "<td><input type='number' name='canteen' class='editable-cell' value='{$row['canteen']}'></td>"; // Canteen
-                                echo "<td><input type='number' name='others' class='editable-cell' value='{$row['others']}'></td>"; // Others
-                                echo "<td name='total_deduction' class='p-2'>" . number_format($row['total_deduction'], 2) . "</td>"; // Total Deduction
-                                echo "<td name='net_pay' class='p-2'>" . number_format($row['net_pay'], 2) . "</td>"; // Net Pay
+                                echo "<td class='p-2' style='background-color: #E3F2FD;'>" . number_format($row['basic_salary'], 2) . "</td>"; // Basic Salary
+                                echo "<td class='p-2' style='background-color: #E3F2FD;'>" . number_format($row['honorarium'], 2) . "</td>"; // Honorarium
+                                echo "<td class='p-2' style='background-color: #E3F2FD;'>" . number_format($row['overload_hr'], 2) . "</td>"; // Overload HR
+                                echo "<td class='p-2' style='background-color: #E3F2FD;'>" . number_format($row['overload_rate'], 2, '.', ',') . "</td>"; // Overload Rate
+                                echo "<td name='overload_total' class='p-2' style='background-color: #E3F2FD;'>" . number_format($row['overload_total'], 2) . "</td>"; // Overload Total
 
 
+
+                                echo "<td style='background-color: #D4EDDA;'><input type='number' name='wr_hr' class='editable-cell' value='{$row['wr_hr']}'></td>"; // WR HR
+                                echo "<td style='background-color: #D4EDDA;'><input type='number' name='wr_rate' class='editable-cell' value='{$row['wr_rate']}'></td>"; // WR Rate
+                                echo "<td name='wr_total' class='p-2' style='background-color: #D4EDDA;'>" . number_format($row['wr_total'], 2) . "</td>"; // WR Total
+                                echo "<td style='background-color: #D4EDDA;'><input type='number' name='adjust_rate' class='editable-cell' value='{$row['adjust_rate']}'></td>"; // Adjust Rate
+                                echo "<td style='background-color: #D4EDDA;'><input type='number' name='adjust_hr' class='editable-cell' value='{$row['adjust_hr']}'></td>"; // Adjust HR
+                                echo "<td name='adjust_total' class='p-2' style='background-color: #D4EDDA;'>" . number_format($row['adjust_total'], 2) . "</td>"; // Adjust Total
+                                echo "<td style='background-color: #D4EDDA;'><input type='number' name='watch_hr' class='editable-cell' value='{$row['watch_hr']}'></td>"; // Watch HR
+                                echo "<td class='p-2' name='watch_reward' style='background-color: #D4EDDA;'>" . number_format($row['watch_reward'], 2) . "</td>"; // Watch Reward
+                                echo "<td name='watch_total' class='p-2' style='background-color: #D4EDDA;'>" . number_format($row['watch_total'], 2) . "</td>"; // Watch Total
+
+
+
+                                echo "<td name='gross_pay' class='p-2' style='background-color: #FFCBA4;'>" . number_format($row['gross_pay'], 2) . "</td>"; // Gross Pay
+
+
+                                echo "<td style='background-color: #FFD6D6;'><input type='number' name='absent_late_hr' class='editable-cell' value='{$row['absent_late_hr']}'></td>"; // Absent Late HR
+                                echo "<td class='p-2' name='absent_lateRate' style='background-color: #FFD6D6;'>" . number_format($row['absent_lateRate'], 2) . "</td>";
+                                echo "<td name='absent_late_total' class='p-2' style='background-color: #FFD6D6;'>" . number_format(0.00, 2) . "</td>"; // Absent Late Total
+
+                                echo "<td class='p-2' style='background-color: #F0F0F0;'>" . number_format($row['ret'], 2) . "</td>"; // RET
+                                echo "<td class='p-2' style='background-color: #F0F0F0;'>" . number_format($row['sss'], 2) . "</td>"; // SSS
+                                echo "<td class='p-2' style='background-color: #F0F0F0;'>" . number_format($row['hdmf_pag'], 2) . "</td>"; // Pag-ibig
+
+
+
+
+                                echo "<td class='p-2' style='background-color: #E6E6FA;'>" . number_format($row['mp2'], 2) . "</td>"; // MP2
+                                echo "<td class='p-2' style='background-color: #E6E6FA;'>" . number_format($row['medical_savings'], 2) . "</td>"; // Medical Savings
+
+                                echo "<td class='p-2' style='background-color: #E6E6FA;'>" . number_format($row['sss_total'], 2) . "</td>"; // SSS
+
+                                echo "<td class='p-2' style='background-color: #E6E6FA;'>" . number_format($row['pag_ibig_total'], 2) . "</td>"; // Pag-ibig Total
+                                echo "<td class='p-2' style='background-color: #E6E6FA;'>" . number_format($row['philhealth_total'], 2) . "</td>"; // PhilHealth Total
+
+
+
+                                echo "<td style='background-color: #FFD6D6;'><input type='number' name='canteen' class='editable-cell' value='{$row['canteen']}'></td>"; // Canteen
+                                echo "<td style='background-color: #FFD6D6;'><input type='number' name='others' class='editable-cell' value='{$row['others']}'></td>"; // Others
+
+                                echo "<td name='total_deduction' class='p-2' style='background-color: #FFD6D6;'>" . number_format($row['total_deduction'], 2) . "</td>"; // Total Deduction
+
+                                echo "<td name='net_pay' class='p-2' style='background-color: #FFCBA4;'>" . number_format($row['net_pay'], 2) . "</td>"; // Net Pay
 
                                 echo "<td>
-                                <button onclick=\"printData('{$row['basic_salary']}', '{$row['full_name']}', '{$row['honorarium']}', '{$row['gross_pay']}', '{$row['sss_total']}', '{$row['total_deduction']}', '{$row['retirement']}', '{$row['medical_savings']}', '{$row['philhealth_total']}', '{$row['pag_ibig_total']}', '{$row['net_pay']}')\" 
-                                class=\"px-4 py-2 bg-blue-500 text-white rounded flex items-center gap-2 hover:bg-blue-600\">
-                                    <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" viewBox=\"0 0 512 512\">
-                                        <path d=\"M128 0C92.7 0 64 28.7 64 64l0 96 64 0 0-96 226.7 0L384 93.3l0 66.7 64 0 0-66.7c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0L128 0zM384 352l0 32 0 64-256 0 0-64 0-16 0-16 256 0zm64 32l32 0c17.7 0 32-14.3 32-32l0-96c0-35.3-28.7-64-64-64L64 192c-35.3 0-64 28.7-64 64l0 96c0 17.7 14.3 32 32 32l32 0 0 64c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-64zM432 248a24 24 0 1 1 0 48 24 24 0 1 1 0-48z\"/>
-                                    </svg>
-                                    Print
-                                </button>
-                              </td>";
+                                <button class='btn btn-primary p-2 viewPayslip' data-employee='{$row['employee_id']}'>View Payslip</button>
+                            </td>";
+
 
 
 
@@ -301,28 +343,46 @@ $result = $conn->query($sql);
                     </tbody>
                 </table>
 
-                <script>
-                    function printData(basicSalary, fullName, honorarium, grossPay, sssTotal, philhealthTotal, pagIbigTotal, medicalSavings, retirement, totalDeduction, netPay) {
-                        // Open the print.php page and pass all the data via URL
-                        window.location.href = 'print.php?basic_salary=' + encodeURIComponent(basicSalary) +
-                            '&full_name=' + encodeURIComponent(fullName) +
-                            '&honorarium=' + encodeURIComponent(honorarium) +
-                            '&gross_pay=' + encodeURIComponent(grossPay) +
-                            '&sss_total=' + encodeURIComponent(sssTotal) +
-                            '&medical_savings=' + encodeURIComponent(medicalSavings) +
-                            '&retirement=' + encodeURIComponent(retirement) +
-                            '&total_deduction=' + encodeURIComponent(totalDeduction) +
-                            '&philhealth_total=' + encodeURIComponent(philhealthTotal) +
-                            '&pag_ibig_total=' + encodeURIComponent(pagIbigTotal) +
-                            '&net_pay=' + encodeURIComponent(netPay);
-                    }
-                </script>
-
-
-
             </div>
+
+
+            <!-- Modal Structure -->
+            <div class="modal fade" id="payslipModal" tabindex="-1" aria-labelledby="payslipModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="payslipModalLabel">Employee Payslip</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="payslipContent">
+                            <!-- Payslip details will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.querySelectorAll(".viewPayslip").forEach(button => {
+                        button.addEventListener("click", function() {
+                            let employeeId = this.getAttribute("data-employee");
+
+                            // AJAX request to fetch payslip details
+                            fetch("payslips/fetch_payslip.php?id=" + employeeId)
+                                .then(response => response.text())
+                                .then(data => {
+                                    document.getElementById("payslipContent").innerHTML = data;
+                                    new bootstrap.Modal(document.getElementById("payslipModal")).show();
+                                })
+                                .catch(error => console.error("Error fetching payslip:", error));
+                        });
+                    });
+                });
+            </script>
+
+
+
             <div class="flex justify-end mt-5 gap-x-4">
-                <button id="printTableBtn" class="save-btn mb-4 bg-blue-500 text-white px-4 py-2 rounded" onclick="window.location.href='print2.php';">Print Table</button>
 
 
                 <button id="saveTableBtn" class="save-btn mb-4">Save Table</button>
@@ -342,66 +402,55 @@ $result = $conn->query($sql);
         document.addEventListener("DOMContentLoaded", function() {
             const saveButton = document.getElementById("saveTableBtn");
 
+            // Function to calculate values for a row
             function calculateRow(row) {
+                const basicSalary = parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0;
+                const honorarium = parseFloat(row.querySelector("td:nth-child(3)").textContent.replace(/,/g, '')) || 0;
                 const overloadHR = parseFloat(row.querySelector("td:nth-child(4)").textContent.replace(/,/g, '')) || 0;
                 const overloadRate = parseFloat(row.querySelector("td:nth-child(5)").textContent.replace(/,/g, '')) || 0;
 
                 const overloadTotal = overloadHR * overloadRate;
-
-                row.querySelector("td[name='overload_total']").textContent = overloadTotal.toLocaleString(undefined, {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                });
+                row.querySelector("td[name='overload_total']").textContent = overloadTotal.toFixed(2);
 
                 const adjustmentHR = parseFloat(row.querySelector("input[name='adjust_hr']").value) || 0;
                 const adjustmentRate = parseFloat(row.querySelector("input[name='adjust_rate']").value) || 0;
                 const wrHR = parseFloat(row.querySelector("input[name='wr_hr']").value) || 0;
                 const wrRate = parseFloat(row.querySelector("input[name='wr_rate']").value) || 0;
                 const watchHR = parseFloat(row.querySelector("input[name='watch_hr']").value) || 0;
+                const watchReward = parseFloat(row.querySelector("td:nth-child(14)").textContent.replace(/,/g, '')) || 0;
 
-                const watchReward = parseFloat(row.querySelector("td[name='watch_reward']").textContent.replace(/,/g, '').trim()) || 0;
-
-
-                const absentLateHR = parseFloat(row.querySelector("input[name='absent_late_hr']").value.trim()) || 0;
-                const absentLateRate = parseFloat(row.querySelector("td[name='absent_lateRate']").textContent.replace(/,/g, '').trim()) || 0;
-
+                const absentLateHR = parseFloat(row.querySelector("input[name='absent_late_hr']").value) || 0;
+                const absentLateRate = parseFloat(row.querySelector("td:nth-child(18)").textContent.replace(/,/g, '')) || 0;
                 const absentLateTotal = absentLateHR * absentLateRate;
-                row.querySelector("td[name='absent_late_total']").textContent = absentLateTotal.toLocaleString(undefined, {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                });
+                row.querySelector("td[name='absent_late_total']").textContent = absentLateTotal.toFixed(2);
 
-                const pagibig = parseFloat(row.querySelector("input[name='pagibig']").value) || 0;
-                const mp2 = parseFloat(row.querySelector("input[name='mp2']").value) || 0;
-                const sss = parseFloat(row.querySelector("input[name='sss']").value) || 0;
+                // Fix Loan calculations
+                const ret = parseFloat(row.querySelector("td:nth-child(20)").textContent.replace(/,/g, '')) || 0;
+                const sss = parseFloat(row.querySelector("td:nth-child(21)").textContent.replace(/,/g, '')) || 0;
+                const hdmfPag = parseFloat(row.querySelector("td:nth-child(22)").textContent.replace(/,/g, '')) || 0;
 
-                const medicalSavings = parseFloat(row.querySelector("td:nth-child(23)").textContent.replace(/,/g, '')) || 0;
-                const sssTotal = parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0;
-                const retirement = parseFloat(row.querySelector("td:nth-child(25)").textContent.replace(/,/g, '')) || 0;
-                const pagibigTotal = parseFloat(row.querySelector("td:nth-child(26)").textContent.replace(/,/g, '')) || 0;
+                const mp2 = parseFloat(row.querySelector("td:nth-child(23)").textContent.replace(/,/g, '')) || 0;
+                const medicalSavings = parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0;
+                const sssTotal = parseFloat(row.querySelector("td:nth-child(25)").textContent.replace(/,/g, '')) || 0;
+                const pagIbigTotal = parseFloat(row.querySelector("td:nth-child(26)").textContent.replace(/,/g, '')) || 0;
                 const philhealthTotal = parseFloat(row.querySelector("td:nth-child(27)").textContent.replace(/,/g, '')) || 0;
 
-
-
                 const canteen = parseFloat(row.querySelector("input[name='canteen']").value) || 0;
+
                 const others = parseFloat(row.querySelector("input[name='others']").value) || 0;
+
 
                 const wrTotal = wrHR * wrRate;
                 const adjustmentTotal = adjustmentHR * adjustmentRate;
                 const watchRewardTotal = watchHR * watchReward;
 
-                const totalContributions = medicalSavings + sssTotal + retirement + pagibigTotal + philhealthTotal;
-                const totalDeduction = absentLateTotal + pagibig + mp2 + sss + totalContributions + canteen + others;
+                const totalLoans = hdmfPag + sss + ret;
+                const totalContributions = mp2 + medicalSavings + sssTotal + pagIbigTotal + philhealthTotal;
+                const totalDeduction = absentLateTotal + totalLoans + totalContributions + canteen + others;
 
-                const basicSalary = parseFloat(row.querySelector("td:nth-child(2)").textContent.replace(/,/g, '')) || 0;
-                const honorarium = parseFloat(row.querySelector("td:nth-child(3)").textContent.replace(/,/g, '')) || 0;
                 const grossPay = basicSalary + honorarium + overloadTotal + wrTotal + adjustmentTotal + watchRewardTotal;
                 const netPay = grossPay - totalDeduction;
 
-                row.querySelector("td[name='overload_total']").textContent = overloadTotal.toLocaleString(undefined, {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                });
                 row.querySelector("td[name='wr_total']").textContent = wrTotal.toLocaleString(undefined, {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
@@ -414,7 +463,6 @@ $result = $conn->query($sql);
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 });
-
                 row.querySelector("td[name='gross_pay']").textContent = grossPay.toLocaleString(undefined, {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
@@ -428,6 +476,7 @@ $result = $conn->query($sql);
                     maximumFractionDigits: 2
                 });
             }
+
 
             // Trigger calculation when the page loads
             function calculateAllRows() {
@@ -450,9 +499,11 @@ $result = $conn->query($sql);
 
 
             // Save table data
-            saveButton.addEventListener("click", function() {
+            document.getElementById("saveTableBtn").addEventListener("click", function() {
                 const rows = document.querySelectorAll("#crudTable tbody tr");
                 const data = [];
+
+
 
                 rows.forEach(row => {
                     const rowData = {
@@ -470,51 +521,78 @@ $result = $conn->query($sql);
                         adjust_rate: parseFloat(row.querySelector("input[name='adjust_rate']").value) || 0,
                         adjust_total: parseFloat(row.querySelector("td[name='adjust_total']").textContent.replace(/,/g, '')) || 0,
                         watch_hr: parseFloat(row.querySelector("input[name='watch_hr']").value) || 0,
+                        watch_reward: parseFloat(row.querySelector("td:nth-child(14)").textContent.replace(/,/g, '')) || 0,
 
-                        watch_reward: parseFloat(row.querySelector("td[name='watch_reward']").textContent.replace(/,/g, '')) || 0, // Fixed `.value`
+
 
 
 
                         watch_total: parseFloat(row.querySelector("td[name='watch_total']").textContent.replace(/,/g, '')) || 0,
-                        gross_pay: parseFloat(row.querySelector("td[name='gross_pay']").textContent.replace(/,/g, '')) || 0, // Fixed extra period
+                        gross_pay: parseFloat(row.querySelector("td[name='gross_pay']").textContent.replace(/,/g, '')) || 0,
                         absent_late_hr: parseFloat(row.querySelector("input[name='absent_late_hr']").value) || 0,
-                        absent_lateRate: parseFloat(row.querySelector("td[name='absent_lateRate']").textContent.replace(/,/g, '')) || 0, // Fixed `.value`
-                        absent_late_total: parseFloat(row.querySelector("td[name='absent_late_total']").textContent.replace(/,/g, '')) || 0, // Fixed extra period
-                        pagibig: parseFloat(row.querySelector("input[name='pagibig']").value) || 0,
-                        mp2: parseFloat(row.querySelector("input[name='mp2']").value) || 0,
-                        sss: parseFloat(row.querySelector("input[name='sss']").value) || 0,
+
+
+
+                        absent_lateRate: parseFloat(row.querySelector("td:nth-child(18)").textContent.replace(/,/g, '')) || 0,
+
+                        absent_late_total: parseFloat(row.querySelector("td[name='absent_late_total']").textContent.replace(/,/g, '')) || 0,
+
+
+                        ret: parseFloat(row.querySelector("td:nth-child(20)").textContent.replace(/,/g, '')) || 0,
+                        sss: parseFloat(row.querySelector("td:nth-child(21)").textContent.replace(/,/g, '')) || 0,
+                        hdmf_pag: parseFloat(row.querySelector("td:nth-child(22)").textContent.replace(/,/g, '')) || 0,
+
+
+
+
+                        mp2: parseFloat(row.querySelector("td:nth-child(23)").textContent.replace(/,/g, '')) || 0,
+                        medical_savings: parseFloat(row.querySelector("td:nth-child(24)").textContent.replace(/,/g, '')) || 0,
+                        sss_total: parseFloat(row.querySelector("td:nth-child(25)").textContent.replace(/,/g, '')) || 0,
+                        pag_ibig_total: parseFloat(row.querySelector("td:nth-child(26)").textContent.replace(/,/g, '')) || 0,
+                        philhealth_total: parseFloat(row.querySelector("td:nth-child(27)").textContent.replace(/,/g, '')) || 0,
+
+
+
+
+
+
+
                         canteen: parseFloat(row.querySelector("input[name='canteen']").value) || 0,
                         others: parseFloat(row.querySelector("input[name='others']").value) || 0,
                         total_deduction: parseFloat(row.querySelector("td[name='total_deduction']").textContent.replace(/,/g, '')) || 0,
-                        net_pay: parseFloat(row.querySelector("td[name='net_pay']").textContent.replace(/,/g, '')) || 0
+                        net_pay: parseFloat(row.querySelector("td[name='net_pay']").textContent.replace(/,/g, '')) || 0,
+
+
                     };
+
+                    console.log("Pushed Data:", rowData);
                     data.push(rowData);
                 });
 
-                alert("Collected Data: \n" + JSON.stringify(data, null, 2));
+
+
 
                 if (confirm("Are you sure you want to save this data?")) {
-                    // Send data to server using AJAX
-                    fetch("cc-save.php", {
+                    fetch("cc-save1.php", {
                             method: "POST",
+                            body: JSON.stringify(data), // Ensure 'data' is properly structured
                             headers: {
                                 "Content-Type": "application/json",
                             },
-                            body: JSON.stringify(data),
                         })
-                        .then(response => response.json())
-                        .then(result => {
-                            if (result.success) {
-                                alert("Data saved successfully!");
-                                location.reload(); // This refreshes the page
+                        .then(response => response.json()) // Convert response to JSON
+                        .then(jsonData => {
+                            console.log("Response Data:", jsonData);
+                            if (jsonData.success) {
+                                alert(jsonData.message); // Get message from PHP response
                             } else {
-                                alert("Failed to save data: " + result.message);
-                                console.error("Server Error: ", result.message);
+                                console.error("Error Response:", jsonData);
+                                alert("Error: " + jsonData.message);
                             }
                         })
                         .catch(error => {
-                            console.error("Error occurred while sending request:", error);
-                            alert("An error occurred while saving data.");
+                            console.error("Fetch Error:", error);
+                            alert("An error occurred while saving the data.");
                         });
                 }
 

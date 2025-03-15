@@ -10,7 +10,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $sql = "SELECT 
                 c.contributions_id,
                 e.employee_id,
-                CONCAT(e.last_name, ', ', e.first_name) AS Name,
+                CONCAT(e.last_name, ', ', e.first_name, ', ', e.suffix_title) AS Name,
                 c.sss_ee,
                 c.pag_ibig_ee,
                 c.philhealth_ee,
@@ -18,7 +18,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 c.pag_ibig_er,
                 c.philhealth_er,
                 c.medical_savings,
-                c.retirement
+                c.retirement,
+                c.mp2
             FROM contributions c
             JOIN employees e ON c.employee_id = e.employee_id
             WHERE c.contributions_id = ?";
@@ -48,22 +49,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $philhealth_er = $_POST['philhealth_er'];
     $medical_savings = $_POST['medical_savings'];
     $retirement = $_POST['retirement'];
+    $mp2 = $_POST['mp2'];
 
     // Validate numeric inputs
-    if (!is_numeric($sss_ee) || !is_numeric($sss_er) || !is_numeric($pagibig_ee) || !is_numeric($pagibig_er) ||
-        !is_numeric($philhealth_ee) || !is_numeric($philhealth_er) || !is_numeric($medical_savings) || 
-        !is_numeric($retirement)) {
+    if (
+        !is_numeric($sss_ee) || !is_numeric($sss_er) || !is_numeric($pagibig_ee) || !is_numeric($pagibig_er) ||
+        !is_numeric($philhealth_ee) || !is_numeric($philhealth_er) || !is_numeric($medical_savings) ||
+        !is_numeric($retirement) || !is_numeric($mp2)
+    ) {
         echo "<div class='alert alert-danger'>Please enter valid numeric values for all fields.</div>";
         exit;
     }
 
     $update_sql = "UPDATE contributions 
                    SET sss_ee = ?, pag_ibig_ee = ?, philhealth_ee = ?, sss_er = ?, 
-                   pag_ibig_er = ?, philhealth_er = ?, medical_savings = ?, retirement = ?
+                   pag_ibig_er = ?, philhealth_er = ?, medical_savings = ?, retirement = ?, mp2 = ?
                    WHERE contributions_id = ?";
     $stmt = $conn->prepare($update_sql);
     $stmt->bind_param(
-        "ddddddddi",
+        "dddddddddi",
         $sss_ee,
         $pagibig_ee,
         $philhealth_ee,
@@ -72,14 +76,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $philhealth_er,
         $medical_savings,
         $retirement,
+        $mp2,
         $contribution_id
     );
 
     if ($stmt->execute()) {
-        echo "<div id='success-message' class='alert alert-success'>Contribution updated successfully!</div>";
+        echo json_encode(["status" => "success", "message" => "Contributions updated successfully!"]);
     } else {
-        echo "<div class='alert alert-danger'>Error updating contribution: " . $stmt->error . "</div>";
+        echo json_encode(["status" => "error", "message" => "Error updating contribution: " . $stmt->error]);
     }
+    exit;
 }
 ?>
 
@@ -89,13 +95,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <title>Edit Contribution</title>
 </head>
 
 <body>
+
+    <?php include 'aside.php'; ?> <!-- This will import the sidebar -->
     <div class="container mt-5">
-        <h3 class="text-center mb-4">Edit Contribution for <?= htmlspecialchars($contribution['Name']) ?></h3>
+        <h3 class="text-center mb-4">NAME: <?= htmlspecialchars($contribution['Name']) ?></h3>
 
         <form method="POST">
             <div class="row">
@@ -194,6 +202,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 value="<?= htmlspecialchars($contribution['retirement']) ?>" placeholder="Retirement" style="max-width: 150px;" required>
                         </div>
                     </div>
+
+
+                    <!-- mp2 Contribution -->
+                    <div>
+                        <label for="mp2" class="form-label fw-semibold">MP2</label>
+                        <div class="input-group">
+                            <span class="input-group-text">₱</span>
+                            <input type="number" step="0.01" name="mp2" id="mp2"
+                                class="form-control form-control-sm border-primary text-center"
+                                value="<?= htmlspecialchars($contribution['retirement']) ?>" placeholder="mp2" style="max-width: 150px;" required>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -205,13 +225,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <script>
-        setTimeout(() => {
-            const successMessage = document.getElementById('success-message');
-            if (successMessage) {
-                successMessage.style.display = 'none';
-            }
-        }, 3000); // 3 seconds
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent normal form submission
+
+            let formData = new FormData(this); // Get form data
+
+            fetch("manage_contributions_edit.php?id=<?= $contribution_id ?>", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        alert("Success: " + data.message); // Success alert
+                        window.location.href = "manage_contributions.php"; // Redirect after success
+                    } else {
+                        alert("Error: " + data.message); // Error alert
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("An error occurred, please try again.");
+                });
+        });
     </script>
+
 </body>
 
 </html>

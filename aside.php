@@ -37,10 +37,27 @@
         <li>
             <a href="manage_contributions.php">
                 <i class='bx bx-donate-heart'></i>
-                <span class="links_name">Contributions</span>
+                <span class="links_name">Mange Contributions</span>
             </a>
             <span class="tooltip">Contributions</span>
         </li>
+
+        <li>
+            <a href="manage_loans.php">
+                <i class='bx bx-credit-card'></i>
+                <span class="links_name">Manage Loans</span>
+            </a>
+            <span class="tooltip">Loans</span>
+        </li>
+
+        <li>
+            <a href="manage_overload.php">
+                <i class='bx bx-time'></i>
+                <span class="links_name">Manage Overload</span>
+            </a>
+            <span class="tooltip">Overload</span>
+        </li>
+
         <li>
             <a href="sidebar.php">
                 <i class='bx bx-calculator'></i>
@@ -49,6 +66,9 @@
             <span class="tooltip">Computation1</span>
         </li>
 
+    
+
+
         <li>
             <a href="computation2.php">
                 <i class='bx bx-calculator'></i>
@@ -56,13 +76,7 @@
             </a>
             <span class="tooltip">Computation2</span>
         </li>
-        <li>
-            <a href="manage_overload.php">
-                <i class='bx bx-time'></i>
-                <span class="links_name">Manage Overload</span>
-            </a>
-            <span class="tooltip">Overload</span>
-        </li>
+   
         <li>
             <a href="super_print.php">
                 <i class='bx bx-printer'></i>

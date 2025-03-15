@@ -29,11 +29,11 @@ if (isset($_POST['sss_ee_percentage']) && isset($_POST['sss_er_percentage']) && 
     }
 
     if ($conn->query($sql) === TRUE) {
-        echo "Data saved successfully";
+        echo "Percentage saved successfully";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-} 
+}
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -46,12 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $philhealth_er = $_POST['philhealth_er'];
     $medical_savings = $_POST['medical_savings'];
     $retirement = $_POST['retirement'];
+    $mp2 = $_POST['mp2'];
 
     // Insert query
-    $insert_sql = "INSERT INTO contributions (employee_id, sss_ee, pag_ibig_ee, philhealth_ee, sss_er, pag_ibig_er, philhealth_er, medical_savings, retirement)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $insert_sql = "INSERT INTO contributions (employee_id, sss_ee, pag_ibig_ee, philhealth_ee, sss_er, pag_ibig_er, philhealth_er, medical_savings, retirement, mp2)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($insert_sql);
-    $stmt->bind_param("idddddddd", $employee_id, $sss_ee, $pagibig_ee, $philhealth_ee, $sss_er, $pagibig_er, $philhealth_er, $medical_savings, $retirement);
+    $stmt->bind_param("iddddddddd", $employee_id, $sss_ee, $pagibig_ee, $philhealth_ee, $sss_er, $pagibig_er, $philhealth_er, $medical_savings, $retirement, $mp2);
 
     if ($stmt->execute()) {
         echo "<div class='alert alert-success' id='success-alert'>Contribution added successfully!</div>";
@@ -62,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 // Fetch employees for dropdown
-$employees_sql = "SELECT employee_id, CONCAT(last_name, ', ', first_name) AS Name FROM employees";
+$employees_sql = "SELECT employee_id, CONCAT(last_name, ', ', first_name, ', ',suffix_title) AS Name FROM employees";
 $employees_result = $conn->query($employees_sql);
 
 // Close connection
@@ -72,6 +73,7 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,7 +82,9 @@ $conn->close();
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body>
+    <?php include 'aside.php'; ?> <!-- This will import the sidebar -->
     <div class="container mt-5 p-4 bg-white shadow-lg rounded">
         <h3 class="text-center mb-4 text-primary fw-bold">Add Contribution</h3>
 
@@ -110,8 +114,8 @@ $conn->close();
                     </select>
                 </div>
 
-               <!-- Basic Salary -->
-               <div class="col-md-3">
+                <!-- Basic Salary -->
+                <div class="col-md-3">
                     <label for="basic_salary" class="form-label fw-semibold">Basic Salary</label>
                     <input type="text" id="basic_salary" class="form-control-sm border-primary form-control" readonly>
                 </div>
@@ -216,113 +220,124 @@ $conn->close();
                                     placeholder="Retirement" style="max-width: 150px;">
                             </div>
                         </div>
+
+                        <!-- mp2 Contribution -->
+                        <div>
+                            <label for="mp2" class="form-label fw-semibold">MP2</label>
+                            <div class="input-group">
+                                <span class="input-group-text"></span>
+                                <input type="number" step="0.01" name="mp2" id="mp2"
+                                    class="form-control form-control-sm border-primary text-center"
+                                    placeholder="mp2" style="max-width: 150px;">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
 
                 <!-- Submit Button -->
                 <div class="col-md-12 text-center mt-4">
-                    <button type="submit" class="btn btn-success px-4 py-2 fw-bold">Add Contribution</button>
+                    <button type="submit" class="btn btn-success px-4 py-2 fw-bold">Submit</button>
                     <a href="manage_contributions.php" class="btn btn-secondary px-4 py-2 fw-bold">Back</a>
                 </div>
             </div>
         </form>
     </div>
 
-        <!-- Modal structure -->
-        <div class="modal fade" id="modalId" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">Set Contribution Percentage</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="percentageForm">
-                            <div class="mb-3">
-                                <label for="sss_ee_modal" class="form-label">SSS EE Rate (%)</label>
-                                <input type="number" class="form-control" id="sss_ee_modal" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="sss_er_modal" class="form-label">SSS ER Rate (%)</label>
-                                <input type="number" class="form-control" id="sss_er_modal" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="philhealth_ee_modal" class="form-label">PhilHealth EE Rate (%)</label>
-                                <input type="number" class="form-control" id="philhealth_ee_modal" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="philhealth_er_modal" class="form-label">PhilHealth ER Rate (%)</label>
-                                <input type="number" class="form-control" id="philhealth_er_modal" required>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="savePercentageBtn">Save changes</button>
-                    </div>
+    <!-- Modal structure -->
+    <div class="modal fade" id="modalId" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Set Contribution Percentage</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="percentageForm">
+                        <div class="mb-3">
+                            <label for="sss_ee_modal" class="form-label">SSS EE Rate (%)</label>
+                            <input type="number" class="form-control" id="sss_ee_modal" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="sss_er_modal" class="form-label">SSS ER Rate (%)</label>
+                            <input type="number" class="form-control" id="sss_er_modal" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="philhealth_ee_modal" class="form-label">PhilHealth EE Rate (%)</label>
+                            <input type="number" class="form-control" id="philhealth_ee_modal" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="philhealth_er_modal" class="form-label">PhilHealth ER Rate (%)</label>
+                            <input type="number" class="form-control" id="philhealth_er_modal" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="savePercentageBtn">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 
     <script>
-$(document).ready(function() {
-    $('#employee_id').change(function() {
-        const employeeId = $(this).val();
+        $(document).ready(function() {
+            $('#employee_id').change(function() {
+                const employeeId = $(this).val();
 
-        if (employeeId) {
-            // Fetch employee and percentage data using AJAX
-            $.ajax({
-                url: 'fetch_employee_details.php', // New PHP file to fetch both employee and percentage data
-                type: 'POST',
-                data: {
-                    employee_id: employeeId
-                },
-                success: function(response) {
-                    const data = JSON.parse(response);
-                    const basicSalary = parseFloat(data.employee.basic_salary);
-                    const percentages = data.percentages;
+                if (employeeId) {
+                    // Fetch employee and percentage data using AJAX
+                    $.ajax({
+                        url: 'fetch_employee_details.php', // New PHP file to fetch both employee and percentage data
+                        type: 'POST',
+                        data: {
+                            employee_id: employeeId
+                        },
+                        success: function(response) {
+                            const data = JSON.parse(response);
+                            const basicSalary = parseFloat(data.employee.basic_salary);
+                            const percentages = data.percentages;
 
-                    // Populate Basic Salary and Employee Type
-                    $('#basic_salary').val(basicSalary.toFixed(2));
-                    $('#employee_type').val(data.employee.employee_type);
+                            // Populate Basic Salary and Employee Type
+                            $('#basic_salary').val(basicSalary.toFixed(2));
+                            $('#employee_type').val(data.employee.employee_type);
 
-                    // Calculate and populate contributions using dynamic percentage values
-                    if (!isNaN(basicSalary)) {
-                        const sssEr = basicSalary * (percentages.sss_er_percentage / 100);
-                        $('#sss_er').val(sssEr.toFixed(2));
-                        const sssEe = basicSalary * (percentages.sss_ee_percentage / 100);
-                        $('#sss_ee').val(sssEe.toFixed(2));
-                        const philhealthEr = basicSalary * (percentages.philhealth_er_percentage / 100);
-                        const philhealthEe = basicSalary * (percentages.philhealth_ee_percentage / 100);
-                        $('#philhealth_er').val(philhealthEr.toFixed(2));
-                        $('#philhealth_ee').val(philhealthEe.toFixed(2));
-                    }
-                },
-                error: function() {
-                    alert('Unable to fetch employee details.');
+                            // Calculate and populate contributions using dynamic percentage values
+                            if (!isNaN(basicSalary)) {
+                                const sssEr = basicSalary * (percentages.sss_er_percentage / 100);
+                                $('#sss_er').val(sssEr.toFixed(2));
+                                const sssEe = basicSalary * (percentages.sss_ee_percentage / 100);
+                                $('#sss_ee').val(sssEe.toFixed(2));
+                                const philhealthEr = basicSalary * (percentages.philhealth_er_percentage / 100);
+                                const philhealthEe = basicSalary * (percentages.philhealth_ee_percentage / 100);
+                                $('#philhealth_er').val(philhealthEr.toFixed(2));
+                                $('#philhealth_ee').val(philhealthEe.toFixed(2));
+                            }
+                        },
+                        error: function() {
+                            alert('Unable to fetch employee details.');
+                        }
+                    });
+                } else {
+                    // Clear fields if no employee selected
+                    $('#basic_salary').val('');
+                    $('#employee_type').val('');
+                    $('#sss_er').val('');
+                    $('#sss_ee').val('');
+                    $('#philhealth_er').val('');
+                    $('#philhealth_ee').val('');
                 }
             });
-        } else {
-            // Clear fields if no employee selected
-            $('#basic_salary').val('');
-            $('#employee_type').val('');
-            $('#sss_er').val('');
-            $('#sss_ee').val('');
-            $('#philhealth_er').val('');
-            $('#philhealth_ee').val('');
-        }
-    });
-});
-                  
+        });
 
-        $(document).ready(function () {
+
+        $(document).ready(function() {
             // Fetch existing data and pre-fill form
             $.ajax({
                 url: 'get_percentage_data.php', // A script to fetch data
                 method: 'GET',
-                success: function (data) {
+                success: function(data) {
                     if (data) {
                         var percentageData = JSON.parse(data);
                         $('#sss_ee_modal').val(percentageData.sss_ee_percentage);
@@ -333,7 +348,7 @@ $(document).ready(function() {
                 }
             });
 
-            $('#savePercentageBtn').click(function () {
+            $('#savePercentageBtn').click(function() {
                 var sss_ee_percentage = $('#sss_ee_modal').val();
                 var sss_er_percentage = $('#sss_er_modal').val();
                 var philhealth_ee_percentage = $('#philhealth_ee_modal').val();
@@ -341,7 +356,7 @@ $(document).ready(function() {
 
                 // AJAX request to save or update the data
                 $.ajax({
-                    url: window.location.href,  // This sends the request to the current page 
+                    url: window.location.href, // This sends the request to the current page 
                     type: 'POST',
                     data: {
                         sss_ee_percentage: sss_ee_percentage,
@@ -349,16 +364,23 @@ $(document).ready(function() {
                         philhealth_ee_percentage: philhealth_ee_percentage,
                         philhealth_er_percentage: philhealth_er_percentage
                     },
-                    success: function (response) {
-                        alert('Data saved successfully!');
-                        $('#modalId').modal('hide');  // Hide the modal after success
+                    success: function(response) {
+                        alert('Percentage has been set successfully!');
+                        $('#modalId').modal('hide'); // Hide the modal after success
+
+                        // Reload the page after 1 second (optional delay)
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1000);
                     },
-                    error: function () {
+                    error: function() {
                         alert('Error saving data.');
                     }
                 });
+
             });
         });
     </script>
 </body>
+
 </html>
