@@ -44,7 +44,7 @@ if ($conn->connect_error) {
                             <th>Classification</th>
                             <th>Basic Salary</th>
                             <th>F&S Development</th>
-                            <th>Incentives</th>
+                            <th>Incentives(special task)</th>
                             <th>Overload Rate</th>
                             <th>Watch Reward</th>
                             <th>Absent / Late Rate</th>

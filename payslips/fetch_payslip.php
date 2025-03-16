@@ -8,11 +8,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $sql = "SELECT 
         ct.computation_id,
         e.employee_id,
-        CONCAT(e.last_name, ', ', e.first_name, ' ', e.suffix_title) AS full_name,
+        CONCAT(e.last_name, ', ', e.first_name, ' ', COALESCE(e.suffix_title, '')) AS full_name,
         COALESCE(e.basic_salary, 0) AS basic_salary,
         COALESCE(e.honorarium, 0) AS honorarium,
-        COALESCE(e.watch_reward, 0) AS watch_reward,
+        COALESCE(ct.watch_total, 0) AS watch_total,
         COALESCE(e.overload_rate, 0) AS overload_rate,
+        COALESCE(e.incentives, 0) AS incentives,
 
         COALESCE(c.sss_ee, 0) AS sss_ee, 
         COALESCE(c.sss_er, 0) AS sss_er,
@@ -41,11 +42,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         COALESCE(SUM(o.grand_total), 0) AS overload_hr
        
     FROM employees e
-    JOIN computation ct ON ct.employee_id = e.employee_id
-    JOIN contributions c ON c.employee_id = e.employee_id
-    JOIN loans n ON n.employee_id = e.employee_id
-    JOIN overload o ON o.employee_id = e.employee_id
+    LEFT JOIN computation ct ON ct.employee_id = e.employee_id
+    LEFT JOIN contributions c ON c.employee_id = e.employee_id
+    LEFT JOIN loans n ON n.employee_id = e.employee_id
+    LEFT JOIN overload o ON o.employee_id = e.employee_id
     WHERE e.employee_id = ?"; // Use placeholder "?"
+
 
 
     $stmt = $conn->prepare($sql);
@@ -72,7 +74,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         $total_deduction = $totalContributions + $totalLoans + $absent_hr_rate_total + $canteen_others;
         $net_pay = $gross_pay - $total_deduction;
-        $total = $overload + $club + $adjustment + $row['watch_reward'];
+        $total = $overload + $club + $adjustment + $row['watch_total'] + $row['incentives'];
 
         echo "<style>
         .payslip-container {
@@ -219,7 +221,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         echo "<h6 class='fw-bold mt-2'>Faculty and Staff Development</h6>";
         echo "<p class='mb-0 d-flex justify-content-between'>
         <span>Watch:</span> 
-        <span class='text-end fw-bold'>₱" . number_format($row['watch_reward'], 2) . "</span></p>";
+        <span class='text-end fw-bold'>₱" . number_format($row['watch_total'], 2) . "</span></p>";
+        echo "<p class='mb-0 d-flex justify-content-between'>
+        <span>Special Task:</span> 
+        <span class='text-end fw-bold'>₱" . number_format($row['incentives'], 2) . "</span></p>";
+        
+        
 
         echo "<h6 class='fw-bold mt-2'>ADDITIONAL PAY</h6>";
         echo "<p class='mb-0 d-flex justify-content-between'>

@@ -8,63 +8,50 @@ require 'database_connection.php';
 
 $sql = "
     SELECT 
-        e.employee_id, 
-        CONCAT(e.last_name, ', ', e.first_name, ' ', e.suffix_title) AS full_name,
-        e.basic_salary, 
-        e.honorarium, 
-        
-                e.overload_rate,
-       
-                ct.overload_total,
-
-        ct.wr_hr,
-        ct.wr_rate,
-        ct.wr_total,
-        ct.adjust_hr,
-        ct.adjust_rate,
-        ct.adjust_total,
-        ct.watch_hr,
-        e.watch_reward,
-        ct.watch_total,
-        ct.gross_pay,
-        ct.absent_late_hr,
-         e.absent_lateRate,
-        ct.absent_late_total,
-
-        n.ret,
-        n.sss,
-        n.hdmf_pag,
-
-      
- 
-        
-        ct.canteen,
-        ct.others,
-        ct.total_deduction,
-        ct.net_pay,
-        ct.reg_date,
-        c.mp2,
-        c.medical_savings,
-      
-                
-               
+         e.employee_id, 
+    CONCAT(e.last_name, ', ', e.first_name, ' ', COALESCE(e.suffix_title, '')) AS full_name,
+    COALESCE(e.basic_salary, 0) AS basic_salary, 
+    COALESCE(e.honorarium, 0) AS honorarium, 
+    COALESCE(e.overload_rate, 0) AS overload_rate,
+    COALESCE(ct.overload_total, 0) AS overload_total,
+    COALESCE(ct.wr_hr, 0) AS wr_hr,
+    COALESCE(ct.wr_rate, 0) AS wr_rate,
+    COALESCE(ct.wr_total, 0) AS wr_total,
+    COALESCE(ct.adjust_hr, 0) AS adjust_hr,
+    COALESCE(ct.adjust_rate, 0) AS adjust_rate,
+    COALESCE(ct.adjust_total, 0) AS adjust_total,
+    COALESCE(ct.watch_hr, 0) AS watch_hr,
+    COALESCE(e.watch_reward, 0) AS watch_reward,
+    COALESCE(ct.watch_total, 0) AS watch_total,
+    COALESCE(ct.gross_pay, 0) AS gross_pay,
+    COALESCE(ct.absent_late_hr, 0) AS absent_late_hr,
+    COALESCE(e.absent_lateRate, 0) AS absent_lateRate,
+    COALESCE(ct.absent_late_total, 0) AS absent_late_total,
+    COALESCE(n.ret, 0) AS ret,
+    COALESCE(n.sss, 0) AS sss,
+    COALESCE(n.hdmf_pag, 0) AS hdmf_pag,
+    COALESCE(ct.canteen, 0) AS canteen,
+    COALESCE(ct.others, 0) AS others,
+    COALESCE(ct.total_deduction, 0) AS total_deduction,
+    COALESCE(ct.net_pay, 0) AS net_pay,
+    COALESCE(ct.reg_date, '') AS reg_date,
+    COALESCE(c.mp2, 0) AS mp2,
+    COALESCE(c.medical_savings, 0) AS medical_savings,
+    COALESCE(SUM(o.grand_total), 0) AS overload_hr, 
+    COALESCE((c.sss_ee + c.sss_er), 0) AS sss_total, 
+    COALESCE((c.pag_ibig_ee + c.pag_ibig_er), 0) AS pag_ibig_total, 
+    COALESCE((c.philhealth_ee + c.philhealth_er), 0) AS philhealth_total
 
 
-
-
-        COALESCE(SUM(o.grand_total), 0) AS overload_hr, 
-    
-       
-        COALESCE((c.sss_ee + c.sss_er), 0) AS sss_total, 
-        COALESCE((c.pag_ibig_ee + c.pag_ibig_er), 0) AS pag_ibig_total, 
-        COALESCE((c.philhealth_ee + c.philhealth_er), 0) AS philhealth_total
-    FROM employees e
-    LEFT JOIN overload o ON e.employee_id = o.employee_id
-    LEFT JOIN loans n ON e.employee_id = n.employee_id
-    LEFT JOIN contributions c ON e.employee_id = c.employee_id
-    LEFT JOIN computation ct ON e.employee_id = ct.employee_id
-
-    GROUP BY e.employee_id";
+   FROM employees e
+LEFT JOIN overload o ON e.employee_id = o.employee_id
+LEFT JOIN loans n ON e.employee_id = n.employee_id
+LEFT JOIN contributions c ON e.employee_id = c.employee_id
+LEFT JOIN computation ct ON e.employee_id = ct.employee_id
+GROUP BY e.employee_id, e.last_name, e.first_name, e.suffix_title, 
+         e.basic_salary, e.honorarium, e.overload_rate, 
+         e.watch_reward, e.absent_lateRate, ct.reg_date, 
+         c.mp2, c.medical_savings, n.ret, n.sss, n.hdmf_pag";
 
 $result = $conn->query($sql);
 ?>
